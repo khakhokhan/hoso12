@@ -565,6 +565,47 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  
+  .sidebar-tag-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .sidebar-tag-done { background: #7f1d1d; color: #fecaca; border: 1px solid #ef4444; }
+  .sidebar-tag-doing { background: #0c4a6e; color: #38bdf8; border: 1px solid #0284c7; }
+  .sidebar-tag-queue { background: #713f12; color: #fef08a; border: 1px solid #ca8a04; }
+
+  @media (max-width: 860px) {
+    body {
+      height: auto !important;
+      min-height: 100vh !important;
+      overflow-y: auto !important;
+    }
+    .app-body {
+      flex-direction: column !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+    .sidebar {
+      width: 100% !important;
+      max-height: 320px !important;
+      overflow-y: auto !important;
+      border-right: none !important;
+      border-bottom: 2px solid var(--border-color) !important;
+    }
+    .workspace {
+      height: auto !important;
+      overflow: visible !important;
+    }
+    .workspace-content {
+      height: auto !important;
+      overflow: visible !important;
+      padding: 12px 10px !important;
+    }
+  }
+
   /* PIN LOCK SCREEN OVERLAY */
   #pinLockOverlay {
     position: fixed;
@@ -776,33 +817,36 @@ async function decryptDataWithPin(pin) {
 async function unlockWithPin(pin) {
   try {
     document.getElementById('pinErrorMsg').innerText = "Đang xác thực...";
-    const data = await decryptDataWithPin(pin);
-    profilesData = data;
+    if (!profilesData || profilesData.length === 0) {
+      profilesData = await decryptDataWithPin(pin);
+    }
     
-    // Remember in localStorage if checked
     if (document.getElementById('rememberPin') && document.getElementById('rememberPin').checked) {
       localStorage.setItem('app_saved_pin', pin);
     } else {
       sessionStorage.setItem('app_session_pin', pin);
     }
 
-    // Hide lock overlay
+    currentPinInput = "";
+    updatePinDots();
+    document.getElementById('pinErrorMsg').innerText = "";
+
     const overlay = document.getElementById('pinLockOverlay');
     overlay.style.opacity = '0';
-    setTimeout(() => { overlay.style.display = 'none'; }, 300);
+    setTimeout(() => { overlay.style.display = 'none'; }, 250);
 
-    // Initialize UI
     selectMonth(currentMonth);
     setActiveProfile(activeFolder);
     showToast("🔓 Đã mở khóa thành công!");
     return true;
   } catch (err) {
     console.error("Decrypt error:", err);
+    currentPinInput = "";
+    updatePinDots();
     document.getElementById('pinErrorMsg').innerText = "❌ Mã PIN không chính xác!";
     const dots = document.querySelectorAll('.pin-dot');
     dots.forEach(d => d.classList.add('error'));
     setTimeout(() => {
-      clearPin();
       dots.forEach(d => d.classList.remove('error'));
       document.getElementById('pinErrorMsg').innerText = "";
     }, 900);
@@ -811,9 +855,20 @@ async function unlockWithPin(pin) {
 }
 
 function lockAppNow() {
+  currentPinInput = "";
+  updatePinDots();
+  const errMsg = document.getElementById('pinErrorMsg');
+  if (errMsg) errMsg.innerText = "";
+  
   localStorage.removeItem('app_saved_pin');
   sessionStorage.removeItem('app_session_pin');
-  location.reload();
+
+  const overlay = document.getElementById('pinLockOverlay');
+  if (overlay) {
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '1';
+  }
+  showToast('🔒 Đã khóa ứng dụng an toàn!');
 }
 
 function updatePinDots() {
@@ -899,14 +954,35 @@ function selectMonth(m) {
   updateWallet();
 }
 
+function getAllStatuses() {
+  try {
+    return JSON.parse(localStorage.getItem('app_all_statuses') || '{}');
+  } catch (e) {
+    return {};
+  }
+}
+
 function getProfileStatus(folder) {
-  return localStorage.getItem('status_' + currentMonth + '_' + folder) || 
-         localStorage.getItem('profile_status_' + folder) || 
-         profilesData.find(p => p.folder === folder).default_status;
+  const all = getAllStatuses();
+  if (all[folder]) return all[folder];
+  if (all[String(folder)]) return all[String(folder)];
+  const p = (profilesData && profilesData.length) ? profilesData.find(item => item.folder === folder) : null;
+  return p ? p.default_status : 'queue';
 }
 
 function setStatus(folder, status) {
-  localStorage.setItem('status_' + currentMonth + '_' + folder, status);
+  const all = getAllStatuses();
+  all[folder] = status;
+  all[String(folder)] = status;
+  localStorage.setItem('app_all_statuses', JSON.stringify(all));
+
+  // Backwards-compatible keys
+  localStorage.setItem('status_' + folder, status);
+  localStorage.setItem('profile_status_' + folder, status);
+  if (currentMonth) {
+    localStorage.setItem('status_' + currentMonth + '_' + folder, status);
+  }
+
   renderProfileList();
   renderActiveProfile();
   updateWallet();
@@ -979,7 +1055,9 @@ function renderProfileList() {
               <div class="item-sub">${p.bank_name} • ${p.cycle}</div>
             </div>
           </div>
-          <div class="item-status-dot ${dotClass}" title="${tagTxt}"></div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span class="sidebar-tag-badge sidebar-tag-${st}">${tagTxt}</span>
+          </div>
         </div>
       `;
     }
@@ -988,7 +1066,9 @@ function renderProfileList() {
 }
 
 function renderActiveProfile() {
+  if (!profilesData || profilesData.length === 0) return;
   const p = profilesData.find(item => item.folder === activeFolder) || profilesData[0];
+  if (!p) return;
   const st = getProfileStatus(p.folder);
 
   document.getElementById('wsProfileBadge').innerText = 'F' + p.folder;
