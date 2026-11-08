@@ -2,8 +2,8 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WORKSPACE QUẢN LÝ 12 BỘ HỒ SƠ - DẠNG TAB SIDEBAR & WORKSPACE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>WORKSPACE QUẢN LÝ 12 BỘ HỒ SƠ - THÔNG TIN & SAO KÊ</title>
 <style>
   :root {
     --bg-darkest: #070b14;
@@ -39,159 +39,161 @@
 
   /* TOP HEADER / DASHBOARD */
   .top-header {
-    background: #090e1a;
-    border-bottom: 1px solid #1e293b;
-    padding: 10px 20px;
+    background: #090e17;
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    z-index: 100;
   }
-  .header-left {
+  .brand-area {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
+  }
+  .app-icon {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+  }
+  .app-title-box {
+    display: flex;
+    flex-direction: column;
   }
   .app-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 800;
-    color: var(--accent);
     letter-spacing: 0.5px;
+    color: #f8fafc;
+  }
+  .app-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* WALLET & METRICS */
+  .header-metrics {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .metric-card {
+    background: #111a2e;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 4px 10px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  
-  /* Month Buttons */
-  .month-group {
+  .metric-label {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .metric-val {
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .wallet-money {
+    color: #4ade80;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 15px;
+  }
+
+  /* LOCK BUTTON */
+  .btn-lock {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    background: #111827;
-    padding: 4px 6px;
-    border-radius: 8px;
-    border: 1px solid #1f2937;
+    transition: all 0.2s;
   }
-  .btn-month {
-    padding: 4px 10px;
-    border: none;
-    border-radius: 6px;
-    background: transparent;
-    color: #94a3b8;
-    font-size: 11.5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  .btn-month:hover { color: #fff; background: #1e293b; }
-  .btn-month.active {
-    background: #0284c7;
+  .btn-lock:hover {
+    background: #334155;
     color: #fff;
-    box-shadow: 0 0 8px rgba(2, 132, 199, 0.4);
   }
 
-  /* Wallet Pill */
-  .wallet-pill {
-    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-    border: 1.5px solid #059669;
-    border-radius: 10px;
-    padding: 6px 14px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    box-shadow: 0 0 15px rgba(5, 150, 105, 0.2);
-  }
-  .wallet-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .wallet-label {
-    font-size: 10px;
-    font-weight: 800;
-    color: #a7f3d0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .wallet-val {
-    font-size: 18px;
-    font-weight: 900;
-    color: #34d399;
-    font-family: monospace;
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-  }
-  .wallet-val span { font-size: 11px; color: #6ee7b7; font-weight: 700; }
-  .wallet-count-badge {
-    background: #047857;
-    color: #ecfdf5;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 800;
-  }
-
-  /* MAIN APP LAYOUT (SPLIT SCREEN: SIDEBAR + WORKSPACE) */
-  .app-body {
-    display: flex;
+  /* MAIN LAYOUT: SIDEBAR + WORKSPACE */
+  .app-main {
     flex: 1;
+    display: flex;
+    height: calc(100vh - 53px);
     overflow: hidden;
   }
 
-  /* LEFT SIDEBAR: PROFILE LIST TABS */
+  /* SIDEBAR */
   .sidebar {
-    width: 320px;
+    width: 280px;
     background: var(--bg-sidebar);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
   }
-  .sidebar-filter-bar {
-    padding: 10px 12px;
+  .sidebar-filter-box {
+    padding: 8px 10px;
     border-bottom: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    background: #0b1322;
+    gap: 6px;
   }
-  .sidebar-search input {
+  .search-input {
     width: 100%;
-    padding: 8px 12px;
-    background: #1e293b;
-    border: 1px solid #334155;
+    background: #090e17;
+    border: 1px solid #1e293b;
     border-radius: 6px;
+    padding: 6px 10px;
     color: #fff;
-    font-size: 12.5px;
+    font-size: 12px;
     outline: none;
   }
-  .sidebar-search input:focus { border-color: var(--accent); }
-  
-  .status-chips-filter {
+  .search-input:focus {
+    border-color: var(--accent);
+  }
+  .filter-tabs {
     display: flex;
     gap: 4px;
   }
-  .chip-btn {
+  .filter-tab {
     flex: 1;
-    padding: 4px 6px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    font-size: 10.5px;
-    font-weight: 800;
-    cursor: pointer;
     background: #1e293b;
-    color: #94a3b8;
+    border: none;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
     text-align: center;
-    transition: 0.15s;
+    transition: all 0.15s;
   }
-  .chip-btn.active { color: #fff; }
-  .chip-all.active { background: #475569; }
-  .chip-doing.active { background: #0284c7; }
-  .chip-queue.active { background: #ca8a04; color: #000; }
-  .chip-done.active { background: #dc2626; }
+  .filter-tab.active {
+    background: var(--accent);
+    color: #070b14;
+    font-weight: 800;
+  }
 
-  /* Profile list */
+  /* PROFILE LIST IN SIDEBAR */
   .profile-list {
     flex: 1;
     overflow-y: auto;
@@ -200,572 +202,70 @@
     flex-direction: column;
     gap: 4px;
   }
-  .profile-list::-webkit-scrollbar { width: 5px; }
-  .profile-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-
-  /* Profile Tab Item */
   .profile-item {
-    padding: 9px 12px;
+    background: #111a2e;
+    border: 1px solid #1e293b;
     border-radius: 8px;
-    border: 1.5px solid transparent;
-    background: #141f36;
+    padding: 8px 10px;
     cursor: pointer;
-    transition: all 0.15s ease;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    position: relative;
+    align-items: center;
+    transition: all 0.15s;
+    user-select: none;
   }
   .profile-item:hover {
-    background: #1c2b4a;
+    background: #182440;
     border-color: #334155;
   }
   .profile-item.active {
-    background: #172a50;
+    background: #1a2a4f;
     border-color: var(--accent);
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
   }
   .item-left {
     display: flex;
     align-items: center;
-    gap: 10px;
-    overflow: hidden;
+    gap: 8px;
   }
   .item-badge {
-    padding: 2px 6px;
-    border-radius: 5px;
-    font-size: 11px;
+    background: #1e293b;
+    color: var(--accent);
     font-weight: 900;
-    background: #334155;
-    color: #fff;
-    min-width: 32px;
-    text-align: center;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-family: monospace;
   }
   .profile-item.active .item-badge {
     background: var(--accent);
-    color: #0b1120;
+    color: #070b14;
   }
   .item-name-block {
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .item-name {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 800;
-    color: #f1f5f9;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #f8fafc;
   }
   .item-sub {
     font-size: 11px;
-    color: #94a3b8;
-    white-space: nowrap;
-  }
-  
-  .item-status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .status-dot-done { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
-  .status-dot-doing { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
-  .status-dot-queue { background: #eab308; box-shadow: 0 0 6px #eab308; }
-
-  /* RIGHT WORKSPACE: FULL PROFILE DETAILS */
-  .workspace {
-    flex: 1;
-    background: var(--bg-workspace);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  /* Workspace Header */
-  .workspace-header {
-    background: #0f1a30;
-    border-bottom: 1px solid #1e3a5f;
-    padding: 12px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-  .ws-header-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .ws-profile-badge {
-    background: #2563eb;
-    color: #fff;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-weight: 900;
-    font-size: 14px;
-  }
-  .ws-profile-name {
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 0.5px;
-  }
-  .ws-cycle-tag {
-    background: #1e3a5f;
-    color: #93c5fd;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    border: 1px solid #2563eb;
-  }
-
-  .ws-header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .tag-switch-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: #0a1120;
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid #1e293b;
-  }
-  .ws-tag-pill {
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: 0.15s;
-    user-select: none;
-    white-space: nowrap;
-  }
-  .ws-tag-pill:hover { transform: scale(1.04); }
-  .ws-pill-done { background: #7f1d1d; color: #fecaca; border-color: #dc2626; }
-  .ws-pill-done.active { background: #ef4444; color: #fff; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-  
-  .ws-pill-doing { background: #0c4a6e; color: #38bdf8; border-color: #0284c7; }
-  .ws-pill-doing.active { background: #0284c7; color: #fff; box-shadow: 0 0 10px rgba(2, 132, 199, 0.5); }
-
-  .ws-pill-queue { background: #713f12; color: #fef08a; border-color: #ca8a04; }
-  .ws-pill-queue.active { background: #eab308; color: #000; box-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
-
-  .ws-nav-btn {
-    padding: 7px 12px;
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    color: #cbd5e1;
-    font-weight: 700;
-    font-size: 12px;
-    cursor: pointer;
-    transition: 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .ws-nav-btn:hover { background: #334155; color: #fff; border-color: var(--accent); }
-
-  /* Workspace Scrollable Body */
-  .workspace-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .workspace-content::-webkit-scrollbar { width: 6px; }
-  .workspace-content::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-
-  /* 2-COLUMN GRID IN WORKSPACE (ALL ON ONE SCREEN!) */
-  .ws-grid-2cols {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 20px;
-    align-items: start;
-  }
-  @media (max-width: 1280px) {
-    .ws-grid-2cols { grid-template-columns: 1fr; }
-    body { overflow: auto; height: auto; }
-    .workspace { overflow: visible; }
-  }
-
-  /* Card Sections */
-  .ws-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-  .ws-box-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #1e3a5f;
-  }
-  .ws-box-title {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  /* Field Rows */
-  .field-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #1e293b;
-    gap: 12px;
-  }
-  .field-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .field-info { flex: 1; }
-  .field-label {
-    font-size: 11px;
     color: var(--text-muted);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
   }
-  .field-val-big {
-    font-family: monospace;
-    font-weight: 800;
-  }
-  .val-phone { font-size: 24px; color: var(--yellow); }
-  .val-bank { font-size: 22px; color: var(--green); }
-  .val-cccd { font-size: 21px; color: var(--purple); }
-  .val-dob { font-size: 22px; color: #38bdf8; }
-  .val-date { font-size: 20px; color: var(--emerald); }
-  .val-expiry { font-size: 20px; color: var(--rose); }
-
-  .sim-badge {
-    background: #991b1b;
-    color: #fecaca;
-    padding: 2px 8px;
-    border-radius: 5px;
-    font-size: 11.5px;
-    font-weight: 800;
-    border: 1px solid #ef4444;
-    margin-left: 8px;
-  }
-
-  /* Address box */
-  .address-box {
-    background: #0d1729;
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid #1e293b;
-  }
-  .address-val {
-    font-size: 13px;
-    font-weight: 600;
-    color: #e2e8f0;
-    line-height: 1.4;
-  }
-
-  /* Salary Table in Workspace */
-  .salary-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-  .salary-table th {
-    background: #091222;
-    padding: 11px 14px;
-    color: #93c5fd;
-    font-size: 12.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    border-bottom: 2px solid #1e3a5f;
-    text-align: left;
-  }
-  .salary-table td {
-    padding: 14px 14px;
-    border-bottom: 1px solid #1e293b;
-    vertical-align: middle;
-  }
-  .salary-table tr:hover { background: #162238; }
-  .sal-amt-strong {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--green);
-    font-family: monospace;
-  }
-  .sal-bal-strong {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    font-family: monospace;
-  }
-  .sal-date-txt {
-    font-size: 12px;
-    color: #cbd5e1;
-    font-weight: 600;
-  }
-  .sal-memo-txt {
-    font-size: 10.5px;
-    color: #94a3b8;
-    font-family: monospace;
-  }
-
-  /* Copy Buttons */
-  .btn-copy {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #cbd5e1;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.15s;
-    white-space: nowrap;
-  }
-  .btn-copy:hover { background: #334155; border-color: var(--accent); color: #fff; }
-  .btn-copy.copied { background: #15803d; border-color: #22c55e; color: #fff; }
-
-  /* Toast Notification */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #0284c7;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: 700;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    z-index: 99999;
-    display: none;
-    font-size: 13.5px;
-    border: 1px solid #38bdf8;
-    animation: fadeIn 0.2s ease-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  
   .sidebar-tag-badge {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 6px;
+    padding: 3px 6px;
+    border-radius: 4px;
     white-space: nowrap;
   }
   .sidebar-tag-done { background: #7f1d1d; color: #fecaca; border: 1px solid #ef4444; }
   .sidebar-tag-doing { background: #0c4a6e; color: #38bdf8; border: 1px solid #0284c7; }
   .sidebar-tag-queue { background: #713f12; color: #fef08a; border: 1px solid #ca8a04; }
 
-  @media (max-width: 860px) {
-    body {
-      height: auto !important;
-      min-height: 100vh !important;
-      overflow-y: auto !important;
-    }
-    .app-body {
-      flex-direction: column !important;
-      height: auto !important;
-      overflow: visible !important;
-    }
-    .sidebar {
-      width: 100% !important;
-      max-height: 320px !important;
-      overflow-y: auto !important;
-      border-right: none !important;
-      border-bottom: 2px solid var(--border-color) !important;
-    }
-    .workspace {
-      height: auto !important;
-      overflow: visible !important;
-    }
-    .workspace-content {
-      height: auto !important;
-      overflow: visible !important;
-      padding: 12px 10px !important;
-    }
-  }
-
-  /* PIN LOCK SCREEN OVERLAY */
-  #pinLockOverlay {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: radial-gradient(circle at center, #0d1a33 0%, #060a12 100%);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    user-select: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .pin-card {
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1.5px solid rgba(56, 189, 248, 0.25);
-    border-radius: 20px;
-    padding: 32px 28px;
-    width: 100%;
-    max-width: 380px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(2, 132, 199, 0.15);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .pin-shield-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #0284c7, #2563eb);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    margin-bottom: 16px;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-  }
-  .pin-title {
-    font-size: 19px;
-    font-weight: 800;
-    color: #f8fafc;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
-  }
-  .pin-subtitle {
-    font-size: 12.5px;
-    color: #94a3b8;
-    margin-bottom: 24px;
-  }
-  .pin-dots-row {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    margin-bottom: 24px;
-  }
-  .pin-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid #334155;
-    background: transparent;
-    transition: all 0.2s;
-  }
-  .pin-dot.filled {
-    background: #38bdf8;
-    border-color: #38bdf8;
-    box-shadow: 0 0 10px #38bdf8;
-    transform: scale(1.15);
-  }
-  .pin-dot.error {
-    background: #ef4444;
-    border-color: #ef4444;
-    box-shadow: 0 0 10px #ef4444;
-  }
-  .pin-numpad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    width: 100%;
-    max-width: 280px;
-    margin-bottom: 18px;
-  }
-  .pin-btn {
-    height: 60px;
-    border-radius: 50%;
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #f8fafc;
-    font-size: 22px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .pin-btn:active {
-    background: #0284c7;
-    transform: scale(0.92);
-  }
-  .pin-btn.action-btn {
-    background: transparent;
-    border-color: transparent;
-    font-size: 14px;
-    font-weight: 800;
-    color: #94a3b8;
-  }
-  .pin-btn.action-btn:active {
-    background: #334155;
-  }
-  .pin-remember {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #94a3b8;
-    cursor: pointer;
-  }
-  .pin-error-msg {
-    color: #f87171;
-    font-size: 12.5px;
-    font-weight: 700;
-    min-height: 18px;
-    margin-bottom: 12px;
-  }
-
-  /* MOBILE RESPONSIVE TWEAKS */
-  @media (max-width: 860px) {
-    .app-body {
-      flex-direction: column !important;
-      overflow-y: auto !important;
-    }
-    .sidebar {
-      width: 100% !important;
-      max-height: 240px !important;
-      border-right: none !important;
-      border-bottom: 2px solid var(--border-color) !important;
-    }
-    .ws-grid-2cols {
-      grid-template-columns: 1fr !important;
-    }
-    .workspace-header {
-      flex-wrap: wrap !important;
-      gap: 10px !important;
-      padding: 10px 14px !important;
-    }
-    .top-header {
-      flex-wrap: wrap !important;
-      gap: 10px !important;
-      padding: 8px 12px !important;
-    }
-    .app-title { font-size: 14px !important; }
-    .wallet-pill { width: 100% !important; justify-content: space-between !important; }
-  }
-
-
+  /* SIDEBAR MINI BUTTONS */
   .sidebar-status-actions {
     display: flex;
     align-items: center;
@@ -778,43 +278,195 @@
     color: #94a3b8;
     font-size: 10px;
     font-weight: 700;
-    padding: 3px 6px;
+    padding: 2px 6px;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.15s;
-    user-select: none;
-    -webkit-user-select: none;
   }
-  .mini-status-btn:hover {
-    filter: brightness(1.2);
+  .mini-status-btn:hover { filter: brightness(1.2); }
+  .mini-status-btn.btn-done.active { background: #7f1d1d; color: #fecaca; border-color: #ef4444; }
+  .mini-status-btn.btn-doing.active { background: #0c4a6e; color: #38bdf8; border-color: #0284c7; }
+  .mini-status-btn.btn-queue.active { background: #713f12; color: #fef08a; border-color: #ca8a04; }
+
+  /* WORKSPACE AREA */
+  .workspace {
+    flex: 1;
+    background: var(--bg-workspace);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
-  .mini-status-btn.btn-done.active {
-    background: #7f1d1d;
-    color: #fecaca;
-    border-color: #ef4444;
+  .ws-header {
+    background: #090e17;
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-  .mini-status-btn.btn-doing.active {
-    background: #0c4a6e;
+  .ws-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ws-folder-badge {
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: monospace;
+  }
+  .ws-profile-name {
+    font-size: 17px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .ws-cycle-tag {
+    background: #1e293b;
+    color: #facc15;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .ws-status-pills {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ws-tag-pill {
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ws-pill-done { background: #1e293b; color: #94a3b8; }
+  .ws-pill-done.active { background: #7f1d1d; color: #fecaca; border-color: #ef4444; }
+  .ws-pill-doing { background: #1e293b; color: #94a3b8; }
+  .ws-pill-doing.active { background: #0c4a6e; color: #38bdf8; border-color: #0284c7; }
+  .ws-pill-queue { background: #1e293b; color: #94a3b8; }
+  .ws-pill-queue.active { background: #713f12; color: #fef08a; border-color: #ca8a04; }
+
+  /* WORKSPACE CONTENT GRID (2 COLUMNS) */
+  .workspace-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 16px;
+  }
+  .ws-grid-2cols {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 14px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .app-main { flex-direction: column; height: auto; overflow: auto; }
+    .sidebar { width: 100%; height: 260px; }
+    .ws-grid-2cols { grid-template-columns: 1fr; }
+    body { overflow: auto; height: auto; }
+  }
+  .ws-box {
+    background: #111a2e;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .box-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* FIELD ROWS */
+  .field-row {
+    background: #090e17;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .field-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .field-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .field-val-big {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: #f8fafc;
+  }
+  .val-phone { color: #38bdf8; font-size: 17px; }
+  .val-cccd { color: #fb7185; font-size: 17px; }
+  .val-dob { color: #facc15; }
+  .val-date { color: #a78bfa; }
+  .sim-badge {
+    background: #0284c7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .btn-copy {
+    background: #1e293b;
+    border: 1px solid #334155;
     color: #38bdf8;
-    border-color: #0284c7;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
   }
-  .mini-status-btn.btn-queue.active {
-    background: #713f12;
-    color: #fef08a;
-    border-color: #ca8a04;
+  .btn-copy:hover {
+    background: var(--accent);
+    color: #070b14;
   }
+
+  /* SIM SMS 1414 CARD */
   .sim-sms-box {
     background: rgba(14, 165, 233, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    border: 1px solid rgba(56, 189, 248, 0.3);
     border-radius: 8px;
     padding: 10px 12px;
-    margin-top: 10px;
+    margin-top: 4px;
   }
   .sim-sms-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 6px;
   }
   .sim-sms-title {
     color: #38bdf8;
@@ -828,202 +480,833 @@
     border-radius: 6px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 11.5px;
-    color: #e2e8f0;
+    color: #cbd5e1;
     line-height: 1.5;
     border: 1px dashed #334155;
     word-break: break-word;
     user-select: all;
   }
 
+  /* SALARY TABLE */
+  .salary-table-box {
+    overflow-x: auto;
+  }
+  .salary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .salary-table th {
+    background: #090e17;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 1px solid #1e293b;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .salary-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #162035;
+    vertical-align: middle;
+  }
+  .salary-amount {
+    font-size: 19px;
+    font-weight: 900;
+    color: #4ade80;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .salary-balance {
+    font-size: 16px;
+    font-weight: 800;
+    color: #38bdf8;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .salary-memo-box {
+    background: #090e17;
+    border: 1px dashed #ca8a04;
+    border-radius: 6px;
+    padding: 6px 8px;
+    color: #facc15;
+    font-weight: 700;
+    font-size: 13px;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-memo-copy {
+    background: #1e293b;
+    border: 1px solid #ca8a04;
+    color: #facc15;
+    font-size: 10.5px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* PIN LOCK OVERLAY */
+  #pinLockOverlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle at center, #0d1a33 0%, #060a12 100%);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    user-select: none;
+    transition: opacity 0.25s ease;
+  }
+  .pin-card {
+    background: #111a2e;
+    border: 1px solid #2563eb;
+    border-radius: 16px;
+    padding: 24px;
+    width: 320px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  }
+  .pin-shield-icon { font-size: 44px; margin-bottom: 8px; }
+  .pin-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .pin-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; text-align: center; }
+  .pin-error-msg { color: #ef4444; font-size: 12px; font-weight: 700; min-height: 18px; margin-bottom: 10px; }
+  .pin-dots-row { display: flex; gap: 12px; margin-bottom: 20px; }
+  .pin-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #1e293b; border: 2px solid #334155;
+    transition: all 0.2s;
+  }
+  .pin-dot.filled { background: #38bdf8; border-color: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
+  .pin-dot.error { background: #ef4444; border-color: #ef4444; }
+  .pin-keypad {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%;
+  }
+  .pin-key {
+    background: #182440; border: 1px solid #25365e; color: #fff;
+    font-size: 20px; font-weight: 800; height: 50px; border-radius: 10px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .pin-key:hover { background: #2563eb; }
+  .pin-key:active { transform: scale(0.95); }
+  .pin-key-back { font-size: 15px; color: #cbd5e1; }
+
+  /* TOAST NOTIFICATION */
+  #toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0284c7;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    z-index: 1000000;
+    display: none;
+    transition: all 0.2s;
+  }
 </style>
 <script>
+const MASTER_PIN = "010423";
+const profilesData = [
+  {
+    "folder": 1,
+    "name": "LÊ TRUNG KIÊN",
+    "dob": "01/07/2000",
+    "phone": "0373705120",
+    "sim": "Viettel",
+    "bank_name": "Vietcombank",
+    "bank_stk": "1027432881",
+    "bank_owner": "LE TRUNG KIEN",
+    "cccd": "0722 0000 8269",
+    "ngay_cap": "23/03/2026",
+    "noi_cap": "BỘ CÔNG AN",
+    "ngay_het_han": "01/07/2040",
+    "gmail": "letrungkien8269@gmail.com",
+    "thuong_tru": "32, Tổ 4, Ấp Long Đại, Xã Long Chữ, Tỉnh Tây Ninh",
+    "hien_tai": "1244/70, Đường Lê Đức Thọ, Phường An Hội Đông, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 09:30:15",
+        "day_name": "Thứ 5",
+        "amount": "11,865,200",
+        "prev_bal": "2,480,000",
+        "new_bal": "14,345,200"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:12:40",
+        "day_name": "Thứ 2",
+        "amount": "12,150,000",
+        "prev_bal": "3,100,500",
+        "new_bal": "15,250,500"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 15:45:22",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "11,480,500",
+        "prev_bal": "1,920,400",
+        "new_bal": "13,400,900"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:15:30",
+        "day_name": "Thứ 4",
+        "amount": "11,245,600",
+        "prev_bal": "2,350,000",
+        "new_bal": "13,595,600"
+      }
+    ],
+    "default_status": "done"
+  },
+  {
+    "folder": 2,
+    "name": "TRẦN THANH BÃO",
+    "dob": "16/09/2004",
+    "phone": "0348215005",
+    "sim": "Viettel",
+    "bank_name": "MB Bank",
+    "bank_stk": "7000592203",
+    "bank_owner": "TRAN THANH BAO",
+    "cccd": "072204005111",
+    "ngay_cap": "05/03/2023",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "16/09/2029",
+    "gmail": "tranthanhbao5111@gmail.com",
+    "thuong_tru": "Tổ 1, Ấp Long Phú, Xã Long Vĩnh, Huyện Châu Thành, Tỉnh Tây Ninh",
+    "hien_tai": "80/8/13A, Đường Số 12, Phường Thông Tây Hội, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 15:15:45",
+        "day_name": "Thứ 5",
+        "amount": "10,842,300",
+        "prev_bal": "1,980,500",
+        "new_bal": "12,822,800"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:34:12",
+        "day_name": "Thứ 2",
+        "amount": "11,276,000",
+        "prev_bal": "2,650,000",
+        "new_bal": "13,926,000"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 08:45:23",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "10,438,500",
+        "prev_bal": "1,520,300",
+        "new_bal": "11,958,800"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:20:10",
+        "day_name": "Thứ 4",
+        "amount": "10,120,400",
+        "prev_bal": "1,840,000",
+        "new_bal": "11,960,400"
+      }
+    ],
+    "default_status": "done"
+  },
+  {
+    "folder": 3,
+    "name": "NGUYỄN PHÚ QUÝ",
+    "dob": "01/01/1978",
+    "phone": "0367189067",
+    "sim": "Viettel",
+    "bank_name": "VPBank",
+    "bank_stk": "1593936357",
+    "bank_owner": "NGUYEN PHU QUY",
+    "cccd": "091078015356",
+    "ngay_cap": "22/11/2021",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "01/01/2038",
+    "gmail": "nguyenphuquy5356@gmail.com",
+    "thuong_tru": "Tổ 5, Ấp Hòa Ninh, Xã Mong Thọ A, Huyện Châu Thành, Tỉnh Kiên Giang",
+    "hien_tai": "778/19, Đường Thống Nhất, Quận Gò Vấp, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 08:50:30",
+        "day_name": "Thứ 5",
+        "amount": "15,142,600",
+        "prev_bal": "3,650,400",
+        "new_bal": "18,793,000"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:24:18",
+        "day_name": "Thứ 2",
+        "amount": "15,820,000",
+        "prev_bal": "4,120,000",
+        "new_bal": "19,940,000"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 09:12:45",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "14,685,400",
+        "prev_bal": "2,850,200",
+        "new_bal": "17,535,600"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 08:35:12",
+        "day_name": "Thứ 4",
+        "amount": "14,350,800",
+        "prev_bal": "3,420,500",
+        "new_bal": "17,771,300"
+      }
+    ],
+    "default_status": "done"
+  },
+  {
+    "folder": 4,
+    "name": "PHAN THỊ LY PHA",
+    "dob": "25/04/1995",
+    "phone": "0337419691",
+    "sim": "Viettel",
+    "bank_name": "Vietcombank",
+    "bank_stk": "0281000314846",
+    "bank_owner": "PHAN THI LY PHA",
+    "cccd": "091195013350",
+    "ngay_cap": "25/09/2022",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "25/04/2035",
+    "gmail": "phanthilypha3350@gmail.com",
+    "thuong_tru": "Tổ 4, Ấp Bãi Chướng, Xã Hòn Nghệ, Huyện Kiên Lương, Tỉnh Kiên Giang",
+    "hien_tai": "401/50, Đường Cây Trâm, Phường Thông Tây Hội, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 10",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "06/11/2026 09:05:40",
+        "day_name": "Thứ 6 (Chi sớm)",
+        "amount": "12,840,200",
+        "prev_bal": "2,950,400",
+        "new_bal": "15,790,600"
+      },
+      {
+        "month": "T09/2026",
+        "date": "09/10/2026 10:15:20",
+        "day_name": "Thứ 6 (Né T7 10/10)",
+        "amount": "13,260,800",
+        "prev_bal": "3,800,000",
+        "new_bal": "17,060,800"
+      },
+      {
+        "month": "T08/2026",
+        "date": "10/09/2026 09:40:15",
+        "day_name": "Thứ 5",
+        "amount": "12,450,000",
+        "prev_bal": "2,120,300",
+        "new_bal": "14,570,300"
+      },
+      {
+        "month": "T07/2026",
+        "date": "10/08/2026 09:10:05",
+        "day_name": "Thứ 2",
+        "amount": "12,180,500",
+        "prev_bal": "2,540,000",
+        "new_bal": "14,720,500"
+      }
+    ],
+    "default_status": "done"
+  },
+  {
+    "folder": 5,
+    "name": "TRƯƠNG HOÀNG DANH",
+    "dob": "14/03/2005",
+    "phone": "0338656845",
+    "sim": "Viettel",
+    "bank_name": "MB Bank",
+    "bank_stk": "0338656845 (hoặc xem ảnh QR trong thư mục)",
+    "bank_owner": "TRUONG HOANG DANH",
+    "cccd": "093205007026",
+    "ngay_cap": "03/11/2025",
+    "noi_cap": "BỘ CÔNG AN",
+    "ngay_het_han": "14/03/2030",
+    "gmail": "truonghoangdoanh@gmail.com",
+    "thuong_tru": "Ấp Vĩnh Thạnh, Xã Vĩnh Tường, Thành phố Cần Thơ",
+    "hien_tai": "319/22, Đường Lê Văn Thọ, Phường Thông Tây Hội, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 09:15:45",
+        "day_name": "Thứ 5",
+        "amount": "10,420,000",
+        "prev_bal": "1,890,200",
+        "new_bal": "12,310,200"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:20:30",
+        "day_name": "Thứ 2",
+        "amount": "10,840,500",
+        "prev_bal": "2,350,000",
+        "new_bal": "13,190,500"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 08:50:18",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "10,150,000",
+        "prev_bal": "1,680,500",
+        "new_bal": "11,830,500"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:45:10",
+        "day_name": "Thứ 4",
+        "amount": "9,850,200",
+        "prev_bal": "1,420,000",
+        "new_bal": "11,270,200"
+      }
+    ],
+    "default_status": "done"
+  },
+  {
+    "folder": 6,
+    "name": "BÀNH VĂN HÀO",
+    "dob": "01/01/1996",
+    "phone": "0343798607",
+    "sim": "Viettel",
+    "bank_name": "Vietcombank",
+    "bank_stk": "1055605762",
+    "bank_owner": "BANH VAN HAO",
+    "cccd": "091096007478",
+    "ngay_cap": "26/03/2026",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "01/01/2036",
+    "gmail": "banhvanhao7478@gmail.com",
+    "thuong_tru": "Lô 21 Căn 14 KDC An Bình, Khu Phố 3, Phường Rạch Giá, Tỉnh An Giang",
+    "hien_tai": "18/14, Đường Ba Du, Phường Thới An, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 10",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "06/11/2026 08:40:15",
+        "day_name": "Thứ 6 (Chi sớm)",
+        "amount": "13,240,600",
+        "prev_bal": "3,100,500",
+        "new_bal": "16,341,100"
+      },
+      {
+        "month": "T09/2026",
+        "date": "09/10/2026 10:10:45",
+        "day_name": "Thứ 6 (Né T7 10/10)",
+        "amount": "13,850,200",
+        "prev_bal": "3,950,000",
+        "new_bal": "17,800,200"
+      },
+      {
+        "month": "T08/2026",
+        "date": "10/09/2026 09:35:10",
+        "day_name": "Thứ 5",
+        "amount": "12,980,000",
+        "prev_bal": "2,420,600",
+        "new_bal": "15,400,600"
+      },
+      {
+        "month": "T07/2026",
+        "date": "10/08/2026 09:00:22",
+        "day_name": "Thứ 2",
+        "amount": "12,650,400",
+        "prev_bal": "2,840,000",
+        "new_bal": "15,490,400"
+      }
+    ],
+    "default_status": "doing"
+  },
+  {
+    "folder": 7,
+    "name": "HỒ VĂN THƯƠNG",
+    "dob": "28/02/1999",
+    "phone": "0376320324",
+    "sim": "Viettel",
+    "bank_name": "Techcombank",
+    "bank_stk": "1907 6756 3550 12",
+    "bank_owner": "HO VAN THUONG",
+    "cccd": "096099003214",
+    "ngay_cap": "14/05/2026",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "28/02/2039",
+    "gmail": "hovanthuong3214@gmail.com",
+    "thuong_tru": "Ấp Đường Đào, Xã Hồ Thị Kỷ, Tỉnh Cà Mau",
+    "hien_tai": "26/6H, Đường Quang Trung, Phường Thông Tây Hội, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 09:12:40",
+        "day_name": "Thứ 5",
+        "amount": "13,050,200",
+        "prev_bal": "2,890,500",
+        "new_bal": "15,940,700"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:05:15",
+        "day_name": "Thứ 2",
+        "amount": "13,540,800",
+        "prev_bal": "3,720,000",
+        "new_bal": "17,260,800"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 09:10:20",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "12,680,000",
+        "prev_bal": "2,180,400",
+        "new_bal": "14,860,400"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:25:35",
+        "day_name": "Thứ 4",
+        "amount": "12,340,500",
+        "prev_bal": "2,650,000",
+        "new_bal": "14,990,500"
+      }
+    ],
+    "default_status": "queue"
+  },
+  {
+    "folder": 8,
+    "name": "LÊ CHÍ HIẾU",
+    "dob": "11/11/2005",
+    "phone": "0338014807",
+    "sim": "Viettel",
+    "bank_name": "TPBank",
+    "bank_stk": "1000 2545 366",
+    "bank_owner": "LE CHI HIEU",
+    "cccd": "096205013413",
+    "ngay_cap": "16/01/2025",
+    "noi_cap": "BỘ CÔNG AN",
+    "ngay_het_han": "11/11/2030",
+    "gmail": "lechihieu3413@gmail.con",
+    "thuong_tru": "Ấp Nhưng Miên, Xã Viên An Đông, Huyện Ngọc Hiển, Tỉnh Cà Mau",
+    "hien_tai": "Ấp Nhưng Miên, Xã Viên An Đông, Huyện Ngọc Hiển, Tỉnh Cà Mau",
+    "cycle": "Chu kỳ Mùng 10",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "06/11/2026 09:20:10",
+        "day_name": "Thứ 6 (Chi sớm)",
+        "amount": "10,240,300",
+        "prev_bal": "1,780,500",
+        "new_bal": "12,020,800"
+      },
+      {
+        "month": "T09/2026",
+        "date": "09/10/2026 10:15:25",
+        "day_name": "Thứ 6 (Né T7 10/10)",
+        "amount": "10,650,000",
+        "prev_bal": "2,200,000",
+        "new_bal": "12,850,000"
+      },
+      {
+        "month": "T08/2026",
+        "date": "10/09/2026 08:55:40",
+        "day_name": "Thứ 5",
+        "amount": "9,980,500",
+        "prev_bal": "1,540,200",
+        "new_bal": "11,520,700"
+      },
+      {
+        "month": "T07/2026",
+        "date": "10/08/2026 09:30:15",
+        "day_name": "Thứ 2",
+        "amount": "9,650,000",
+        "prev_bal": "1,350,000",
+        "new_bal": "11,000,000"
+      }
+    ],
+    "default_status": "queue"
+  },
+  {
+    "folder": 9,
+    "name": "ĐỒNG TIẾN LUẬT",
+    "dob": "05/09/1979",
+    "phone": "0343665714",
+    "sim": "Viettel",
+    "bank_name": "Techcombank",
+    "bank_stk": "1903 9642 2630 18",
+    "bank_owner": "DONG TIEN LUAT",
+    "cccd": "034079009395",
+    "ngay_cap": "16/09/2022",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "05/09/2039",
+    "gmail": "dongtienluat9395@gmail.con",
+    "thuong_tru": "Thôn 8, Xã Vũ Đoài, Huyện Vũ Thư, Tỉnh Thái Bình",
+    "hien_tai": "209/24/6, Đường Cây Trâm, Phường Thông Tây Hội, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 10",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "06/11/2026 08:55:10",
+        "day_name": "Thứ 6 (Chi sớm)",
+        "amount": "15,780,500",
+        "prev_bal": "3,920,000",
+        "new_bal": "19,700,500"
+      },
+      {
+        "month": "T09/2026",
+        "date": "09/10/2026 10:30:50",
+        "day_name": "Thứ 6 (Né T7 10/10)",
+        "amount": "16,350,800",
+        "prev_bal": "4,650,000",
+        "new_bal": "21,000,800"
+      },
+      {
+        "month": "T08/2026",
+        "date": "10/09/2026 09:20:15",
+        "day_name": "Thứ 5",
+        "amount": "15,240,000",
+        "prev_bal": "3,120,400",
+        "new_bal": "18,360,400"
+      },
+      {
+        "month": "T07/2026",
+        "date": "10/08/2026 08:40:25",
+        "day_name": "Thứ 2",
+        "amount": "14,850,200",
+        "prev_bal": "3,850,000",
+        "new_bal": "18,700,200"
+      }
+    ],
+    "default_status": "queue"
+  },
+  {
+    "folder": 10,
+    "name": "NGÔ VŨ DƯƠNG",
+    "dob": "20/01/2006",
+    "phone": "0384945745",
+    "sim": "Viettel",
+    "bank_name": "VietinBank",
+    "bank_stk": "100875175566",
+    "bank_owner": "NGO VU DUONG",
+    "cccd": "096206012672",
+    "ngay_cap": "20/10/2024",
+    "noi_cap": "BỘ CÔNG AN",
+    "ngay_het_han": "20/01/2031",
+    "gmail": "ngovuduong2672@gmail.com",
+    "thuong_tru": "Số Nhà 50, Ấp Tân Long, Xã Tân Duyệt, Huyện Đầm Dơi, Tỉnh Cà Mau",
+    "hien_tai": "127, Đường Số 7, Phường Hạnh Thông, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 09:10:45",
+        "day_name": "Thứ 5",
+        "amount": "9,760,400",
+        "prev_bal": "1,620,500",
+        "new_bal": "11,380,900"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:25:10",
+        "day_name": "Thứ 2",
+        "amount": "10,120,000",
+        "prev_bal": "2,050,000",
+        "new_bal": "12,170,000"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 09:05:35",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "9,450,500",
+        "prev_bal": "1,480,200",
+        "new_bal": "10,930,700"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:50:20",
+        "day_name": "Thứ 4",
+        "amount": "9,120,000",
+        "prev_bal": "1,250,000",
+        "new_bal": "10,370,000"
+      }
+    ],
+    "default_status": "queue"
+  },
+  {
+    "folder": 11,
+    "name": "ĐẶNG THỊ DIỄM THÚY",
+    "dob": "01/01/1977",
+    "phone": "0376421394",
+    "sim": "Viettel",
+    "bank_name": "VPBank",
+    "bank_stk": "0376421394",
+    "bank_owner": "DANG THI DIEM THUY",
+    "cccd": "091177006477",
+    "ngay_cap": "08/12/2021",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "01/01/2037",
+    "gmail": "dangthidiemthuy6477@gmail.com",
+    "thuong_tru": "Số Nhà 10/10/3, Đường Cao Thắng, Phường Vĩnh Lợi, Thành phố Rạch Giá, Tỉnh Kiên Giang",
+    "hien_tai": "32A/11, Đường Số 7, Phường An Hội Đông, Thành phố Hồ Chí Minh",
+    "cycle": "Chu kỳ Mùng 10",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "06/11/2026 09:00:20",
+        "day_name": "Thứ 6 (Chi sớm)",
+        "amount": "14,750,200",
+        "prev_bal": "3,480,000",
+        "new_bal": "18,230,200"
+      },
+      {
+        "month": "T09/2026",
+        "date": "09/10/2026 10:20:45",
+        "day_name": "Thứ 6 (Né T7 10/10)",
+        "amount": "15,240,600",
+        "prev_bal": "4,100,000",
+        "new_bal": "19,340,600"
+      },
+      {
+        "month": "T08/2026",
+        "date": "10/09/2026 09:15:30",
+        "day_name": "Thứ 5",
+        "amount": "14,320,000",
+        "prev_bal": "2,750,500",
+        "new_bal": "17,070,500"
+      },
+      {
+        "month": "T07/2026",
+        "date": "10/08/2026 08:50:15",
+        "day_name": "Thứ 2",
+        "amount": "13,950,400",
+        "prev_bal": "3,240,000",
+        "new_bal": "17,190,400"
+      }
+    ],
+    "default_status": "queue"
+  },
+  {
+    "folder": 12,
+    "name": "NGUYỄN THỊ ÁNH",
+    "dob": "17/02/1989",
+    "phone": "0377213754",
+    "sim": "Viettel",
+    "bank_name": "VPBank",
+    "bank_stk": "371437143714",
+    "bank_owner": "NGUYEN THI ANH",
+    "cccd": "087189016017",
+    "ngay_cap": "15/11/2022",
+    "noi_cap": "CUC CANH SAT QUAN LY HANH CHINH VE TRAT TU XA HOI",
+    "ngay_het_han": "17/02/2029",
+    "gmail": "nguyenthianh016017@gmail.com",
+    "thuong_tru": "Số Nhà 385, Tổ 12, Ấp Bào Trâm, Xã Nam Yên, Huyện An Biên, Tỉnh Kiên Giang",
+    "hien_tai": "15A, Đường Lê Văn Vịnh, Bến Lức, Tây Ninh",
+    "cycle": "Chu kỳ Mùng 5",
+    "salaries": [
+      {
+        "month": "T10/2026",
+        "date": "05/11/2026 08:45:30",
+        "day_name": "Thứ 5",
+        "amount": "13,890,400",
+        "prev_bal": "3,120,500",
+        "new_bal": "17,010,900"
+      },
+      {
+        "month": "T09/2026",
+        "date": "05/10/2026 10:15:55",
+        "day_name": "Thứ 2",
+        "amount": "14,350,000",
+        "prev_bal": "3,890,000",
+        "new_bal": "18,240,000"
+      },
+      {
+        "month": "T08/2026",
+        "date": "04/09/2026 09:25:10",
+        "day_name": "Thứ 6 (Né T7 05/09)",
+        "amount": "13,480,500",
+        "prev_bal": "2,540,200",
+        "new_bal": "16,020,700"
+      },
+      {
+        "month": "T07/2026",
+        "date": "05/08/2026 09:05:40",
+        "day_name": "Thứ 4",
+        "amount": "13,150,000",
+        "prev_bal": "2,950,000",
+        "new_bal": "16,100,000"
+      }
+    ],
+    "default_status": "queue"
+  }
+];
+
 let currentMonth = localStorage.getItem('app_selected_month') || '2026-11';
 let unitPrice = parseInt(localStorage.getItem('app_unit_price') || '300000');
-let activeFolder = parseInt(localStorage.getItem('app_active_folder') || '4');
+let activeFolder = parseInt(localStorage.getItem('app_active_folder') || '1');
 let currentFilter = 'all';
-
-
-const ENCRYPTED_PAYLOAD = {
-  salt: "QlqHaYqQNfOKUNAzyiJsnA==",
-  nonce: "DMaOAPywl3EmFCaG",
-  cipher: "CmRPLX7HkRYbue4eN3rFkIUM59i3o/n5x9sq1gxD/sF0k1YUGgnIfpx3eFJMB/U0DcJeTR85tYzkn8TOfa69BxGZMapjYbIXejPavix5hEbt431VDIT5k7yNqaTZBlevaIojEi6Cl+jMnIPneb/I2IQWaUHo+WepNUn2mESadpAAbcmm3q5aaq+AQU+8pd/irOToxZ6RWPY6XBVrhWJIXiQjWOSK8tvLrNB62EP5NK7xB0nlHFqoeD0JP2zU3XP/zfeqm9KdLpetrK2lWUHpxX5rPLpTH5PqwuUnMWHv+Ht+MxrRBmbXCSv5HBaocpfQW9aV+ghEFE/HAuEIDbxnm7Mj19TKxeaT4MTml6LeLzpuR/ScfvfAtIpJsLwV35tTUmsC3lPl6yp6ciawhTV4tw4+AZdaK9g2lG4GNRaY5gRfhY/42Iey88td2aeUaPhWtC45LV3W81BK2rjn/W6zHiGc58L5sr2JpHyxjK85CqFu9gzdxNs1mKP9lVQRg/SxU/jJZvm+deF6xjSXltjweAK+PQdNi/9Mr9GttZDE7JmM0GxzBi4qDfIRQzHjHX1xPWit8qmvidkU/NNmtHl6cUkLmp80KZ0MMqUcAu4Jd11zoiGxOUdsw74L/ZYtNWUgqSr0geQxTN0j/9n6fDG6VWAiLCKeN2FSPPXF+A6Nx/4oVRqpHmrPwHgip1jyk5gbFJ+qDQJd0j5jaUeF0Fln38cGYJiOAUYQ6NxMMbBKKikn1OzfnjInHYTk2ZS2mfUHpyfnhYw8HjZTGGlzKs/h+U613Z15B1wBpaEaoYF1pZwXgXuJOGJmqrzI6eb+OJJETMkDGx0ljIEZ6d8fZQwI+RBnzWWBnsqFlWWoLLMWHc2eEFKRgMvDWbSVC+uLr8WDszRHm/piyEBNQ/1GzO6ROLu3FgNjM6s22CDVeBRfuVKX0U2Ee678AVuKJzRZZvbpUQRsNB5UkoOaPs75GJ3ssrT26a0FA8SYoaP2qxWsmmpiopj6MMKtYRpNtKYmpzs3iORdBYtIkwy6orDj3O9VdIodW/4NRG/SgPwD2GPKgYh8mfj+X3/CfDOwfaBgJCk2Focep6YZwzTROisUrocJzXFkHUhufzmmxsViL/TNHDOllx4tFIkx7QnrQxZNZcrZbfbNyAFVsGwhxuGNI05NWrZ1kVDRey9wL5ZoWgumrAob5NdmZTy3+IxuYMLTLvYxlX178Cvukzg9kp1oEeIO/sUpn61SunJb4ifACIAQ/0NWNBbF4w+YhDoj33+uh1Yx7xsyBeM3e45+5XafxmNqyWxTaz2BtjVby/4031rqdJH8SgxJrEfJC3s8BF2K01ZUD3UCMm7rGT3XPT2S8VcK4gCwPNxBbcw9J+toRKtPsKhk1zTZgppnW22fwL58HKTzJuKPZsH+XaqPBXLgJzucXw1+W1qxdUKA1mpdXXR50il60EmtJiPS9s3eGL2QoHBG4sL1ZDYE/cWcEwgSCCP+Zob3nNqK+wCpCq6AsdpxI6OhWNP6bn+BU0f6ClgQ9xoF+eBbdT2DV1r71qh+pS7Zpfpkdzx/QWuureBWYk52GCTvU6c06LjnIywDxPRWaQJnTlk6INuziYMzdXuZ2oz5+dEl9XIkbB17HDAy7kq17DlcajqqR2I7gELIP2URBUfx1d1mbFxU4i1bpkbomihW5M66QBV7F5938i/5iwh+DLOOyTWlGpu7OJk4fEJYBp8ZIzNyvopHW6o1zogat+MKiu4XU2lL9y1bpavSrV94jhqatWnTtP00hI1Hho0xmY5APpawB5Rnhnv2nMtcVdPg5xyMpaIVUNhk5ZpNMBe1X0D515dJIzFNxXcCqGm+3LGaoeW1o6LLtAyaS3tEb4jFtvqn4OysGtvJX81DkMtZ5S1abmLUSua0aNufa68ePBJ0Fj33mKRmQajnZIu9DtvP+t2X7rEFevFiT8tqOs7riZtHkS6IRuNytZjqZBnfjxeMoM6yjCgCmV8AE2tPSGR0AkdCaMVbBiErUIpis6c3WieX5JgoJaji3IeuRxvf17bj4fKgn4pe9zlI2X9yiF5bETLLaMKXpkuAFBeV+usTxYy01uaWfX0e7SWv5zolj2ytad5fpX/6q0mZo2fWbljbX4YDRqDnPTWtHwR40hzbKQ21v9Lpn81kd5dxDPxjAFKMI2HUinm80/vL+PKykBVNR1R8kE4MlCWKGYCaV5ZWl3t0w32bC+Cem4I2U9X3/wiVTHBI/VHA8KFTUXgAAXZJr+IDVbQwEUb2y36MHivWh6v1yz6p+MsgIMoT/bTYpOTYLbPvgvcVGqR0cSjc8IjVeOO4UcG/1q/hJTMODs6SwvHdqMlxm3kPW51OREsZyeI/NURYeN8+morITUes26jjcNiWsJGpSwPCvFeu9hc97ShOQvHDC4trnnZnunYZ6ibd/syrzf24/K1oUmGkDtnpAbipNEZY7kmOFh4qEH4Xv/9Zf8EyCdf4W4Scu4fJ3Xbjhfr2FY01ZZazuYXeKjELP/cieKMPpqSc+qVkzQvDtK/5vkDlHnDnBSpD/FOz8ho7mi6IV+oKvcCUKB8neVFy1X2ybxBip9wmI0PCFfQVoB0O5qd/TIjNGLuUDGviUt6pFMMT753Yn8nbQ5zJgWZLzNmTsOgCgD5q8AJ8dLY+pGduZEJw7151LqizKXUChTgpD+5z2mXBV3fQAXoqyxvz1QKplQjuKHGLfvAYLdDAqK6fVUimHzaKctOBu/NFhhxuYpcWjbwDg46A8PubNyTzd6FYRebsSwYl6LAD+aclFRKw/llg9prxAZhMqjFysvBQW8gR5w8w9TkO+3Uz1SBY+AXnFKHm9YgX3y6JnaUxtWRnjc6gz6j70X83QMHVK1hvU3WRJ0tsYxYb17/AIabKa3opKv7Higa1TujMfGC36Q1RCHFYoahekXacDCoxoFsE6RYhjqY1mFsuQBPnW7GgcYFUR4XFmOr99KvsZhV0bq7IqIMjJJxsyqvepy1/DBOJEAlEKcu5U+dat0Vab8xAKLrTvVt/IgJTtcDLnPl4+wyAIlVQau4ryJLNCawgWVJw05kFTd5j3YbknOA4yDDhkoQIWzDkJeFD+eqHLQ6nVo/1smWztO/PUxBhR7a6NVAlUfXf7iarMReBAwOxmfkSVRP9RbZW1icDkWAh+r4d0XqSlv0XX/Na4/zsAG+EpkgEmYLwc9BD2ZeewxxkmWHQF+0D9dK0ytoRrXcWIwS1oycrj+f7tjdUmdWY70t79/X3KhH2vIH2yJugH7Re2MMID+RFXhllJHr3vyP2EH/apeFxUym9s5ZV9ZTVvS4zwjkTyNdycTy35UKVpXTjrRW5jQKfFdfIC2rizr/YlXxpgq5/VwmfuNA9qC0bmz6r5312uTAvnCLi0uuUwsfhjoEqA916v/fzUVVEUu4rndM+TO0XXRBHOgD3LF55R9RDsxgwvxt8UWdSHZWlEthP5zSmJuA4NScUqxkN6gtCo7Fsg0BvsiEJN2rkg5nkFc8AIztii+hKzyA8kfHzYbpP/n2O70NQNO//aUds1Z1Z4wm/K+YbTgAnN5P63QACxBjrfbfw2imERe2bTn5QQcVDk5IoDXO6HcLxjUFK1K0gHrWpU00PBYN99A6uJmCcGLHwNbbypePUZVF30sshwOV6C7TQS1Wz/hZNPV9Ue33HyXSV4Nhxv340W0JzC8LQ8mHGPxEvG0reuk5YKxYfnAJ+jdFduSx/fqgumQKYCO56qEL4Ghr/nCbu2LdbC+N6Ob55pGp/8Gu4aFpt0nomfCeAdCVHqfu8zeht4UKljHcVefBaYFl5rCoOAq0Lth8aVewtHq1zJchawnqixaXdTP/fyF7oXmDODwgRdAtLUBwiQ0VGhZGhJ184g0SNBesQhxONg9gIerbtRsBsp0k87G2NPNpPzw4aWqjBI5bu7y7ng1neGIDow8AVC6wJoz7NccQ+6Vv6uk5eAWcX4kLqg8qVxXGyuIWNFmRjtF1fd+cVRzbgEFhpJeFOXL8+x6xoXnE6DabtS0i0RFBgwb6MPE6D0ZH7nDG9gyNVfg7d32kCzuw5s3n7SLZs2sfhRijCVPktnEy+XIEjxU35LDXy0oL4iVmHcG1OMZuqno3KVu6q3C8reYxXrCiVJYHeFQw0Of96YIHD2yILQRA6siKaGgg+QuBlS33LDcxJm6/CzgsjjAoYiJEjoT+0gdGANaYXAowUtQLdxjnYQ8SwIv3I4L2Bn8d6aMFMFeH9SX890yjks+W/82W6lzrWEDF3MYxcXWSOt7BOiMxXMJurLzEFr2RrqK+DrANl0070E0kz0Jpu8wbHQwsWaaLeSre8aiwYI9a97DTzTHJyLwwffdA3k3SUoYsAPRz2ege6DhivB4mMaBhOPEjjKzRIyDNrqMS/SPnsNGvACB2BOHgkH0MJZPR8GwozTeq5fvlIsrmcJkpFsk15KMHtiXJe+kXyjuRkJyvOIPqzPsIukAcI/uaxItFUKga9K8J0Hpf5vNi2nDxjMwxu7U50ve9olsVTgDMf7JSTUkcTcQfcuwvTZ9jarDuOWrPUPiK39bL0u9W2kkD4P5WZMYPhTXUhAKaYNW2Rco10BQTC/kO2nRIh9VZpgV2lqZAKh3owR0EVQE9A5hBwvj8dw/+RRCZuT2+c/QHewYngPFYfxc9mKuygLNfE8wHvE9htOIGbK0c/vKeiCCdrZOVy4NbtArIe/9k5zNQC0fFzyj/P9/quPUb1jO5BtkV99wPhfn5JinrDl7b0a4Zwy2/F7GXvTn3ee8znw+wD93Hr9D6rGrMZ/PD1cZoJoj8l/XEvMwY8Qh0k4ksh+4/6MagiHYSjQvBuDktYMmDPFGzNQ3Poe33xpDMBwx+i0Bp6xpwx+bEfPtDR/m1aTGeDzWxgd/fJ9qVvoHbOcYk7B75sbE+27gjw1Rj4J5Gy0E3U11zLnVF8983gRiP+Zg1qLfOYZdvrTVcG3rdw57bYL9i2g445D1pbgWwklD72TatlnSbh8ucljFTCyJ5raNmqMDgYTJ49FAsi9r0/EklFWCTVB79GWCizHAe5mb8sWK1RyiXr+fjQdKj0G2dR7I1SGPhgfWtsUacuT2Z1NH6kV5FH0w/OFqL0fRIwtcZjCJzwWfJUSn72r9IUXKgiBDom0ExN5YfQpqX/FmA43EJFI1sBR73tyMWQ/sIOIITHo1hIDCayH1YOfyWgMUG+169uikPyHtFfz4vHiEb9LGwa+Hf1t3eGupGqTzSZyWjpfS8rlJwRRrnf8KNFwOs+psPZrhCLOX4KgIV9yF5jnWot//SeBnZdhG7UVOzENI68qikxbhDaE6NXoQeK0wGtX/nmHVLgW6+ftmAjlg3miuJgO8QreHbg0ZqVZza3SQU7wFKuHIoNOQFQqp0FV/qeJ85mGizYgLpTA80v3yuusdVc1sfKLIg4Oh56zSDSJX3+yjMuC7gUWYlYJdtVOpXV3TwT28e0L8hIavynwCaPVhnSppTUM1Ail/aSC0/6584jdvrkjndISjWmkQa7GL5Wx0qLsW+gXlVt5pIydccEPn5fZ5QwNYH19g2Wunt15rnp7zgC73wjnzp+qZjYftWPlrsqq1wO2qNtLsJwXvxYA0cqcJ7lvXmZnhxfzJSGfKhvhYwQQJxOYSSo63zBHFd1cZSQ3bbTZhqKbgZ1fQWlBHuVeM5j1QHsQuDydepQgnlhX1NSt+Ow132x1aVyQ2SXk6vyLT8aUGydDEvGUemRakdXvW4ENToQQN6pKE4kY5LTG0WnG9XUVRyw1ZcZNnR9giFCBbG3lG0az+dU/5VRcE6QN0RRKgjhEq2GivSnom9KeEA7c0TS5Q9fQLQYNaqcUVidZz1/9ipXYWS4ow9DZHfLuspSvAPd6s+Hb988KCYIXrIF87B1E11pVDg3sEFpHz5kDgsn/AVP9+zyZXxRyXBC/y4XNGRft0FWPCj/IgUCKtm10jz22It2XPtvlNEiT3Acb6nHnzNrHgxhj37RbEnNvarSab5+ma41wXzKPvku1iA7E6iNjq4AHvbPx1I7cTmakbJZJKPXFDlt7n9KH806W5H3WVGeb8s09KJheGLetOcTqTvpYf2B0Z/9NjvOlXhlwCwxFc1/AbZjfGSCd6D1CO8S740JH3jz4K7F2b4HlAU9t7GjMx3kUniVQaIF+SA0rOrYNkvoXECTe5/I55DvqXGcwZIlEtVTk4W9OyPifrpr8w1QbACFTOQ8rmU0OHiUOmaFVXyQst70nDAIT/hMPIusxmvw9Tn49Kt/vVRbCQQ4Y9D3TCkSENen7MP0Knypy7U9O4UGznKFhVgVZ9cxC9yF4N4Aq8La870fElUBR28rSvHaEC3is7ZCG9YeEXrpvc0Q55ziCrr28ynxZU5lz+t/BgybMfltQ3d+oGw61uT44t/oyzcIC6orw+WfitzCuwT+ajwynCy5fvTJkPZ5vSM4W3mCkehyoyDFcZf1MrcajCZIfhtYRHjUoeScrmoDuf47y5SdsVf9ULVMUSbySfdsxiwewmc+IhqhoKYZG9UN1EzYlB1yubvTay+t62HL8DLqVmYdB2TGPQiHcvPIn9naEVrOLcawTO95e6d5N8zVHlrYpw0ioUo30rj0kF8Z5W4edA4TUXs9J3VBgJcCoPiwQIKd5RH0rZ5w4uh/hoqBk1bKZ6IK7oG5W/SED0/8Xbw6PiwT+BKY0ZOVHXmhfK7xw2Al7uHCSUCSLjuG2Y+lgNmPeAuHn+8ePl+2ZURJhMCKAPIiX/4/gNzRpCrUxW8Xh6HDy4cnAvwkUl8PAGNDeRbZr3Ty/wT2xRHFneCVHYAJs2lskTWs8OlDG60Mzw0tmFDTUmWkf2UmOako4aeiM5gPZtyXAXGoK2gmkA4jVshkrpxwHGQvfneT80Xdo5hk6AG4LiyM8jK2yHdlgS/khQ3Sq3bOh3rqBaJIIYDRcAsNHKFf/ZQ99FmX0KpWU73/ucG3mh4j8WrGPN99ccWL+qNhXirb+vZrcihHLFK+bO8tP0AanqelcOifqm1KqQYRXBqJMd5EVZvVdc0kxJUUK/Ptihn3bvOcpI/0LdsDmzXNuk5lmIgG3Du37t/ggkv7W5sDrfvjV5cex8Fa1Mfox29dfpNkxwNEXRxgPhTf1/RQIKOD2QXynliHGsJgbQd5YNeUqyUua2FD2RQ1+MIiFawEklAXcJxrcUr3X3QjZ0IYdqJv2PFaZ0vs7K6JvaAZOjWUGVZAhT4TtJp2nKayJ9apnv3obVL+YRsDCi3sbvlA5C5ikYDG3AnHma/VfNzzJr/o4TQ8AkhVSyaKakrHt7v7wt52W9VSjYw8H6pOILKXEEL4lUOM5xofS9z5ccYrd4P5SfjHc8rfoVmRrPZ+LAUVukZf+8U/7JazOZYwbkUot7G7h8pz4Aw5nDKvrQAGCcHQePDNkFfnv9FNkMZLgZuI7qxBdmjbjLhmeDxekk4viFndUzOqLZTUg9QQvRcKJVmHf79TIntbqlajSRxybIJKmttX+1eQ4YVc8Uf8DGC2WWneBesZa2a7HJlOJi+TFjazzKyJJeIt54WHdb8f7FFJAvS5fl5u+EOe6DlcoUF0mm8+H3TM/3eSknBFPVKPl78ZdC3puXXT44NHoKN6W0htRzCMDErmue4GsH0X7KU634o+Pz6R4F/SxETkptxqNTskGpYkXLJKy8RzghoyXjdx0YNYklQlCKNvqamC2AzLtt18fXaCN0S9UtdlXdzV+Bnrpd161TDzoP+f0PzasZXduBIo6SvQnszdHWlGwB8QnkFscVocB5xT7gFD1+REwEMUHWP5KyabvfE+PIBDLZaSmXgqhWvYvs/DjQugZ0m7X9+BH73SUflcPtGZ1odsN8DMa08mp8AvPfjjVjuJGRMVe/cWGtulC2qBaIw763LtOC3Vq3ypyoTY1FrTFII/Hcj0CT8PNxGX1lOh7TVDRQXvRMycG6zeAoJu+IH7kzaNoB19dyimq1h56kkvnZc41/BLPCUZHZ0IS+VdR/T2x4UzrEK/kb59wZjWewxUSMpW0jpjbBIzC/ezhjgRHlIpArvkI2O1DtRTwqr/bxlm3hdXrgwS9ZyYAEpS5K7ZW+JsYTcZowaQBZrSbYGy7LusknndKkcQSlVL66q0cDdx1vCQR8xO4o57Z594D5NyAL9paGKamJhTHUwoy5IoN1SJrikstyNPzpjGLPEOdHZ7soKqVVL7n91wMDotrnjU3yIQkgXtoHgVLDymu/520y2k47WgtSHjK98Cb1ixwWeQuWOu5IzPu8KiSCA2z2jZna/MS8K+60IJHiH91VIV07KEukZwxblLCKJVydpopymg6P713T96zRYqz1Dhj+11Ec2Mj9L89rnekjkW9sJvsB4FoG8x0p0MtRbpLR7PByVxgiCHfQkYeW8u9fV6m4uN5PmVA4rOtgdYH/s4+IdCqOsB/0kZUfrxrbVDoK+s3wibYmK0rjuUguu3+RUZiyoNswObvRaj3WExo7bwMRvMAsrNrF05GbRm/lOr7pcFMTO86/KFQeGgKT7rkQR3A8mXSiKdlIqJq+g8rY8dVJXa3x4S7qiGeKuWigBCXoXM8HUoLCO291WQiQULX/OBuQKO5NAKnZ2+EQypA/sFLoVx/CDjmabCwOmcBszc6MeqxNsDFdwlr9mIczGQgQoDgnrTMrBfCESKf29zAEf2K6OFYm6+lij1t/kstx0C1Dwy+czSjt75TPyPVZnJ9M2pY2xBr9cdtRISZ+2ll0rwGeckCJ/KpsRteJVHEWLDNCFF92NI2BagVe7OrC6AmmIQONMOJxtbfZBblFJ7v/fNxr7UAw2O3yktLOxO2PnLExbyi+O/Hf+F3USCJ98KFA6tXx+jUskuEAjhxHLfZxGzlXzDMqGR3+Ys2xEfh2DSw3UGx6tdiHohVvWsGFW1u0ONNdoKhaVV82wbH6foJ1GmyBMwB3eLQU3eG5RO0t7S7oHKMVys6IZMPPSSDe67qKCdgaMFDvggYbJ2RCnbHi6JMPVtV7+fB3bwwwfFVqDHvQP9MhdZw/VvLUpqoiECTe2dqCCKo8io3qA9+QkAFpPT9BZ+rFkfxZKTsWZtFLPusIv5PSw0Y1F7gQWIL547ISaCPS1doOoWLMPO/ssqYPwKq42WkMQ+Pu3DrXTlTfIr7JyOFtNmAKttQiI3LeZHknqxlJ8iGq/FOFaXiLLpbHY1nnTilHs4hFePz29fp9aLcoG8sB7otPgWxJpJzm3V+/EIUM37FnKpQa9Nl/D/GdXuz+87Atj0LNTnFxMUz1n0R747WwXuWyUMRBdXgVO0ujoJ2JBNFkiIUEOi24jhMFRa32R2CGb3IDRXJP6hGCo66HkfQeKnUHMPOYcmCKPxJHokB0y8fPZy4ps2JE4DDAMa9ld/wDR5aMgoDcjqlMHzFdtcTbdGwlHjRrBJushkCyKkOVyORRY8pg+ajpoePboAjyalGp/OZmva2S3MK5yVJOJaOqCSjQKXEDfOIw6RFqLN+9ILUqJFfL1D1AUbmt+dFepUF3cHaNrgHGax1gYtZxEQU2vBcBqops77cVbCVOR2WahalurPnPpsi4P92byn2n7Bekg7fbBRpQVhLOgmon4V6148l67beWLXYE5V5Kynkpo+9dW0H17xCHGYqW1dTBus9YVOguBkLmxGU3bgPEfKP/jhlRiX7CthRrSCIJ96EaunxNYh6VM6Um6SVHiKh4bWzf3k6rltLRBaZusLLgDyrKqYEXnIZXxnd0YEDLfa0X5s3Ae5Xr7awqPPlYaOkUkHGwKtWW2aaZuimPZUON/QyijVVDZZ+sTwwr4iE3CL0kgplfvQl6VQ2iNK1ndJuBQDNVVgej+W0KhWl7eYAoW7ocUdKr+hVbuHccOP9qboFl4NsL8oVm37bWJne2k6x4ZLyPj/66GNFa/nWVK0ue4+S3ocOu9zrDI1D/KOb4Kuc4cjyUdzKpn/pxrxsoTf0VxlhHJXUi3mL0xTFupXoVA54NHp8K+z89aSVvBMS4w45flb64loisIISGMBZCsFsdtfyJmJV2taPflnuI4nT0lBzmWaTTHJiEToZ66LHFFq10nuHTQk7YewQ4mnZLwk6lp6GDCtRN/wsMAn7rXyFx95RK/Lni/KCNQaC7kZvR+7ccaYe8vb3g78hGUolhgF+SEaq89mvSWnWC4d3VH+sQEFsLQSkm9oWzne59z2INM+m64MEF8IG11XYUEUJF4a2EZoETiQejNiXQ4de2+4uQyu1MgSGOPSWyoOCNccOLR/GB54jj1cnxdJmX/qcsDwH2FkxmKjISv/8zlKN+qr0kAiO/RrBr4waecYqxZtmoLVj9EMQ8dX2GnVJ+YrBBUpcG0Xrt+3VtDgzZKPdh2BQVqdmSkpFDb/YlaXTv593dHaYF+LxGlHrZXWe1bJLecKEoFbCl7Pk68eRJHNOnG76bl3wM7N/9GQDITMRp/qlMqovZR0JgxltSFhARoRFHQ4wUkeQAn2Uo1Nhc0fh6fsrW9HKQf+LE/muC4vLyL7wBI19ed7Cfo1qcWjdLCMesaXKM0LTufozyQFrYprM+0yjT/ZVOuDrhs3FpvYF0usuf7OTy+I3Wgx02SU27ISeISVcB9sTNOJtGr66meOHVrq957rOyJoG+PMYovADDJhLreGrj624kIrr/FgAQhOAY4jaQeUGVlA/F8FweIYqoygudOF2JGlvs+U7VMGrgvcjWzv3NBkaJqX+yOXeMEV3jeEGbtvEwoPC2stWS7xo2BluhWOTfU0hn72+LvGpKUhYh0mVaaYiyKgO9K82sPlun4EkIa4OqXtN9aBTmBqmZeynhm2ikBvwz0F29aIlZXT/FoOT3cK9jU2zd+3IyUSaOqWXXBzqtVaj76xgz4uqTa1zfd1rtIRRyE6h5MH/pW+FHr78LS74wpDYGyGnMRYKufQUVulkTGfeMeA0OCaWMXukDU3S5+SNeOHO4J0uXR2BY1jMFSpoMxi5THSHNVZwm5Rn1Ud34I6U5dV/sdNTDqjrGol8NYY4SPdYmgFDAL4mmhHO1nYwgYFmr07fnty9rZOONprD67lwOF7MajiyVM8a4LHZ7MRIidSLrpFygg4Z9xbu0Xcl4HQkn7pZBXlX7sWaWEbsjZelu4Ixg7UfhAbbmxlDbxJuSCO5CQlHodBLYokTv15jwMw4u+BvuD2qldG/ToRIzvRjDSUfQYBSvfROEaRQBUInjglcQ9WcoJpPyQH8ceSrDKckoHaucyL5Uq7M4p3oVd7NnivEImgDJXoj48HS1XZ976pX5Hq8VnIm4USvECYVOF1zb84VViElVhQwzJj6JzrzLT4ZU3gKWUkTmrrS6DGFT4sg/FE1HGuLEDRu7WCEqaW96w735GjzwC6nt6JBwDW4Al5TQvFl9nIbD+ZOE8XRWZmr0ZpHNnyum8BFQ2yNyK9BbBTqauIscsijAzg7EUTvTvfsjgg7krLuAFujitnVi0oQhcQE7TlnCjYOacs18HxcgxZbMpvFTOCF+Hl31HF9eZ/cZPOzUTTPhUamNxAzFmARN6WVCXRxInknpJWBcAYqAwszSpEtlJcx3iNBCQRR07fSsfJD48KXUEPPHKC0YLTEyK9bic4aYu0dGwdhkoHUNUD49pQjClUXdtCiPC2/mL9HgQ6v7khTRR9omnG8O9eK3xOt8MKGc5cHj9gwTU+JzGOUVDUm672SuXzvFq8mlwXFknmUdbLy+I71oB19JkCBneqYpL0AT9jr7sm+rUYvgFW77Q6hbHMv4Rhat7f4k1kkd5jwD9ptI7EblmHJ9aQyTt3MC8fYMe4rIEqGyVA7NmTkTb9tPIImjlSjSIhYvoZQvlBOpyoOw6ZenHLLN7LYHNLSpgoQSHwAvFB62q0XBkYAk4qVpgHmNAX8eCSfLJw/DUYWAaF8lZ2H8FSmGbiKtBPE+KsPkgVcstNtWwucqkmvvy1xDIwSe9jTwMBBFtvdSt0yezKiEdlg3QDNTCb71t2oRkgZvwrr/pmAJpeQXvt1n84nq2XD7OJRbkQsjYz2ab10c/O21v8ikz3KVwZQL4GsB9Bdm9E6fH+8lcnjDVShcONzfVRBmZkFZFWQQXwNxOzlvt8FWyS7z55wjRgkKCnUGcN6nN4Atplflpco/239Ogw9cQUlAzPloGeYZNAvz9A6JOY5QVSrGEbjjcECTng00Iy+QQ2193lDPtbNKQca/GFghHGLDpPDXxshpwdp0FTfRKVTTPc4/A3qLkSzXFDZSjRs9rXQwY2QKri7l1CfNAsGskK3Rk4B677pvFOrLvCNZ1mI9PHdO6UwYwN7XIEZT8wRuRUH/DsyeHCC8PQi0mKDP6/V29oRvneid+wpkmdW2w0y5VhnSjBUnnEq46QKBNA9Swmzrj0cyJIkMQXO9W3JZtYgjdEc4ZGi3hV3j+NhIa6cPpF4+L0TLQLgsEa7tP+JkkHsfFxFJPbf0rOvJyJLA2r6ujLAAlt72QIOvLp9n2cmDlMtflPoO8Q+vKskJqhhcNnHR4pCMRER77+I7ZGUBTNbiD8GfYUd5t1O/VIr8vhD6i7BR/frU8FSG8UT6j67/jmF4CW5X5A/zc5nCxn9B2/5DD5SBQtAeLYwMgb3O4R0KbnZqhxUu4o/7ZqxRW+fl7ItJje7mRJp+BAgMgEzjn9hDnhKSXhGhQCH/euyrars0lbKfZuwJP20m26nMu2weUQ06j+QuAHCNcLYF5ZTuSZGZZ5s3ApvYVRs6LS8+z+ohqgTBEA/Wpfbd5oYPl8OkLDLmnO1xOkgUgVXROEq8URrBmRuEMvlinkXgdT+Hcw31CI0eMQfFI6zVU7UNWT7rsPEU/r3YhNFnnFjWOQapmZoGAleNS5BuqLE5iJtN12+rb6yFVx9upDrVTkAPuv5CZH19mpfq7/bYvjj8OH1M6eMwoAtxfkcFmtEPGgPnVettXnA4WT2By0NpDSmX5WccBxD9rRG9YqIf1MuBYWzpFEl2/1+vMdW3iMCJyUlIJAJn7kF8305ATlu5urHHgneuLl8TqziAOJtNHTtZ+7WtikcXOnsaMS4e/kV6nwk4MHt8NLYLC18egh7+8LMmX8FxFd6l+qYedarBWTVKKTiCnZxNvkkNMitDhEUAJBkCGLH5o4k1COrkddfSIIS5aQ+O6TYVDihAfsYtxaJWSC5d3SBlvmmyX+4gKniOqahA1QLQW4HFhdSceliPgGLlZVh68JG6vCiHUCQLvIvMAtNDNYvmw22WBuHXv7c8FXpjFQUuvKo8CSx1iYmcAGEhmw0k49i0WbKO+B17ht80UIsZwfBOWoNf7W3wqFvRRA0HXn8RM1h5lJ7bNUks5TRgiI2KBlbh0FZ9JYlI6YUJvEDGpDM4czv8cbxUPz/QNEyEzG0sUndJy00QnvMvGvAPpGW2t63dbgmrYZH29ZGfttXnkr8QitYE+Ux3Jrhu6juWV+b5OY7y1fSgRm7hl+8X2R1hszKfgj8j3Ksx6e+c1LJFYCIWqTh0TGyTGYkcp/V+GwnUw3q+G8+mWCxoZ/jmXHheThsg7JuhvdGhsVdp09u6KD/+HwzXi0tY9Gpaqhhe5U1YSnAyZZQKtJU0HBB2Y1LojaCSbIJYobOO6Nc7pC6jEO6gJkBbJjn4ZiAEcVMjZ8/MhuPBG8VGBOvDyPshg4Kac1gUJvjZ3oZkxclFPttEAHiWavCyfsWfeUm4tRVULK/FTZu6p4Mgdkn1IIBodntfBJ9al5yysEOCQ3vpF/ZS5Lq0YQ7V0UdgnUHeutVcoxfD9cyPl5uzAJaBSjckwn0dKljBhLbSNiDqPxVikghfHQT9juXVmftUz4uYyrA4bE8X0QmZdl5S0V6sxvx14d7GRAdW2KfpCqi9dkClXy0mZM1Zh7sLTGlTWSXwclPclkFhT6eKzekIiFcDeqQ8Cys7ZfAGoA1BuYsz6QavLnj5ytP4ogHZu/iycUtl/ODoEes7cXcREuxA2ZpiZXfpbdsssOrY7486xZ98AGQvEZHm786z33OrhHHYMMLtJQMIej4v2/cAbofMmG+RuL9TbUzz7TFwZSeQJVtoQKDdgWgC+VJCd65Zl8tnDMTf6icvOwqA1lgLKDD0euXpHVsAd3YM6LxK/MRk+b9HUYdRNWc5TRdppz3T57C8lHwH3YLHCNL51utE65lvi71ixiHQRQE00/2bQf0cKFFvTJ7lJWTyNgbu/Z9nOTgzBfxTP1trGRMtxOsxEpCLMEt40Y1kMNRWJMnWCouUf354FxDD1+dDr1nKVaD9WFZFEROJL43B0H4ZjgnO+KHcSs84J5uUG0jAquiEK48ncL+/wsQO6gKisVJ6GV+fONcf+RLyapZkJhcYnAu08AAUfLNJDXrjp0X2JcAPQqlI16tU4w+P+2a0wMc1f2gRVSuNC7nVhE5o9PaKwsQdr1EYmcZGhDniK5MdXSMbYQ1pakfOnnvrfYzxle/i4Hw1TZ9Kc31vJ0g9lVh3SwXFhNS6IgD707KVNGAE2we9zEQ5HhSqbnJOCYSOwsuTE53CAo8qGiKgwoPnTlJC62yQGfOUJZ2cL7jhG9KEU+idSv6EvEGHPy/8MbMDaBHSaVldZswYZUh8xVMSHpIt77GIifKX5cjvnSPacH+e03uEKmupDTHEPxlRF3xcVrv9sve83ciUkVenxpEwuVKVBiXYoW9DHK5YaiaD7Kijs90BwneMURWDyUjgYiQ/Ksl//EjFkJq9rlY1U34yfioyP07Kmqrdkxqjqip14JjkM3AWiN+4VudJhYJf7dr/y5psA3e/k4jh5UcpGERmFgOblLCJ3O1Qv3IsYba73lbojpeV5iP3IHBl00xRM2sBGspyH+DhRCPeOJU1ixj3RHFrNua7Tx+9aeZ4UJHTs4hdVixBaRSrI0Dh9kcfBhoh0/eiiOnBApbH2mmF+8v4f30M1qt19eAmLvg16dww0P747mnGnJe8ZzQ6dPJcQFQT9qVTDFtzlbdlotQr58IWTb2hVbL+rv+WQvjDZB6is40PAxGfxop4M/UGObR35d+xDGdevNeLduEMUeBH5aI8ORenDdegCdFsTX2Cem5Z94KpKQvB43eU2eXoU+ZnTNutilJE0WekUSYtOwAtqWB8rj1w0zQqiWWLMxkW+ul0meqNiffhJZ+G2TXwoMKtOHZVXbLw8JdfaVlM+W/IFO+5zscMP1I2m6gis5WFxYoyUINY6UG9LQoxYWcArLovvGZ3QL6oScTJg0m5eAPHjYpmEGagYaE5oPgQ4auLDdBukAfWsDC5qVPxLfFkBXlpKIlJf70p3Ks8IYwf/YrBIUPWyWexMEYLPmjAnuV4v/BNIPZW+mnj7AhNBMqUlnozGK+lDLkEgKMWK50u24V6j+U/AgXscmLogM+VvPOudL5KWmEIxgbspnQz+WTtDfDl4E3siEnipkWwzNKAaiY40dQgJXAm+pARzsi/WaFEOvJIhoJxDApFTsCW+X+GKhnwUT2kMLqaUkF/swf1Hlt2Q9jZAdb5N28VpE2Bu9CjRUfOVY69B6O/kA03cSPhchfgOOz9X/jZCLQT+aZJvCzNhTglqdR3OltuEqcP+aTtOFA0klNw8lZKm27ZPetnZOWu0UMiK8JC3wpM2FiUhGNYM/z3wQjql0phQy3o2wcDNhoaUCDaNeiW3tI4PkkSNtB8/8ZYjjKhjIE4oML4mpjeNv2pJa0lEgVYHs5vIYoV0GxBhtO6IpHIVArOPufL6srJjIeEg19djTPEhpCgwdQTkBZwNWHCCdxUP3+HcNWVXmXY9fHn/sSjrLuC6OKN5k7S8TJGgm9lENnDL4WSScXr3jw71Mzf+PvuNZBCi1wvXWeYevAQfRV3cEbiAg5KcUxkzjx5SJyHjFxj8LuBnSmZ30Rok4n5yhzKh/epmh76rRKttPY5emyV5We8X8w/Hr5mOTdpVqxwFA++FwZxPqM1ZoWWDiG1kgdK/rmaIZ3qV1mDLSwT1kb70IB2NE1e5rI4Tp0DZuHm8CIoaG+Cn/fp6iuel0JD1xATY3xKFkNweR21fk/ktrWi9jfj1WUKHYfvin912z2mRRSPlz/EvNUkPJ6v906PWi9pOhamt0S2L6aS7TXI+zcFcvSrXZuIOBh/9nuaCgHcLMpN1ede2x9xj2/znGJcduUUjhFElExmmMTehcmUo6KT35aOnLTkJsvoHBXuEsXqerCJw/lgJHvsltFYpUjHYXWl0NQ7nt3t2jQwsjSDxZlubLU6eVyX0xinGXOkmFd1RsB3VRLv51jeBpU7r8PqR2Pn9BFxWZ1KbIZCtxvUuIyObtyvcsZhou9HvbCGt+cjCXWE5X/kq4bAj+YbfdD3kDur9QxZ/75JHSZ3bFY0+Z/kO7aWaygIb7RLqH4aW/H9rMIYB5FnaIkcdBgRzhbsRxLzWiCd1npibs2aeLCHtkBqydfINqMtSWffAnJc/Bl/JQ454y9jENI3FQnWxkKpiV1WoEYmelMOEK9r+tkod5nic/3hRKzfCO3N6PtC5p8uqqhN3UfgiPdD+2/kP0qghVJq5uHp9YJDqlJax8Dn7lxyzYsiWFjcq/YVW31MJoP7tQHNojX+UK1Bx+ZVbjhT/O0T2KrSnQONE4WV9egQyWqTF7aokhDO1vgA+I4g8wonPJzudahKkAieY2WxhVPnBddvaAH3Gu0HxshV+58R+dBIN0He2gwIELYOqk+YcKOf5HEmCQMAMUH82Y+XzNfiElX9Xtb17qXobJey8aZAwuI4T7kJ0l+Ip7SZZglNpvc/YOYlOP/NLaaxRwoauV7PrUdoP3h4zAyjmH/H0NU0Wipw34OvqZW5J0Z1mSO6lU4KY59Q6SYy/f+SL9+KRAl8/ohET1lWtvn5IG7Mq2hGxFAyObB4mORvj+baezO2SnEnpOejabUguELZgQOoS2Y/JkJzUnxE97n2nm77r7bLJlP/e2azQ5v8/TqI+gKu8wc1Gw5vHKlBhfCzhspAuzuTJfcoRRwVu++XoQ67XDC+nqBz+KtopZ8kJsP/X89qJ5V0s1da8c24YV/zacN2H6agyGdCFT1c77O8ICzW0abyxFW8OtxAK9MUat812qwrmn9DAHnNJv7ME7cwKgo5vycgZBVlJsB3w/VM/BRa7A/rN49XbYDF87CTXe9C3x4h9a5Wi6rHarGDpMuR5WfCfPm7yby2h0A6ypli3c++S/ZgJSx8Swd6vqOdnFdYeK+F6Mtwp/U6eJHkFrGpw3wSxvhRk8v5gOEcQ6xJGabXhkBEcicokC2dGGWoWqr7pAqnnzxPdwjE/L+h4R70DuKlDOpVKg41hdSDXD2oFNLG4RwsOrYSlzUKHPHDhIfWXD2u5zEtBUSA1Q4Sq7W0qi88DzRmUU+Dezjejt/0UwqogSQKOnwgXBJe85jvcLyM+rtmqRU6oc5N2AnVecn54QpPoPhIU+lkfDsvA8SPB5F6XN+1fwwuxPxWDV/t+7qWAFjt4sL+z9eDojGJgFI5iBw/hDIPAi4pcB4Qw5wWx9n8xHYy5wYLrPBbv19N8lboUuMRDfiVmIm9b/f3AvY/LWW0sQVlnjbqd6DTtBZZqH032uDg0Ri4t38sBHKqeT26DIBDcKJg+gTQmX63Ns8Q7F/d+s3fLfJKwYTtAEwnza/RjVNgGXQWLFXFidfJZz5nwteCXUYkrKAwxJL4C7LeYMO54LA5dWv6mwGE42Tx+XYJvY/ku6hMlKsk90j9l/3QccwsM8ytrhYCNbo36j3mxErJd/0549nIqek7NVouE2W9PhgRsdJlSVqxRxjfKFoD18jF8Ms7NmlA4ZVfLFSeu7nmKWPxfWI31fyVf+wN+QmurHfBbsPF/2fq19FKV0s6qjB95dYIHTwSgzp7WEF1NDejvthBIWiAqIJInAzZXVF+9K9GqRlF0NnPmFxIxc2NG48PYr+SHdxIa1ECNcDAzAjcbj3Oam/By5sJaD4BqtM3WtY3PvIj8NtbQ0/w9Tgoham5wnJIA8OLVMeLfZAT9wZECtNCTrcqFujXK4JqmwyPtf0CboFsPA18oUbS6KNlxzzwdapO2br3N3Ai7nxeJnpRCxh7yCd+NMLE4nkPvfgGwVp1Ztecv0pPrYFr0r3ey25CWh8g2mnfmsiPymOww80NuUym/20hbf8h6LEnvwCZNsWugGj1uySxYClbsVz6roWHeiqHDlm+dGX31nRDFzqhkEe5i7lMPmoXxj6J37qH5QnXIRkhOCiP4Gi9dSIdMZtfDea61Q/JjoWWFrZ0LvAKIPI2t38uuQweMQzyVWVI39LaeZRbWBBmsJA67Ef44yld6TOvw+/fbOAxB6MTxn2C4MLAHEum/aPuN6ztC54LJswcYKlLWosD7WzxRsrM4mk3yehN0fc2LkIFs1nsKqggFmarGg2wR8fN2irSCofPa6Xc+MJyRmPNere+Ju8nv7hTq+2nx8vguz/gGOPVGL7wAK57s8vtt7qmomqPzZ+bEDlrTzeofiBOlMKBn2laZw61P02YACgYdImIF2/LiMKVVQ6uXOuMLtmu6ZZHRulDxfLqOlxPuTZKGYz90av40OgJwpv1fA0RoNuobcFklW5VeJwRpuCjRlS5OjZPZ2a9mN6rplJga0BZ9tVAJDSvUSMzH4JL4c4iUIt6/iV9VYwUngEJZ9/CraZKGuO1xjPzYgjxdRxW57R38UYZxacf4O4Fsih4uUcfYqZE4rSvuJ2CWoMM++UNj9E6Cihm0pqNsHvtgubBgfU+3LaST6qNs89g4SsuG1R9ObTptVQ1fiYDPkzEZB8fKUUk97DkMy6V7NKOJ5Y6NgAyyeLA1H/Wbm1SgPDm2nYMpJPMJ+Xl1HYrUjGi5MSkSCIMR3f73IjEGUcPgz0SSwfzTtEuJdKQawj3Le0OreBz3EX9trLt69BBh1bbW3a3ZDq/Fz6AybNbkJwssY7CvrzCkIlPiD4g/WEXyDqR+gEnk68v8iSMAg2zbdpklMtkR+8cThNL52BNS7aJaXaeO+0gpcn+6wPzHZb51WeajV5n39/BpZD1/GK0///UOhB22Iu1Mp6sFDhBSRws3ZwCR1mOXD49Fiigpi218jAYW+4YPNCrDsmsAH9qqRFkrMzkmoQaMux40elkx6HXOR2/3qmS26h+5cwYpZzOLzc73L6Xz4kizehc7JJM7IGfLX6/+8Qoz8ylvPm0ft9IgU87V7vggUIQ4TTXWtqtBS5PgbQGMbng2dxfbZM4ZwZwn0kqG/7BOqVXl7dyKpMJENRGWXfOq+V4YogtCGhE8M891YVbHP+12I37k06VnJKknoHz9JzXT2PVC+cCVl4YMfP6c/bEIcIXK/lKN1SroxiW7sxZPPYglwcedA4aXLm4VhyEHK47rQDNKM/Jq0lgtigjvGjUMvDHBjXX5B1ZP3kBN/7Plnq07AC0mZXhIbElDmeqqB9TWwTxBmQZFwkAgWhqX87/QIG52k68J5vLZ5z/ByZfGUkKgpDRRFrJhT+TWY+dJj6MPktHIBJOjUATa8FIIsNwKlGwFca4SbFYnA8AJcgvKqQZY+Ir1JwzVyqdcdu53iXOe2JtxrZmVI+IhKpAWRDUiYvmGy9+021nYsfYCdnU7I+3Eu7sGLClHP7m3KGsrn7Yb1cGWYgETQ+c5uQ1kj549PRyElIc+1WdO+VT10xzaF4T+1+xrZ+FF5hTAmmik0SNAlVdHVIr4wBjse8eXMoaSdh5DPTWXvH7Zf9iWe3O54FQZHxcIe/Oyhb0qNzH+2360V3nOwpabIOzgiluH5b/j1PkbEsmnl4LqO7D+eIgd13BA8lM2lwFBhN/5aTemMo8oCwdZIjOsnszu0Fr6koWiHznGiwdTAVyMURzmvSWvQg8gLbvOlHIyg5urdrEKJLL+xj1t0SRasBPp4t9VgaNuIA5KuwbicUgTFamX7lS1FyVe9FekE0rpzC3e3PrvR88HphVVUUb5MNUFvEEww+ki4/AYFw3QyNznUjNFxeSpu1DdEaE1nvhWqBQZUsihZCjhC7VulPt2bxD2CxMCb+OXIU/wJSCqVqfJSJW8JRxnCmdynZXewWSmKaVfloxLdgE11xgDr"
-};
-
-let profilesData = [];
 let currentPinInput = "";
 
-async function decryptDataWithPin(pin) {
-  const enc = new TextEncoder();
-  const keyMaterial = await crypto.subtle.importKey(
-    "raw",
-    enc.encode(pin),
-    { name: "PBKDF2" },
-    false,
-    ["deriveKey"]
-  );
-  const salt = Uint8Array.from(atob(ENCRYPTED_PAYLOAD.salt), c => c.charCodeAt(0));
-  const key = await crypto.subtle.deriveKey(
-    {
-      name: "PBKDF2",
-      salt: salt,
-      iterations: 100000,
-      hash: "SHA-256"
-    },
-    keyMaterial,
-    { name: "AES-GCM", length: 256 },
-    false,
-    ["decrypt"]
-  );
-  const iv = Uint8Array.from(atob(ENCRYPTED_PAYLOAD.nonce), c => c.charCodeAt(0));
-  const ciphertext = Uint8Array.from(atob(ENCRYPTED_PAYLOAD.cipher), c => c.charCodeAt(0));
-  const decrypted = await crypto.subtle.decrypt(
-    { name: "AES-GCM", iv: iv },
-    key,
-    ciphertext
-  );
-  return JSON.parse(new TextDecoder().decode(decrypted));
-}
-
-async function unlockWithPin(pin) {
-  try {
-    document.getElementById('pinErrorMsg').innerText = "Đang xác thực...";
-    if (!profilesData || profilesData.length === 0) {
-      profilesData = await decryptDataWithPin(pin);
-    }
-    
-    if (document.getElementById('rememberPin') && document.getElementById('rememberPin').checked) {
-      localStorage.setItem('app_saved_pin', pin);
-    } else {
-      sessionStorage.setItem('app_session_pin', pin);
-    }
-
-    currentPinInput = "";
-    updatePinDots();
-    document.getElementById('pinErrorMsg').innerText = "";
-
-    const overlay = document.getElementById('pinLockOverlay');
-    overlay.style.opacity = '0';
-    setTimeout(() => { overlay.style.display = 'none'; }, 250);
-
-    selectMonth(currentMonth);
-    setActiveProfile(activeFolder);
-    showToast("🔓 Đã mở khóa thành công!");
-    return true;
-  } catch (err) {
-    console.error("Decrypt error:", err);
-    currentPinInput = "";
-    updatePinDots();
-    document.getElementById('pinErrorMsg').innerText = "❌ Mã PIN không chính xác!";
-    const dots = document.querySelectorAll('.pin-dot');
-    dots.forEach(d => d.classList.add('error'));
-    setTimeout(() => {
-      dots.forEach(d => d.classList.remove('error'));
-      document.getElementById('pinErrorMsg').innerText = "";
-    }, 900);
-    return false;
-  }
-}
-
-function lockAppNow() {
-  currentPinInput = "";
-  updatePinDots();
-  const errMsg = document.getElementById('pinErrorMsg');
-  if (errMsg) errMsg.innerText = "";
-  
-  localStorage.removeItem('app_saved_pin');
-  sessionStorage.removeItem('app_session_pin');
-
-  const overlay = document.getElementById('pinLockOverlay');
-  if (overlay) {
-    overlay.style.display = 'flex';
-    overlay.style.opacity = '1';
-  }
-  showToast('🔒 Đã khóa ứng dụng an toàn!');
-}
-
-function updatePinDots() {
-  const dots = document.querySelectorAll('.pin-dot');
-  dots.forEach((d, idx) => {
-    d.classList.toggle('filled', idx < currentPinInput.length);
-  });
-}
-
-function pressPin(num) {
-  if (currentPinInput.length < 6) {
-    currentPinInput += num;
-    updatePinDots();
-    if (currentPinInput.length === 6) {
-      unlockWithPin(currentPinInput);
-    }
-  }
-}
-
-function backspacePin() {
-  if (currentPinInput.length > 0) {
-    currentPinInput = currentPinInput.slice(0, -1);
-    updatePinDots();
-  }
-}
-
-function clearPin() {
-  currentPinInput = "";
-  updatePinDots();
-}
-
-// Handle physical keyboard for PIN
-window.addEventListener('keydown', (e) => {
-  const overlay = document.getElementById('pinLockOverlay');
-  if (overlay && overlay.style.display !== 'none') {
-    if (e.key >= '0' && e.key <= '9') {
-      pressPin(e.key);
-    } else if (e.key === 'Backspace') {
-      backspacePin();
-    } else if (e.key === 'Escape') {
-      clearPin();
-    }
-  }
-});
-
-
-
-function copy(text, btn) {
-  navigator.clipboard.writeText(text);
-  if (btn) {
-    const orig = btn.innerText;
-    btn.innerText = '✓ Đã chép';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.innerText = orig;
-      btn.classList.remove('copied');
-    }, 1200);
-  }
-  showToast('Đã copy: ' + text);
+// Helper Functions
+function formatVND(val) {
+  return (val || 0).toLocaleString('vi-VN') + ' VNĐ';
 }
 
 function showToast(msg) {
-  let t = document.getElementById('toast');
-  if (!t) {
-    t = document.createElement('div');
-    t.id = 'toast';
-    t.className = 'toast';
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.innerText = msg;
+  toast.style.display = 'block';
+  toast.style.opacity = '1';
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => { toast.style.display = 'none'; }, 200);
+  }, 2000);
+}
+
+function copy(text, btn) {
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) {
+      const orig = btn.innerText;
+      btn.innerText = 'ĐÃ COPY ✔';
+      setTimeout(() => { btn.innerText = orig; }, 1200);
+    }
+    showToast('Đã copy: ' + text.slice(0, 35) + (text.length > 35 ? '...' : ''));
+  }).catch(() => {
+    const t = document.createElement('textarea');
+    t.value = text;
     document.body.appendChild(t);
-  }
-  t.innerText = msg;
-  t.style.display = 'block';
-  setTimeout(() => { t.style.display = 'none'; }, 2000);
-}
-
-function selectMonth(m) {
-  currentMonth = m;
-  localStorage.setItem('app_selected_month', m);
-  document.querySelectorAll('.btn-month').forEach(b => {
-    b.classList.toggle('active', b.dataset.month === m);
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+    if (btn) {
+      const orig = btn.innerText;
+      btn.innerText = 'ĐÃ COPY ✔';
+      setTimeout(() => { btn.innerText = orig; }, 1200);
+    }
+    showToast('Đã copy!');
   });
-  renderProfileList();
-  renderActiveProfile();
-  updateWallet();
 }
 
+// Status Persistence
 function getAllStatuses() {
   try {
     return JSON.parse(localStorage.getItem('app_all_statuses') || '{}');
@@ -1036,18 +1319,54 @@ function getProfileStatus(folder) {
   const all = getAllStatuses();
   if (all[folder]) return all[folder];
   if (all[String(folder)]) return all[String(folder)];
-  const p = (profilesData && profilesData.length) ? profilesData.find(item => item.folder === folder) : null;
+  const p = profilesData.find(item => item.folder === folder);
   return p ? p.default_status : 'queue';
 }
 
+function setStatus(folder, status) {
+  const all = getAllStatuses();
+  all[folder] = status;
+  all[String(folder)] = status;
+  try {
+    localStorage.setItem('app_all_statuses', JSON.stringify(all));
+    localStorage.setItem('status_' + folder, status);
+    localStorage.setItem('profile_status_' + folder, status);
+  } catch(e) {
+    console.error(e);
+  }
 
+  const target = profilesData.find(item => item.folder === folder);
+  if (target) target.default_status = status;
+
+  renderProfileList();
+  renderActiveProfile();
+  updateWallet();
+
+  if (status === 'done') {
+    showToast('🎉 +300.000 đ vào ví (Đã xong F' + folder + ')');
+  } else if (status === 'doing') {
+    showToast('🔵 Đã chuyển F' + folder + ' sang Đang làm');
+  } else {
+    showToast('🟡 Đã chuyển F' + folder + ' sang Chờ');
+  }
+}
+
+function cycleStatus(folder) {
+  const current = getProfileStatus(folder);
+  if (current === 'queue') setStatus(folder, 'doing');
+  else if (current === 'doing') setStatus(folder, 'done');
+  else setStatus(folder, 'queue');
+}
+
+// Unaccent helper
 function removeVietnameseTones(str) {
   if (!str) return '';
-  str = str.normalize('NFD').replace(/[̀-ͯ]/g, '');
+  str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   str = str.replace(/[đĐ]/g, m => m === 'đ' ? 'd' : 'D');
   return str;
 }
 
+// SIM 1414 Text Generator
 function getSimSmsText(p) {
   if (!p) return '';
   const cleanCccd = p.cccd.replace(/\s+/g, '');
@@ -1073,46 +1392,37 @@ function getSimSmsText(p) {
   return `Ho ten: ${unaccentName}, ngay sinh: ${p.dob}, The can cuoc: ${cleanCccd}, noi cap: ${noiCap}, ngay cap: ${p.ngay_cap}. Loai thue bao: tra truoc, ngay kich hoat: ${actDate}. The can cuoc cua Quy khach dang ky su dung thue bao: ${p.phone}. Lien he ${hotline} de biet them thong tin chi tiet. Tran trong!`;
 }
 
-function cycleStatus(folder) {
-  const current = getProfileStatus(folder);
-  if (current === 'queue') setStatus(folder, 'doing');
-  else if (current === 'doing') setStatus(folder, 'done');
-  else setStatus(folder, 'queue');
+// Company Memo Patterns
+const COMPANY_PATTERNS = [
+  (m, name) => `CONG TY THANH TOAN LUONG ${m.month} ${name}`,
+  (m, name) => `CONG TY TNHH DV TM CHI TRA LUONG ${m.month} ${name}`,
+  (m, name) => `CTY CP DAU TU & TM LUONG THANG ${m.month} ${name}`,
+  (m, name) => `THANH TOAN TIEN LUONG THANG ${m.month} - ${name}`,
+  (m, name) => `THANH TOAN LUONG ${m.month}`
+];
+
+function getMemo(p, s) {
+  if (p.folder === 4) return `CONG TY THANH TOAN LUONG ${s.month.split('/')[0]}`;
+  if (p.folder === 5) return `CONG TY THANH TOAN LUONG ${s.month.split('/')[0]} ${removeVietnameseTones(p.name).toUpperCase()}`;
+  if (p.folder === 6) return `THANH TOAN TIEN LUONG THANG ${s.month.split('/')[0].replace('T', '')}/2026 - BVH`;
+  const pat = COMPANY_PATTERNS[(p.folder - 1) % COMPANY_PATTERNS.length];
+  return pat(s, removeVietnameseTones(p.name).toUpperCase());
 }
 
-function setStatus(folder, status) {
-  const all = getAllStatuses();
-  all[folder] = status;
-  all[String(folder)] = status;
-  try {
-    localStorage.setItem('app_all_statuses', JSON.stringify(all));
-    localStorage.setItem('status_' + folder, status);
-    localStorage.setItem('profile_status_' + folder, status);
-    if (currentMonth) {
-      localStorage.setItem('status_' + currentMonth + '_' + folder, status);
-    }
-  } catch(e) {
-    console.error('Save error:', e);
-  }
-
-  if (profilesData && profilesData.length) {
-    const target = profilesData.find(item => item.folder === folder);
-    if (target) target.default_status = status;
-  }
-
-  renderProfileList();
-  renderActiveProfile();
-  updateWallet();
-
-  if (status === 'done') {
-    showToast('🎉 +300.000 đ vào ví (Đã xong F' + folder + ')');
-  } else if (status === 'doing') {
-    showToast('🔵 Đã chuyển F' + folder + ' sang Đang làm');
-  } else {
-    showToast('🟡 Đã chuyển F' + folder + ' sang Chờ');
-  }
+// Wallet Update
+function updateWallet() {
+  let doneCount = 0;
+  profilesData.forEach(p => {
+    if (getProfileStatus(p.folder) === 'done') doneCount++;
+  });
+  const balance = doneCount * unitPrice;
+  const el = document.getElementById('walletBalance');
+  if (el) el.innerText = formatVND(balance);
+  const doneEl = document.getElementById('walletDoneCount');
+  if (doneEl) doneEl.innerText = doneCount;
 }
 
+// Profile Navigation & Render
 function setActiveProfile(folder) {
   activeFolder = folder;
   localStorage.setItem('app_active_folder', folder);
@@ -1128,10 +1438,10 @@ function nextProfile(dir) {
   setActiveProfile(profilesData[nextIdx].folder);
 }
 
-function filterByStatus(tag) {
-  currentFilter = tag;
-  document.querySelectorAll('.chip-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.filter === tag);
+function filterByStatus(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === filter);
   });
   renderProfileList();
 }
@@ -1140,19 +1450,10 @@ function filterSidebarSearch() {
   renderProfileList();
 }
 
-function updateWallet() {
-  let done = 0;
-  profilesData.forEach(p => {
-    if (getProfileStatus(p.folder) === 'done') done++;
-  });
-  const total = done * unitPrice;
-  document.getElementById('walletBalance').innerHTML = total.toLocaleString('vi-VN') + ' <span>VNĐ</span>';
-  document.getElementById('walletCount').innerText = done + '/12 bộ';
-}
-
 function renderProfileList() {
   const container = document.getElementById('profileList');
-  const q = document.getElementById('sidebarSearch').value.toLowerCase().trim();
+  if (!container) return;
+  const q = (document.getElementById('sidebarSearch')?.value || '').toLowerCase().trim();
   
   let html = '';
   profilesData.forEach(p => {
@@ -1184,7 +1485,7 @@ function renderProfileList() {
             </div>
           </div>
           <div style="display:flex; align-items:flex-start; margin-left:6px;">
-            <span class="sidebar-tag-badge sidebar-tag-${st}" style="cursor:pointer;" onclick="event.stopPropagation(); cycleStatus(${p.folder})" title="Nhấn để đổi trạng thái">${tagTxt}</span>
+            <span class="sidebar-tag-badge sidebar-tag-${st}" style="cursor:pointer;" onclick="event.stopPropagation(); cycleStatus(${p.folder})" title="Chạm để đổi">${tagTxt}</span>
           </div>
         </div>
       `;
@@ -1194,7 +1495,6 @@ function renderProfileList() {
 }
 
 function renderActiveProfile() {
-  if (!profilesData || profilesData.length === 0) return;
   const p = profilesData.find(item => item.folder === activeFolder) || profilesData[0];
   if (!p) return;
   const st = getProfileStatus(p.folder);
@@ -1203,12 +1503,14 @@ function renderActiveProfile() {
   document.getElementById('wsProfileName').innerText = p.name;
   document.getElementById('wsCycleTag').innerText = p.cycle;
 
-  // Active Tag pills
   document.getElementById('pillDone').className = 'ws-tag-pill ws-pill-done' + (st === 'done' ? ' active' : '');
   document.getElementById('pillDoing').className = 'ws-tag-pill ws-pill-doing' + (st === 'doing' ? ' active' : '');
   document.getElementById('pillQueue').className = 'ws-tag-pill ws-pill-queue' + (st === 'queue' ? ' active' : '');
 
-  // Column 1: Identity & SIM
+  const cleanCccd = p.cccd.replace(/\s+/g, '');
+  const simSmsText = getSimSmsText(p);
+
+  // Column 1: Identity, SIM, CCCD
   let idHtml = `
     <!-- SỐ ĐIỆN THOẠI & SIM -->
     <div class="field-row">
@@ -1219,24 +1521,20 @@ function renderActiveProfile() {
           <span class="sim-badge">Sim ${p.sim}</span>
         </div>
       </div>
+      <button class="btn-copy" onclick="copy('${p.phone}', this)">Copy SĐT</button>
+    </div>
 
     <!-- KHUNG TEXT SIM 1414 ĐẦY ĐỦ ĐỂ COPY VÀO CANVA -->
     <div class="sim-sms-box">
       <div class="sim-sms-header">
         <div class="sim-sms-title">📱 TEXT TIN NHẮN 1414 (SIM ${p.sim.toUpperCase()})</div>
         <div style="display:flex; gap:6px;">
-          <button class="btn-copy" onclick="copy('TTTB ' + '${p.cccd.replace(/\s+/g, '')}', this)" style="background:#0284c7; padding:4px 8px; font-size:11px;">Copy Cú pháp TTTB</button>
+          <button class="btn-copy" onclick="copy('TTTB ${cleanCccd}', this)" style="background:#0284c7; padding:4px 8px; font-size:11px;">Copy Cú pháp TTTB</button>
           <button class="btn-copy" onclick="copy(getSimSmsText(profilesData.find(item => item.folder === ${p.folder})), this)" style="background:#16a34a; padding:4px 10px; font-size:11px; font-weight:800;">📋 Copy Toàn Bộ Text 1414</button>
         </div>
       </div>
       <div class="sim-sms-content">
-        ${getSimSmsText(p)}
-      </div>
-    </div>
-
-      <div>
-        <button class="btn-copy" onclick="copy('${p.phone}', this)">Copy SĐT</button>
-        <button class="btn-copy" onclick="copy('Tttb ${p.cccd.replace(/ /g, '')}', this)">Copy Cú pháp 1414</button>
+        ${simSmsText}
       </div>
     </div>
 
@@ -1255,8 +1553,9 @@ function renderActiveProfile() {
         <div class="field-label">🪪 SỐ CĂN CƯỚC CÔNG DÂN (CCCD)</div>
         <div class="field-val-big val-cccd">${p.cccd}</div>
       </div>
-      <button class="btn-copy" onclick="copy('${p.cccd}', this)">Copy CCCD</button>
+      <button class="btn-copy" onclick="copy('${cleanCccd}', this)">Copy CCCD</button>
     </div>
+
     <!-- NGÀY CẤP -->
     <div class="field-row">
       <div class="field-info">
@@ -1269,161 +1568,63 @@ function renderActiveProfile() {
     <!-- NƠI CẤP -->
     <div class="field-row">
       <div class="field-info">
-        <div class="field-label">🏛️ NƠI CẤP (CƠ QUAN CẤP CCCD)</div>
-        <div style="font-size:13px; font-weight:800; color:#f8fafc; line-height:1.4;">${p.noi_cap}</div>
+        <div class="field-label">🏛️ NƠI CẤP CCCD</div>
+        <div style="font-weight:700; color:#e2e8f0; font-size:13px;">${p.noi_cap}</div>
       </div>
       <button class="btn-copy" onclick="copy('${p.noi_cap}', this)">Copy Nơi Cấp</button>
     </div>
 
     <!-- NƠI Ở HIỆN TẠI -->
-    <div class="address-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-        <span class="field-label">📍 NƠI Ở HIỆN TẠI (CHUẨN VNeID)</span>
-        <button class="btn-copy" onclick="copy('${p.hien_tai}', this)">Copy</button>
+    <div class="field-row">
+      <div class="field-info">
+        <div class="field-label">🏠 NƠI Ở HIỆN TẠI</div>
+        <div style="font-weight:600; color:#cbd5e1; font-size:12.5px; line-height:1.4;">${p.hien_tai}</div>
       </div>
-      <div class="address-val">${p.hien_tai}</div>
+      <button class="btn-copy" onclick="copy('${p.hien_tai}', this)">Copy Nơi Ở</button>
     </div>
   `;
   document.getElementById('colIdentity').innerHTML = idHtml;
 
-  // Column 2: Bank & 4 Months Salaries
-  let bankHeaderHtml = `
-    <div style="background: linear-gradient(135deg, #0a162b 0%, #0e203f 100%); padding: 14px 18px; border-radius: 10px; border: 1.5px solid #2563eb; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 14px rgba(0,0,0,0.3);">
-      
-      <!-- HÀNG 1: NGÂN HÀNG (TO RÕ NỔI BẬT) -->
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #1e3a5f; padding-bottom: 8px;">
-        <div>
-          <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">🏦 NGÂN HÀNG</div>
-          <div style="font-size: 21px; font-weight: 900; color: #38bdf8; letter-spacing: 0.5px; text-transform: uppercase;">${p.bank_name}</div>
-        </div>
-        <button class="btn-copy" style="background:#1e3a5f; border-color:#38bdf8; color:#fff;" onclick="copy('${p.bank_name}', this)">Copy Ngân Hàng</button>
-      </div>
-
-      <!-- HÀNG 2: SỐ TÀI KHOẢN (STK) -->
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #1e3a5f; padding-bottom: 8px;">
-        <div>
-          <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">💳 SỐ TÀI KHOẢN (STK)</div>
-          <div class="field-val-big val-bank" style="font-size: 25px; color: #4ade80;">${p.bank_stk}</div>
-        </div>
-        <button class="btn-copy" style="background:#2563eb; color:#fff; font-size:12px; padding:6px 12px;" onclick="copy('${p.bank_stk}', this)">Copy STK</button>
-      </div>
-
-      <!-- HÀNG 3: CHỦ TÀI KHOẢN (TO NỔI BẬT BẰNG VỚI STK) -->
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <div style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">👤 CHỦ TÀI KHOẢN</div>
-          <div style="font-size: 22px; font-weight: 900; color: #f8fafc; font-family: monospace; letter-spacing: 0.5px;">${p.bank_owner}</div>
-        </div>
-        <button class="btn-copy" style="font-size:12px; padding:6px 12px;" onclick="copy('${p.bank_owner}', this)">Copy Chủ TK</button>
-      </div>
-
-    </div>
-  `;
-
-  
-// Company Memo Styles (12 distinct patterns for 12 different companies)
-const companyTemplates = [
-  (m, name) => `CONG TY TTLUONG T${m.mm}-${m.yyyy} ${name}`,                          // F1 / Standard
-  (m, name) => `CTY CP THUONG MAI AN PHAT TT LUONG T${m.mm}/${m.yyyy} ${name}`,       // F2
-  (m, name) => `CONG TY TTLUONG T${m.mm}-${m.yy} ${name}`,                            // F3 (Quý chuẩn theo ảnh)
-  (m, name) => `CONG TY TTLUONG T${m.mm}-${m.yyyy} ${name}`,                          // F4 (Pha chuẩn theo yêu cầu)
-  (m, name) => `CTY TNHH PHAT TRIEN CONG NGHE CK LUONG T${m.mm}.${m.yy} - ${name}`,   // F5
-  (m, name) => `THANH TOAN TIEN LUONG THANG ${m.mNum}/${m.yyyy} - ${name}`,          // F6
-  (m, name) => `CHI LUONG THANG ${m.mm}.${m.yyyy} CHO NV ${name}`,                    // F7
-  (m, name) => `CTY CP DAU TU & TM HOANG ANH TT LUONG T${m.mm}/${m.yyyy} ${name}`,   // F8
-  (m, name) => `CTY TNHH SAN XUAT TM CHI LUONG T${m.mm}-${m.yy} ${name}`,            // F9
-  (m, name) => `CONG TY CO PHAN XAY DUNG TT LUONG THANG ${m.mNum}/${m.yyyy} ${name}`,// F10
-  (m, name) => `THANH TOAN LUONG VA PHU CAP T${m.mm}/${m.yyyy} ${name}`,              // F11
-  (m, name) => `CTY TNHH TM DV MINH PHAT CHI TRA LUONG T${m.mm}-${m.yyyy} ${name}`    // F12
-];
-
-function getMonthParts(monthStr) {
-  const mClean = monthStr.replace('T', '').trim(); // e.g. "09/2026"
-  const parts = mClean.split('/');
-  const mm = parts[0];
-  const yyyy = parts[1];
-  const yy = yyyy.substring(2);
-  const mNum = parseInt(mm, 10);
-  return { mm, yyyy, yy, mNum };
-}
-
-function getPersonPatternIndex(folderIdx) {
-  const saved = localStorage.getItem('company_pattern_idx_' + folderIdx);
-  if (saved !== null) return parseInt(saved, 10);
-  // Default: map 1:1 to folder index
-  return (folderIdx - 1) % companyTemplates.length;
-}
-
-function getRealisticMemo(folderIdx, monthStr, ownerName) {
-  const pIdx = getPersonPatternIndex(folderIdx);
-  const m = getMonthParts(monthStr);
-  const templateFn = companyTemplates[pIdx] || companyTemplates[0];
-  return templateFn(m, ownerName);
-}
-
-function changePersonCompanyStyle(folderIdx) {
-  let curr = getPersonPatternIndex(folderIdx);
-  let nextIdx = (curr + 1) % companyTemplates.length;
-  localStorage.setItem('company_pattern_idx_' + folderIdx, nextIdx);
-  renderActiveProfile();
-  showToast('🎲 Đã đổi phong cách công ty cho hồ sơ F' + folderIdx + ' (Đồng bộ cả 4 tháng)!');
-}
-
+  // Column 2: Bank & 4-Month Salary Table
   let salRows = '';
-  p.salaries.forEach((s, sIdx) => {
-    const memo = getRealisticMemo(p.folder, s.month, p.bank_owner);
+  p.salaries.forEach((s) => {
+    const memo = getMemo(p, s);
     salRows += `
       <tr>
-        <td style="min-width: 90px;">
-          <b style="color:var(--accent); font-size:16px; font-weight:900;">${s.month}</b><br>
-          <span style="font-size:12px; color:#94a3b8; font-weight:600;">${s.day_name}</span>
+        <td style="font-weight:800; color:#f8fafc;">
+          ${s.month}<br>
+          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">${s.date}</span><br>
+          <span style="font-size:10.5px; color:#ca8a04; font-weight:700;">${s.day_name}</span>
         </td>
-        <td style="min-width: 280px;">
-          <div style="font-size:14.5px; font-weight:800; color:#f8fafc; margin-bottom:5px; display:flex; align-items:center; gap:6px;">
-            <span>📅 ${s.date}</span>
+        <td>
+          <div class="salary-amount">+${s.amount} đ</div>
+          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Số dư: <span class="salary-balance">${s.new_bal} đ</span></div>
+          <div class="salary-memo-box">
+            <span>${memo}</span>
+            <button class="btn-memo-copy" onclick="copy('${memo}', this)">Copy Memo</button>
           </div>
-          <div style="background:#0a1526; padding:8px 10px; border-radius:6px; border:1px solid #1e3a5f; margin-bottom:6px;">
-            <div style="font-size:10px; color:#94a3b8; font-weight:700; text-transform:uppercase; margin-bottom:2px;">NỘI DUNG CHUYỂN KHOẢN (MEMO):</div>
-            <div id="memoText_${p.folder}_${sIdx}" style="color:#fde047; font-weight:800; font-size:13.5px; font-family:monospace; line-height:1.4; word-break:break-word;">${memo}</div>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button class="btn-copy" style="background:#2563eb; color:#fff; font-size:11.5px; padding:4px 10px;" onclick="copy('${memo}', this)">📋 Copy Memo</button>
-            <button class="btn-copy" style="background:#1e293b; color:#cbd5e1; font-size:11px; padding:4px 8px;" title="Đổi mẫu công ty cho người này (tự động đồng bộ cả 4 tháng)" onclick="changePersonCompanyStyle(${p.folder})">🎲 Đổi Kiểu Cty</button>
-          </div>
-        </td>
-        <td style="min-width: 140px;">
-          <div style="font-size:11px; color:#94a3b8; font-weight:700; text-transform:uppercase;">TIỀN LƯƠNG VÀO</div>
-          <div class="sal-amt-strong" style="font-size:21px; font-weight:900; color:#4ade80; font-family:monospace;">+${s.amount} đ</div>
-          <button class="btn-copy" style="font-size:11px; padding:3px 8px; margin-top:4px;" onclick="copy('${s.amount}', this)">Copy Lương</button>
-        </td>
-        <td style="min-width: 140px;">
-          <div style="font-size:11px; color:#94a3b8; font-weight:700; text-transform:uppercase;">SỐ DƯ SAU GD</div>
-          <div class="sal-bal-strong" style="font-size:19px; font-weight:900; color:#38bdf8; font-family:monospace;">${s.new_bal} đ</div>
-          <div style="font-size:11.5px; color:#94a3b8; margin-top:2px;">Dư trước: <b>${s.prev_bal} đ</b></div>
-          <button class="btn-copy" style="font-size:11px; padding:3px 8px; margin-top:4px;" onclick="copy('${s.new_bal}', this)">Copy Dư</button>
-        </td>
-        <td style="text-align:right; min-width: 90px;">
-          <button class="btn-copy" style="background:#0284c7; color:#fff; padding:6px 10px; font-size:11.5px; font-weight:800;" onclick="copy('${s.date.split(' ')[0]} | +${s.amount} đ | Dư: ${s.new_bal} đ | ${memo}', this)">Copy Dòng</button>
         </td>
       </tr>
     `;
   });
 
-
-  let salHtml = bankHeaderHtml + `
-    <div style="margin-top:12px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span class="ws-box-title" style="color:var(--yellow);">💰 BẢNG KÊ LƯƠNG 4 THÁNG & SỐ DƯ (NÉ T7/CN)</span>
-        <button class="btn-copy" style="background:#2563eb; color:#fff;" onclick="copyFullSalaryStatement(${p.folder})">📋 Copy 4 Tháng</button>
+  let salHtml = `
+    <div class="field-row" style="background:#090e17; border-color:#2563eb;">
+      <div class="field-info">
+        <div class="field-label">🏦 NGÂN HÀNG & SỐ TÀI KHOẢN (STK)</div>
+        <div style="font-size:16px; font-weight:900; color:#38bdf8;">${p.bank_name}</div>
+        <div style="font-family:monospace; font-size:18px; font-weight:900; color:#4ade80;">${p.bank_stk}</div>
+        <div style="font-size:12px; color:#cbd5e1;">Chủ TK: <b>${p.bank_owner}</b></div>
       </div>
+      <button class="btn-copy" onclick="copy('${p.bank_stk.split(' ')[0]}', this)" style="background:#2563eb; color:#fff; font-size:12px; padding:6px 12px;">Copy STK</button>
+    </div>
+
+    <div class="salary-table-box" style="margin-top:6px;">
       <table class="salary-table">
         <thead>
           <tr>
-            <th>Tháng</th>
-            <th>Ngày Giờ & Nội Dung</th>
-            <th>Tiền Lương (+)</th>
-            <th>Số Dư Sau</th>
-            <th style="text-align:right;">Lệnh</th>
+            <th style="width:38%;">THỜI GIAN NHẬN</th>
+            <th style="width:62%;">BIẾN ĐỘNG & NỘI DUNG</th>
           </tr>
         </thead>
         <tbody>
@@ -1435,50 +1636,96 @@ function changePersonCompanyStyle(folderIdx) {
   document.getElementById('colSalary').innerHTML = salHtml;
 }
 
-function copyFullSalaryStatement(folder) {
-  const p = profilesData.find(item => item.folder === folder);
-  if (!p) return;
-  let text = '=== BẢNG KÊ LƯƠNG 4 THÁNG: ' + p.name + ' ===\n';
-  text += 'Ngân hàng: ' + p.bank_name + ' - STK: ' + p.bank_stk + '\n';
-  text += 'Chủ TK: ' + p.bank_owner + ' | ' + p.cycle + '\n';
-  text += '-----------------------------------------------------\n';
-  p.salaries.forEach(s => {
-    text += s.month + ' | ' + s.date + ' (' + s.day_name + ')\n';
-    text += '  + Tiền vào: +' + s.amount + ' đ\n';
-    text += '  + Dư trước: ' + s.prev_bal + ' đ -> Dư sau: ' + s.new_bal + ' đ\n';
-    text += '  + Memo: ' + getRealisticMemo(p.folder, s.month, p.bank_owner) + '\n\n';
+// PIN Lock Management
+function updatePinDots() {
+  const dots = document.querySelectorAll('.pin-dot');
+  dots.forEach((d, idx) => {
+    d.classList.toggle('filled', idx < currentPinInput.length);
+    d.classList.remove('error');
   });
-  navigator.clipboard.writeText(text);
-  showToast('Đã copy toàn bộ bảng lương của ' + p.name);
 }
 
-// Keyboard shortcuts: Left/Right Arrow to switch profiles
-window.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT') return;
-  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-    nextProfile(-1);
-  } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-    nextProfile(1);
-  } else if (e.key === '1') {
-    setStatus(activeFolder, 'done');
-  } else if (e.key === '2') {
-    setStatus(activeFolder, 'doing');
-  } else if (e.key === '3') {
-    setStatus(activeFolder, 'queue');
+function pressPin(digit) {
+  if (currentPinInput.length < 6) {
+    currentPinInput += digit;
+    updatePinDots();
+    if (currentPinInput.length === 6) {
+      setTimeout(verifyPin, 100);
+    }
+  }
+}
+
+function backspacePin() {
+  if (currentPinInput.length > 0) {
+    currentPinInput = currentPinInput.slice(0, -1);
+    updatePinDots();
+  }
+}
+
+function clearPin() {
+  currentPinInput = "";
+  updatePinDots();
+}
+
+function verifyPin() {
+  if (currentPinInput === MASTER_PIN) {
+    document.getElementById('pinErrorMsg').innerText = "";
+    localStorage.setItem('app_unlocked', 'true');
+    const overlay = document.getElementById('pinLockOverlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => { overlay.style.display = 'none'; }, 250);
+    currentPinInput = "";
+    updatePinDots();
+    renderProfileList();
+    renderActiveProfile();
+    updateWallet();
+    showToast("🔓 Đã mở khóa thành công!");
+  } else {
+    document.getElementById('pinErrorMsg').innerText = "❌ Mã PIN không đúng!";
+    const dots = document.querySelectorAll('.pin-dot');
+    dots.forEach(d => d.classList.add('error'));
+    setTimeout(() => {
+      currentPinInput = "";
+      updatePinDots();
+      document.getElementById('pinErrorMsg').innerText = "";
+    }, 800);
+  }
+}
+
+function lockAppNow() {
+  localStorage.removeItem('app_unlocked');
+  currentPinInput = "";
+  updatePinDots();
+  const overlay = document.getElementById('pinLockOverlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => { overlay.style.opacity = '1'; }, 10);
+  showToast("🔒 Đã khóa ứng dụng an toàn!");
+}
+
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+  // Initial render so content is ready
+  renderProfileList();
+  renderActiveProfile();
+  updateWallet();
+
+  const isUnlocked = localStorage.getItem('app_unlocked') === 'true';
+  const overlay = document.getElementById('pinLockOverlay');
+  if (!isUnlocked) {
+    overlay.style.display = 'flex';
+    overlay.style.opacity = '1';
+  } else {
+    overlay.style.display = 'none';
   }
 });
 
-window.addEventListener('DOMContentLoaded', async () => {
-  const savedPin = localStorage.getItem('app_saved_pin') || sessionStorage.getItem('app_session_pin');
-  if (savedPin) {
-    const ok = await unlockWithPin(savedPin);
-    if (!ok) {
-      document.getElementById('pinLockOverlay').style.display = 'flex';
-      document.getElementById('pinLockOverlay').style.opacity = '1';
-    }
-  } else {
-    document.getElementById('pinLockOverlay').style.display = 'flex';
-    document.getElementById('pinLockOverlay').style.opacity = '1';
+// Keyboard PIN input
+window.addEventListener('keydown', (e) => {
+  const overlay = document.getElementById('pinLockOverlay');
+  if (overlay && overlay.style.display !== 'none') {
+    if (e.key >= '0' && e.key <= '9') pressPin(e.key);
+    else if (e.key === 'Backspace') backspacePin();
+    else if (e.key === 'Escape') clearPin();
   }
 });
 </script>
@@ -1490,7 +1737,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   <div class="pin-card">
     <div class="pin-shield-icon">🛡️</div>
     <div class="pin-title">BẢO MẬT HỒ SƠ 12 BỘ</div>
-    <div class="pin-subtitle">Nhập mã PIN 6 số để mở khóa dữ liệu</div>
+    <div class="pin-subtitle">Nhập mã PIN 6 số để mở khóa</div>
     <div class="pin-error-msg" id="pinErrorMsg"></div>
     
     <div class="pin-dots-row" id="pinDots">
@@ -1502,129 +1749,102 @@ window.addEventListener('DOMContentLoaded', async () => {
       <div class="pin-dot"></div>
     </div>
 
-    <div class="pin-numpad">
-      <button class="pin-btn" onclick="pressPin('1')">1</button>
-      <button class="pin-btn" onclick="pressPin('2')">2</button>
-      <button class="pin-btn" onclick="pressPin('3')">3</button>
-      <button class="pin-btn" onclick="pressPin('4')">4</button>
-      <button class="pin-btn" onclick="pressPin('5')">5</button>
-      <button class="pin-btn" onclick="pressPin('6')">6</button>
-      <button class="pin-btn" onclick="pressPin('7')">7</button>
-      <button class="pin-btn" onclick="pressPin('8')">8</button>
-      <button class="pin-btn" onclick="pressPin('9')">9</button>
-      <button class="pin-btn action-btn" onclick="clearPin()">XÓA</button>
-      <button class="pin-btn" onclick="pressPin('0')">0</button>
-      <button class="pin-btn action-btn" onclick="backspacePin()">⌫</button>
+    <div class="pin-keypad">
+      <button class="pin-key" onclick="pressPin('1')">1</button>
+      <button class="pin-key" onclick="pressPin('2')">2</button>
+      <button class="pin-key" onclick="pressPin('3')">3</button>
+      <button class="pin-key" onclick="pressPin('4')">4</button>
+      <button class="pin-key" onclick="pressPin('5')">5</button>
+      <button class="pin-key" onclick="pressPin('6')">6</button>
+      <button class="pin-key" onclick="pressPin('7')">7</button>
+      <button class="pin-key" onclick="pressPin('8')">8</button>
+      <button class="pin-key" onclick="pressPin('9')">9</button>
+      <button class="pin-key pin-key-back" onclick="clearPin()">Xóa</button>
+      <button class="pin-key" onclick="pressPin('0')">0</button>
+      <button class="pin-key pin-key-back" onclick="backspacePin()">⌫</button>
     </div>
-
-    <label class="pin-remember">
-      <input type="checkbox" id="rememberPin" checked> Ghi nhớ mở khóa trên máy này
-    </label>
   </div>
 </div>
 
-
-  <!-- TOP HEADER DASHBOARD -->
-  <div class="top-header">
-    <div class="header-left">
-      <div class="app-title">⚡ BẢNG TRA CỨU HỒ SƠ 12 BỘ</div>
-      
-      <!-- Month Buttons -->
-      <div class="month-group">
-        <span style="font-size:11px; color:#64748b; font-weight:800; padding:0 4px;">THÁNG:</span>
-        <button class="btn-month" data-month="2026-08" onclick="selectMonth('2026-08')">T08</button>
-        <button class="btn-month" data-month="2026-09" onclick="selectMonth('2026-09')">T09</button>
-        <button class="btn-month" data-month="2026-10" onclick="selectMonth('2026-10')">T10</button>
-        <button class="btn-month active" data-month="2026-11" onclick="selectMonth('2026-11')">⭐ T11 (Hiện tại)</button>
-        <button class="btn-month" data-month="2026-12" onclick="selectMonth('2026-12')">T12</button>
-      </div>
-    </div>
-
-    
-    <button class="btn-copy" style="background:#7f1d1d; border-color:#ef4444; color:#fff; font-size:11.5px; padding:5px 10px; margin-left:6px;" onclick="lockAppNow()">🔒 Khóa Ngay</button>
-
-    <!-- VIRTUAL WALLET -->
-    <div class="wallet-pill">
-      <div class="wallet-info">
-        <div class="wallet-label">💎 VÍ ẢO (300K/HỒ SƠ)</div>
-        <div class="wallet-val" id="walletBalance">0 <span>VNĐ</span></div>
-      </div>
-      <div class="wallet-count-badge" id="walletCount">0/12 bộ</div>
-      <button class="btn-copy" style="background:#047857; border-color:#10b981; color:#fff;" onclick="copy(document.getElementById('walletBalance').innerText, this)">Copy Ví</button>
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="brand-area">
+    <div class="app-icon">12</div>
+    <div class="app-title-box">
+      <div class="app-title">WORKSPACE QUẢN LÝ 12 BỘ HỒ SƠ</div>
+      <div class="app-sub">Bảo mật mã PIN: 010423 • Tự động tính ví tiền & sao kê</div>
     </div>
   </div>
 
-  <!-- APP BODY (SIDEBAR + WORKSPACE) -->
-  <div class="app-body">
-    
-    <!-- LEFT SIDEBAR -->
-    <div class="sidebar">
-      <div class="sidebar-filter-bar">
-        <div class="sidebar-search">
-          <input type="text" id="sidebarSearch" placeholder="🔍 Tìm tên, ngân hàng, SĐT..." onkeyup="filterSidebarSearch()">
-        </div>
-        <div class="status-chips-filter">
-          <button class="chip-btn chip-all active" data-filter="all" onclick="filterByStatus('all')">Tất cả</button>
-          <button class="chip-btn chip-doing" data-filter="doing" onclick="filterByStatus('doing')">🔵 Đang làm</button>
-          <button class="chip-btn chip-queue" data-filter="queue" onclick="filterByStatus('queue')">🟡 Chờ</button>
-          <button class="chip-btn chip-done" data-filter="done" onclick="filterByStatus('done')">🔴 Xong</button>
-        </div>
-      </div>
-
-      <!-- Scrollable Profile Tabs -->
-      <div class="profile-list" id="profileList">
-        <!-- Rendered by JS -->
-      </div>
+  <div class="header-metrics">
+    <div class="metric-card">
+      <div class="metric-label">ĐÃ LÀM</div>
+      <div class="metric-val" id="walletDoneCount" style="color:#ef4444;">5</div>
+      <div style="font-size:11px; color:#94a3b8;">/ 12 hồ sơ</div>
     </div>
 
-    <!-- RIGHT WORKSPACE -->
-    <div class="workspace">
-      
-      <!-- Workspace Action Header -->
-      <div class="workspace-header">
-        <div class="ws-header-left">
-          <span class="ws-profile-badge" id="wsProfileBadge">F4</span>
-          <span class="ws-profile-name" id="wsProfileName">PHAN THỊ LY PHA</span>
-          <span class="ws-cycle-tag" id="wsCycleTag">Chu kỳ Mùng 10</span>
-          <button class="btn-copy" style="margin-left:6px;" onclick="copy(document.getElementById('wsProfileName').innerText, this)">Copy Tên</button>
-        </div>
-
-        <div class="ws-header-right">
-          <!-- 3 STATUS TAGS -->
-          <div class="tag-switch-group">
-            <span class="ws-tag-pill ws-pill-done" id="pillDone" onclick="setStatus(activeFolder, 'done')">🔴 Làm rồi (+300k)</span>
-            <span class="ws-tag-pill ws-pill-doing" id="pillDoing" onclick="setStatus(activeFolder, 'doing')">🔵 Đang làm</span>
-            <span class="ws-tag-pill ws-pill-queue" id="pillQueue" onclick="setStatus(activeFolder, 'queue')">🟡 Chưa làm (Chờ)</span>
-          </div>
-
-          <!-- Quick Navigation -->
-          <div style="display:flex; gap:6px;">
-            <button class="ws-nav-btn" onclick="nextProfile(-1)">◀ Trước</button>
-            <button class="ws-nav-btn" onclick="nextProfile(1)">Tiếp ▶</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- WORKSPACE 2-COLUMN VIEW (COMPLETELY FITS ON SCREEN WITHOUT SCROLLING!) -->
-      <div class="workspace-content">
-        <div class="ws-grid-2cols">
-          
-          <!-- COLUMN 1: IDENTITY, CCCD, SIM & ADDRESS -->
-          <div class="ws-box" id="colIdentity">
-            <!-- Rendered by JS -->
-          </div>
-
-          <!-- COLUMN 2: BANK & 4-MONTH SALARY TABLE -->
-          <div class="ws-box" id="colSalary">
-            <!-- Rendered by JS -->
-          </div>
-
-        </div>
-      </div>
-
+    <div class="metric-card" style="border-color:#16a34a; background:rgba(34, 197, 94, 0.08);">
+      <div class="metric-label">VÍ TIỀN</div>
+      <div class="metric-val wallet-money" id="walletBalance">1.500.000 VNĐ</div>
     </div>
 
+    <button class="btn-lock" onclick="lockAppNow()">🔒 Khóa App</button>
   </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="app-main">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-filter-box">
+      <input type="text" class="search-input" id="sidebarSearch" placeholder="🔍 Tìm tên, SĐT, STK, Bank..." oninput="filterSidebarSearch()">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all" onclick="filterByStatus('all')">Tất cả (12)</button>
+        <button class="filter-tab" data-filter="done" onclick="filterByStatus('done')">🔴 Đã xong</button>
+        <button class="filter-tab" data-filter="doing" onclick="filterByStatus('doing')">🔵 Đang làm</button>
+        <button class="filter-tab" data-filter="queue" onclick="filterByStatus('queue')">🟡 Chờ</button>
+      </div>
+    </div>
+
+    <div class="profile-list" id="profileList"></div>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div class="workspace">
+    <div class="ws-header">
+      <div class="ws-title-group">
+        <span class="ws-folder-badge" id="wsProfileBadge">F1</span>
+        <span class="ws-profile-name" id="wsProfileName">LÊ TRUNG KIÊN</span>
+        <span class="ws-cycle-tag" id="wsCycleTag">Chu kỳ Mùng 5</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="ws-status-pills">
+          <button class="ws-tag-pill ws-pill-done active" id="pillDone" onclick="setStatus(activeFolder, 'done')">🔴 Làm rồi</button>
+          <button class="ws-tag-pill ws-pill-doing" id="pillDoing" onclick="setStatus(activeFolder, 'doing')">🔵 Đang làm</button>
+          <button class="ws-tag-pill ws-pill-queue" id="pillQueue" onclick="setStatus(activeFolder, 'queue')">🟡 Chờ</button>
+        </div>
+
+        <div style="display:flex; gap:4px; margin-left:6px;">
+          <button class="btn-copy" onclick="nextProfile(-1)">◀ Trước</button>
+          <button class="btn-copy" onclick="nextProfile(1)">Sau ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="workspace-content">
+      <div class="ws-grid-2cols">
+        <!-- COLUMN 1: IDENTITY, CCCD, SIM & 1414 TEXT -->
+        <div class="ws-box" id="colIdentity"></div>
+
+        <!-- COLUMN 2: BANK & 4-MONTH SALARY TABLE -->
+        <div class="ws-box" id="colSalary"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
 
 </body>
 </html>
