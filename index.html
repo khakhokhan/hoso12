@@ -731,7 +731,7 @@
 
   .salary-row {
     display: grid;
-    grid-template-columns: 80px 180px 145px 145px 1fr 140px;
+    grid-template-columns: 75px 170px 160px 160px 1fr 205px;
     align-items: center;
     padding: 8px 14px;
     border-bottom: 1px solid var(--border-light);
@@ -790,6 +790,41 @@
     color: #1E293B;
     font-family: 'JetBrains Mono', monospace;
     font-size: 14.5px;
+  }
+
+  .salary-cell-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+
+  .salary-cell-num:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--border-warm);
+  }
+
+  .copy-btn-mini {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    font-size: 10px;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: all 0.15s;
+  }
+
+  .salary-cell-num:hover .copy-btn-mini {
+    opacity: 1;
+    border-color: var(--primary);
   }
 
   .salary-memo-text {
@@ -1958,12 +1993,19 @@ function renderCenterWorkspace() {
           <span class="salary-date-val">${s.date}</span>
           <span class="salary-weekday-tag">${s.day_name}</span>
         </div>
-        <div class="salary-amount-val">+${s.amount} đ</div>
-        <div class="salary-balance-val">${s.new_bal} đ</div>
+        <div class="salary-cell-num" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')" title="Bấm để copy tiền lương">
+          <span class="salary-amount-val">+${s.amount} đ</span>
+          <button class="copy-btn-mini" onclick="event.stopPropagation(); copyText('${s.amount}', 'Tiền lương ${s.month}')">📋</button>
+        </div>
+        <div class="salary-cell-num" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')" title="Bấm để copy số dư">
+          <span class="salary-balance-val">${s.new_bal} đ</span>
+          <button class="copy-btn-mini" onclick="event.stopPropagation(); copyText('${s.new_bal}', 'Số dư ${s.month}')">📋</button>
+        </div>
         <div class="salary-memo-text" title="${memo}">${memo}</div>
         <div class="salary-actions">
-          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung chuyển khoản')">📋 Memo</button>
-          <button class="copy-btn-inline" onclick="copyText('${s.amount}', 'Số tiền lương')">💰 Tiền</button>
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung CK ${s.month}')">📋 Memo</button>
+          <button class="copy-btn-inline" style="color: #15803D; font-weight: 800;" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')">💰 Tiền</button>
+          <button class="copy-btn-inline" style="color: #1E293B; font-weight: 800;" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')">💳 Dư</button>
         </div>
       </div>
     `;
