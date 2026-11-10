@@ -65,7 +65,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP NAVBAR - COMPACT 50px */
+  /* UNIVERSAL CLICK-TO-COPY STYLES */
+  .copyable {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s ease;
+    border-radius: 6px;
+    padding: 2px 6px;
+  }
+
+  .copyable:hover {
+    background: var(--bg-warm-light) !important;
+    color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--border-warm);
+    transform: translateY(-1px);
+  }
+
+  .copyable:active {
+    transform: scale(0.97);
+  }
+
+  /* TOP NAVBAR */
   .top-navbar {
     background: var(--bg-card);
     border-bottom: 1px solid var(--border-light);
@@ -212,7 +232,7 @@
     color: #fff;
   }
 
-  /* MAIN LAYOUT - 2 PANELS ONLY (NO RIGHT INSPECTOR) */
+  /* MAIN LAYOUT */
   .app-container {
     display: flex;
     flex: 1;
@@ -222,7 +242,7 @@
     gap: 14px;
   }
 
-  /* LEFT SIDEBAR (SCROLLABLE LIST) */
+  /* LEFT SIDEBAR */
   .sidebar-panel {
     width: 300px;
     min-width: 280px;
@@ -276,7 +296,6 @@
     pointer-events: none;
   }
 
-  /* Status Filter Pills */
   .status-pills {
     display: flex;
     gap: 5px;
@@ -304,7 +323,6 @@
     border-color: var(--primary);
   }
 
-  /* Bank Chips */
   .bank-chips {
     display: flex;
     gap: 4px;
@@ -329,7 +347,6 @@
     color: #fff;
   }
 
-  /* Profile List in Sidebar */
   .profile-list {
     flex: 1;
     overflow-y: auto;
@@ -426,7 +443,7 @@
   .status-dot.doing { background: var(--status-doing); box-shadow: 0 0 0 2px var(--status-doing-bg); }
   .status-dot.queue { background: var(--status-queue); box-shadow: 0 0 0 2px var(--status-queue-bg); }
 
-  /* MAIN WORKSPACE - FITS 100% IN SINGLE SCREEN WITHOUT SCROLL */
+  /* MAIN WORKSPACE - 100% SINGLE VIEWPORT VIEW */
   .center-workspace {
     flex: 1;
     background: var(--bg-card);
@@ -442,12 +459,12 @@
     overflow: hidden;
   }
 
-  /* Top Profile Banner (Single compact line) */
+  /* Top Profile Banner */
   .profile-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--border-light);
     flex-shrink: 0;
   }
@@ -486,7 +503,7 @@
   .banner-sub {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-size: 13px;
     color: var(--text-sub);
     margin-top: 3px;
@@ -512,7 +529,7 @@
   /* 3 MODULAR INFO CARDS GRID */
   .grid-info-cards {
     display: grid;
-    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-columns: 1.15fr 1fr 1fr;
     gap: 12px;
     flex-shrink: 0;
   }
@@ -524,7 +541,7 @@
     padding: 12px 14px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
     position: relative;
     box-shadow: var(--shadow-card);
   }
@@ -542,18 +559,25 @@
     border-bottom: 1.5px solid var(--border-warm);
   }
 
-  /* FIELD ROWS WITH DEDICATED COPY BUTTON */
+  /* FIELD ROW - BOTH LABEL & VALUE ARE CLICKABLE TO COPY */
   .field-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    padding: 3px 0;
+    padding: 3px 4px;
     border-bottom: 1px dashed rgba(220, 210, 200, 0.5);
+    border-radius: 6px;
+    transition: all 0.15s;
+    cursor: pointer;
   }
 
   .field-row:last-child {
     border-bottom: none;
+  }
+
+  .field-row:hover {
+    background: var(--bg-warm-light);
   }
 
   .field-label {
@@ -585,7 +609,7 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* INLINE 1-CLICK COPY BUTTON */
+  /* COPY BUTTONS */
   .copy-btn-inline {
     display: inline-flex;
     align-items: center;
@@ -619,7 +643,7 @@
     font-weight: 800;
   }
 
-  /* ADDRESS BOX - NO QUÊ, ONLY HIỆN TẠI / TẠM TRÚ */
+  /* ADDRESS BOX */
   .address-box-modern {
     background: #FFFFFF;
     border: 1.5px solid var(--border-warm);
@@ -629,6 +653,13 @@
     flex-direction: column;
     gap: 5px;
     margin-top: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .address-box-modern:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--primary);
   }
 
   .address-box-header {
@@ -658,7 +689,7 @@
     border: 1px dashed var(--border-warm);
   }
 
-  /* SMS 1414 PREVIEW */
+  /* SMS PREVIEW */
   .sms-preview-card {
     background: #FFFFFF;
     border: 1px solid var(--border-light);
@@ -668,6 +699,13 @@
     flex-direction: column;
     gap: 5px;
     margin-top: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .sms-preview-card:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--primary);
   }
 
   .sms-preview-header {
@@ -695,11 +733,11 @@
     word-break: break-all;
   }
 
-  /* SALARY TABLE SECTION (FITS FULLY ON SCREEN) */
+  /* SALARY TABLE SECTION */
   .salary-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     flex: 1;
     min-height: 0;
   }
@@ -711,7 +749,7 @@
   }
 
   .section-title {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
     color: var(--text-main);
     display: flex;
@@ -763,6 +801,11 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
+    cursor: pointer;
+  }
+
+  .salary-date-badge:hover {
+    color: var(--primary);
   }
 
   .salary-date-val {
@@ -838,6 +881,14 @@
     border-radius: 6px;
     border: 1px solid var(--border-light);
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .salary-memo-text:hover {
+    background: var(--bg-warm-light);
+    color: var(--primary);
+    border-color: var(--border-warm);
   }
 
   .salary-actions {
@@ -1013,7 +1064,7 @@
   <div class="kpi-bar">
     <div class="kpi-item">
       <span class="kpi-label">Số dư ví tiền</span>
-      <span class="kpi-value kpi-wallet" id="topWalletBalance">3.300.000 VNĐ</span>
+      <span class="kpi-value kpi-wallet copyable" onclick="copyText(this.innerText, 'Số dư ví tiền')" title="Click để copy">${(11 * 300000).toLocaleString('vi-VN')} VNĐ</span>
     </div>
     
     <div class="progress-capsule">
@@ -1040,7 +1091,7 @@
   </div>
 </header>
 
-<!-- MAIN APP BODY - 2 COLUMNS ONLY -->
+<!-- MAIN APP BODY -->
 <div class="app-container">
   
   <!-- LEFT SIDEBAR -->
@@ -1076,7 +1127,7 @@
     </div>
   </aside>
 
-  <!-- CENTER WORKSPACE - 100% SINGLE PAGE (NO SCROLL) -->
+  <!-- CENTER WORKSPACE -->
   <main class="center-workspace" id="centerWorkspace">
     <!-- Injected by JS -->
   </main>
@@ -1812,7 +1863,7 @@ function copyText(txt, label) {
   if (!txt) return;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(txt).then(() => {
-      showToast("✅ Đã copy: " + (label || txt));
+      showToast("✅ Đã copy " + (label ? label + ": " : "") + txt);
     });
   } else {
     const ta = document.createElement('textarea');
@@ -1821,7 +1872,7 @@ function copyText(txt, label) {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showToast("✅ Đã copy: " + (label || txt));
+    showToast("✅ Đã copy " + (label ? label + ": " : "") + txt);
   }
 }
 
@@ -1860,7 +1911,8 @@ function updateKPI() {
   });
 
   const wallet = doneCount * UNIT_PRICE;
-  document.getElementById('topWalletBalance').innerText = wallet.toLocaleString('vi-VN') + ' VNĐ';
+  const elW = document.querySelector('.kpi-wallet');
+  if (elW) elW.innerText = wallet.toLocaleString('vi-VN') + ' VNĐ';
   document.getElementById('topProgressCount').innerText = doneCount + " / " + profilesData.length + " bộ";
   document.getElementById('topProgressBar').style.width = Math.round((doneCount / profilesData.length) * 100) + "%";
   
@@ -1963,7 +2015,7 @@ function getSms1414Text(p) {
   return `Ho ten: ${unaccentedName}, ngay sinh: ${p.dob}, The can cuoc: ${cleanCccd}, noi cap: ${unaccentedNoiCap}, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.`;
 }
 
-// Render Center Workspace (100% Single Viewport View)
+// Render Center Workspace (EVERYTHING DIRECTLY CLICKABLE TO COPY)
 function renderCenterWorkspace() {
   const p = profilesData.find(x => x.folder === activeFolderId);
   const container = document.getElementById('centerWorkspace');
@@ -1988,20 +2040,20 @@ function renderCenterWorkspace() {
 
     salariesHtml += `
       <div class="salary-row">
-        <div class="salary-month">${s.month}</div>
-        <div class="salary-date-badge">
+        <div class="salary-month copyable" onclick="copyText('${s.month}', 'Tháng lương')" title="Click để copy ${s.month}">${s.month}</div>
+        <div class="salary-date-badge copyable" onclick="copyText('${s.date}', 'Ngày giờ nhận lương')" title="Click để copy ngày giờ">
           <span class="salary-date-val">${s.date}</span>
           <span class="salary-weekday-tag">${s.day_name}</span>
         </div>
-        <div class="salary-cell-num" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')" title="Bấm để copy tiền lương">
+        <div class="salary-cell-num" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')" title="Click để copy tiền lương">
           <span class="salary-amount-val">+${s.amount} đ</span>
           <button class="copy-btn-mini" onclick="event.stopPropagation(); copyText('${s.amount}', 'Tiền lương ${s.month}')">📋</button>
         </div>
-        <div class="salary-cell-num" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')" title="Bấm để copy số dư">
+        <div class="salary-cell-num" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')" title="Click để copy số dư">
           <span class="salary-balance-val">${s.new_bal} đ</span>
           <button class="copy-btn-mini" onclick="event.stopPropagation(); copyText('${s.new_bal}', 'Số dư ${s.month}')">📋</button>
         </div>
-        <div class="salary-memo-text" title="${memo}">${memo}</div>
+        <div class="salary-memo-text" onclick="copyText('${memo}', 'Nội dung CK ${s.month}')" title="Click để copy nội dung chuyển khoản">${memo}</div>
         <div class="salary-actions">
           <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung CK ${s.month}')">📋 Memo</button>
           <button class="copy-btn-inline" style="color: #15803D; font-weight: 800;" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')">💰 Tiền</button>
@@ -2015,18 +2067,18 @@ function renderCenterWorkspace() {
     <!-- Top Compact Profile Banner -->
     <div class="profile-banner">
       <div class="banner-left">
-        <div class="banner-folder">#${String(p.folder).padStart(2, '0')}</div>
+        <div class="banner-folder copyable" onclick="copyText('#${String(p.folder).padStart(2, '0')}', 'Số thứ tự')" title="Click để copy số thứ tự">#${String(p.folder).padStart(2, '0')}</div>
         <div class="banner-titles">
           <h2>
-            <span>${p.name}</span>
+            <span class="copyable" onclick="copyText('${p.name}', 'Họ và tên')" title="Click để copy tên">${p.name}</span>
             <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.name}', 'Họ và tên')">📋 Copy Tên</button>
           </h2>
           <div class="banner-sub">
-            <span>🎂 Sinh: <strong>${p.dob}</strong></span>
+            <span class="copyable" onclick="copyText('${p.dob}', 'Ngày sinh')" title="Click để copy ngày sinh">🎂 Sinh: <strong>${p.dob}</strong></span>
             <span>•</span>
-            <span>📱 SĐT: <strong>${p.phone}</strong> (${p.sim})</span>
+            <span class="copyable" onclick="copyText('${p.phone}', 'Số điện thoại')" title="Click để copy SĐT">📱 SĐT: <strong>${p.phone}</strong> (${p.sim})</span>
             <span>•</span>
-            <span>🏦 <strong>${p.bank_name}</strong></span>
+            <span class="copyable" onclick="copyText('${p.bank_name}', 'Ngân hàng')" title="Click để copy ngân hàng">🏦 <strong>${p.bank_name}</strong></span>
           </div>
         </div>
       </div>
@@ -2049,43 +2101,43 @@ function renderCenterWorkspace() {
           <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.cccd}', 'Số CCCD')">📋 Copy CCCD</button>
         </div>
         
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.cccd}', 'Số CCCD')" title="Bấm để copy Số CCCD">
           <span class="field-label">Số CCCD:</span>
           <div class="field-value-group">
             <span class="field-value mono">${p.cccd}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.cccd}', 'Số CCCD')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.cccd}', 'Số CCCD')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.dob}', 'Ngày sinh')" title="Bấm để copy Ngày sinh">
           <span class="field-label">Ngày sinh:</span>
           <div class="field-value-group">
             <span class="field-value">${p.dob}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.dob}', 'Ngày sinh')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.dob}', 'Ngày sinh')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.ngay_cap}', 'Ngày cấp CCCD')" title="Bấm để copy Ngày cấp">
           <span class="field-label">Ngày cấp:</span>
           <div class="field-value-group">
             <span class="field-value">${p.ngay_cap}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.ngay_cap}', 'Ngày cấp')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.ngay_cap}', 'Ngày cấp')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.ngay_het_han}', 'Ngày hết hạn CCCD')" title="Bấm để copy Ngày hết hạn">
           <span class="field-label">Hết hạn:</span>
           <div class="field-value-group">
             <span class="field-value">${p.ngay_het_han}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.ngay_het_han}', 'Ngày hết hạn')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.ngay_het_han}', 'Ngày hết hạn')">📋</button>
           </div>
         </div>
 
-        <!-- Single Streamlined Address Box (No Quê Gốc) -->
-        <div class="address-box-modern">
+        <!-- Address Box (Click anywhere to copy) -->
+        <div class="address-box-modern" onclick="copyText('${p.hien_tai}', 'Địa chỉ hiện tại')" title="Bấm vào đây để copy toàn bộ địa chỉ">
           <div class="address-box-header">
             <span class="address-badge">📍 NƠI Ở HIỆN TẠI / TẠM TRÚ (TP.HCM)</span>
-            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.hien_tai}', 'Địa chỉ hiện tại')">
+            <button class="copy-btn-inline copy-btn-highlight" onclick="event.stopPropagation(); copyText('${p.hien_tai}', 'Địa chỉ hiện tại')">
               📋 Copy Địa Chỉ
             </button>
           </div>
@@ -2100,43 +2152,43 @@ function renderCenterWorkspace() {
           <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.phone}', 'Số điện thoại')">📋 Copy SĐT</button>
         </div>
         
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.phone}', 'Số điện thoại')" title="Bấm để copy Số điện thoại">
           <span class="field-label">Số điện thoại:</span>
           <div class="field-value-group">
             <span class="field-value mono">${p.phone}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.phone}', 'Số điện thoại')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.phone}', 'Số điện thoại')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.sim}', 'Nhà mạng')" title="Bấm để copy Nhà mạng">
           <span class="field-label">Nhà mạng:</span>
           <div class="field-value-group">
             <span class="field-value">${p.sim}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.sim}', 'Nhà mạng')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.sim}', 'Nhà mạng')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.gmail}', 'Email')" title="Bấm để copy Email">
           <span class="field-label">Email:</span>
           <div class="field-value-group">
             <span class="field-value" style="font-size: 13px;">${p.gmail}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.gmail}', 'Email')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.gmail}', 'Email')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${smsSyntax}', 'Cú pháp 1414')" title="Bấm để copy Cú pháp 1414">
           <span class="field-label">Cú pháp 1414:</span>
           <div class="field-value-group">
             <span class="field-value mono" style="color: var(--primary);">${smsSyntax}</span>
-            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${smsSyntax}', 'Cú pháp gửi 1414')">📋 Copy Cú Pháp</button>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="event.stopPropagation(); copyText('${smsSyntax}', 'Cú pháp 1414')">📋 Copy Cú Pháp</button>
           </div>
         </div>
 
-        <!-- Full SMS 1414 Preview Box -->
-        <div class="sms-preview-card">
+        <!-- Full SMS 1414 Preview Box (Click anywhere to copy) -->
+        <div class="sms-preview-card" onclick="copyText(getSms1414Text(profilesData.find(x => x.folder === ${p.folder})), 'Toàn bộ SMS 1414')" title="Bấm vào đây để copy toàn bộ nội dung tin nhắn 1414">
           <div class="sms-preview-header">
             <span>✉️ SMS 1414 MẪU (IN HOA - KHÔNG DẤU)</span>
-            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText(getSms1414Text(profilesData.find(x => x.folder === ${p.folder})), 'Toàn bộ SMS 1414')">📋 Copy Toàn Bộ</button>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="event.stopPropagation(); copyText(getSms1414Text(profilesData.find(x => x.folder === ${p.folder})), 'Toàn bộ SMS 1414')">📋 Copy Toàn Bộ</button>
           </div>
           <div class="sms-preview-text">${fullSms}</div>
         </div>
@@ -2149,57 +2201,57 @@ function renderCenterWorkspace() {
           <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">📋 Copy STK</button>
         </div>
         
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.bank_name}', 'Tên ngân hàng')" title="Bấm để copy Ngân hàng">
           <span class="field-label">Ngân hàng:</span>
           <div class="field-value-group">
             <span class="field-value">${p.bank_name}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.bank_name}', 'Tên ngân hàng')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.bank_name}', 'Tên ngân hàng')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.bank_stk}', 'Số tài khoản')" title="Bấm để copy Số tài khoản">
           <span class="field-label">Số tài khoản:</span>
           <div class="field-value-group">
             <span class="field-value mono" style="font-size: 16.5px; color: #1E293B;">${p.bank_stk}</span>
-            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">📋 Copy</button>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="event.stopPropagation(); copyText('${p.bank_stk}', 'Số tài khoản')">📋 Copy</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.bank_owner}', 'Chủ tài khoản')" title="Bấm để copy Chủ tài khoản">
           <span class="field-label">Chủ tài khoản:</span>
           <div class="field-value-group">
             <span class="field-value">${p.bank_owner}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.bank_owner}', 'Chủ tài khoản')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.bank_owner}', 'Chủ tài khoản')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}', 'Chu kỳ lương')" title="Bấm để copy Chu kỳ lương">
           <span class="field-label">Chu kỳ lương:</span>
           <div class="field-value-group">
             <span class="field-value">${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}', 'Chu kỳ lương')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}', 'Chu kỳ lương')">📋</button>
           </div>
         </div>
 
-        <div class="field-row">
+        <div class="field-row" onclick="copyText('001 - 999 (Số dư > Tiền nhận)', 'Quy tắc số lẻ')" title="Bấm để copy Quy tắc">
           <span class="field-label">Quy tắc số lẻ:</span>
           <div class="field-value-group">
             <span class="field-value" style="color: #15803D; font-weight: 800;">001 - 999 (Số dư > Tiền nhận)</span>
           </div>
         </div>
 
-        <div class="field-row" style="margin-top: 4px;">
+        <div class="field-row" onclick="copyText('${p.noi_cap}', 'Nơi cấp CCCD')" title="Bấm để copy Nơi cấp" style="margin-top: 4px;">
           <span class="field-label">Nơi cấp CCCD:</span>
           <div class="field-value-group">
             <span class="field-value" style="font-size: 12px;">${p.noi_cap}</span>
-            <button class="copy-btn-inline" onclick="copyText('${p.noi_cap}', 'Nơi cấp')">📋</button>
+            <button class="copy-btn-inline" onclick="event.stopPropagation(); copyText('${p.noi_cap}', 'Nơi cấp')">📋</button>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- 4-Month Salaries Table (Compact, fits completely on single view) -->
+    <!-- 4-Month Salaries Table -->
     <div class="salary-section">
       <div class="section-header-box">
         <div class="section-title">
