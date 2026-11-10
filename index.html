@@ -3,619 +3,1173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>WORKSPACE QUẢN LÝ 12 BỘ HỒ SƠ - THÔNG TIN & SAO KÊ</title>
+<title>WORKSPACE QUẢN LÝ HỒ SƠ TÀI CHÍNH - WARM LUXURY UI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-darkest: #070b14;
-    --bg-sidebar: #0f172a;
-    --bg-workspace: #0b1120;
-    --bg-card: #131d33;
-    --border-color: #1e293b;
-    --border-accent: #2563eb;
-    --accent: #38bdf8;
-    --accent-hover: #0284c7;
-    --text-primary: #f8fafc;
-    --text-muted: #94a3b8;
-    --green: #4ade80;
-    --yellow: #facc15;
-    --purple: #c084fc;
-    --rose: #fb7185;
-    --emerald: #34d399;
-    --status-done: #ef4444;
-    --status-doing: #0284c7;
-    --status-queue: #ca8a04;
+    --bg-page: #F6F1EB;
+    --bg-card: #FFFFFF;
+    --bg-card-subtle: #FAF7F2;
+    --bg-warm-light: #FFF5EC;
+    --bg-accent-light: #FFE8D6;
+    
+    --primary: #FF7324;
+    --primary-hover: #F05A0E;
+    --primary-gradient: linear-gradient(135deg, #FF833D 0%, #EA580C 100%);
+    --warm-gradient: linear-gradient(135deg, #FFF0E5 0%, #FFE2CC 100%);
+    
+    --text-main: #1C2024;
+    --text-sub: #525C67;
+    --text-muted: #8A94A0;
+    
+    --border-light: #EFE7DE;
+    --border-warm: #F2DEC9;
+    --shadow-soft: 0 10px 30px rgba(180, 140, 110, 0.06);
+    --shadow-card: 0 4px 20px rgba(140, 100, 70, 0.04);
+    --shadow-floating: 0 16px 40px rgba(220, 100, 30, 0.12);
+    
+    --status-done: #EF4444;
+    --status-done-bg: #FEE2E2;
+    --status-doing: #F59E0B;
+    --status-doing-bg: #FEF3C7;
+    --status-queue: #94A3B8;
+    --status-queue-bg: #F1F5F9;
+    
+    --green-money: #16A34A;
+    --green-money-bg: #DCFCE7;
+    
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg-darkest);
-    color: var(--text-primary);
-    line-height: 1.4;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.45;
     height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP HEADER / DASHBOARD */
-  .top-header {
-    background: #090e17;
-    border-bottom: 1px solid var(--border-color);
-    padding: 8px 16px;
+  /* HEADER */
+  .top-navbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-light);
+    padding: 10px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    z-index: 100;
-  }
-  .brand-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .app-icon {
-    background: linear-gradient(135deg, #38bdf8, #2563eb);
-    color: #fff;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 16px;
-  }
-  .app-title-box {
-    display: flex;
-    flex-direction: column;
-  }
-  .app-title {
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #f8fafc;
-  }
-  .app-sub {
-    font-size: 11px;
-    color: var(--text-muted);
+    gap: 16px;
+    z-index: 50;
+    box-shadow: 0 2px 12px rgba(150, 110, 80, 0.03);
   }
 
-  /* WALLET & METRICS */
-  .header-metrics {
+  .brand-group {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex-wrap: wrap;
   }
-  .metric-card {
-    background: #111a2e;
-    border: 1px solid #1e293b;
-    border-radius: 8px;
-    padding: 4px 10px;
+
+  .brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
+  }
+
+  .brand-text h1 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: var(--text-main);
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .metric-label {
-    font-size: 10.5px;
+
+  .brand-text p {
+    font-size: 11px;
     color: var(--text-muted);
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .metric-val {
-    font-size: 14px;
-    font-weight: 800;
-  }
-  .wallet-money {
-    color: #4ade80;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 15px;
+    font-weight: 500;
   }
 
-  /* LOCK BUTTON */
-  .btn-lock {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #cbd5e1;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
+  .kpi-bar {
     display: flex;
     align-items: center;
-    gap: 6px;
-    transition: all 0.2s;
-  }
-  .btn-lock:hover {
-    background: #334155;
-    color: #fff;
+    gap: 14px;
+    background: var(--bg-card-subtle);
+    padding: 6px 14px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
   }
 
-  /* MAIN LAYOUT: SIDEBAR + WORKSPACE */
-  .app-main {
-    flex: 1;
+  .kpi-item {
     display: flex;
-    height: calc(100vh - 53px);
+    flex-direction: column;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .kpi-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-main);
+  }
+
+  .kpi-wallet {
+    color: var(--primary);
+  }
+
+  .progress-capsule {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 8px;
+    border-left: 1px solid var(--border-light);
+  }
+
+  .progress-track {
+    width: 90px;
+    height: 8px;
+    background: #E2D9CF;
+    border-radius: 99px;
     overflow: hidden;
   }
 
-  /* SIDEBAR */
-  .sidebar {
-    width: 280px;
-    background: var(--bg-sidebar);
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 99px;
+    transition: width 0.4s ease;
   }
-  .sidebar-filter-box {
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border-color);
+
+  .top-actions {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
     gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    color: var(--text-main);
+    transition: all 0.2s;
   }
+
+  .btn-action:hover {
+    background: var(--bg-card-subtle);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .btn-primary {
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 18px rgba(234, 88, 12, 0.35);
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  /* MAIN LAYOUT */
+  .app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  /* LEFT SIDEBAR */
+  .sidebar-panel {
+    width: 320px;
+    min-width: 300px;
+    max-width: 340px;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-light);
+    background: #FFFDFC;
+  }
+
+  .search-box {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
   .search-input {
     width: 100%;
-    background: #090e17;
-    border: 1px solid #1e293b;
-    border-radius: 6px;
-    padding: 6px 10px;
-    color: #fff;
-    font-size: 12px;
+    padding: 10px 14px 10px 36px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    background: var(--bg-card-subtle);
+    font-size: 13px;
+    color: var(--text-main);
     outline: none;
+    transition: all 0.2s;
   }
+
   .search-input:focus {
-    border-color: var(--accent);
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 115, 36, 0.15);
   }
-  .filter-tabs {
-    display: flex;
-    gap: 4px;
-  }
-  .filter-tab {
-    flex: 1;
-    background: #1e293b;
-    border: none;
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--text-muted);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  /* Status Filter Pills */
+  .status-pills {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    border-radius: 99px;
     font-size: 11px;
-    font-weight: 600;
-    padding: 4px 6px;
+    font-weight: 700;
+    cursor: pointer;
+    background: var(--bg-card-subtle);
+    color: var(--text-sub);
+    border: 1px solid var(--border-light);
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .pill.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+  }
+
+  /* Bank Chips */
+  .bank-chips {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .bank-chip {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #F1ECE6;
+    color: var(--text-sub);
+    border: none;
+    white-space: nowrap;
+  }
+
+  .bank-chip.active {
+    background: #1C2024;
+    color: #fff;
+  }
+
+  /* Profile List */
+  .profile-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .profile-card-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    background: #FFFDFB;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .profile-card-item:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--border-warm);
+    transform: translateX(2px);
+  }
+
+  .profile-card-item.active {
+    background: var(--bg-warm-light);
+    border-color: var(--primary);
+    box-shadow: 0 4px 14px rgba(255, 115, 36, 0.12);
+  }
+
+  .item-folder-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: #F0E8DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-sub);
+  }
+
+  .profile-card-item.active .item-folder-badge {
+    background: var(--primary-gradient);
+    color: #fff;
+  }
+
+  .item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .tag-bank {
+    font-weight: 700;
+    padding: 1px 6px;
     border-radius: 4px;
+    font-size: 9px;
+    background: #EAE3D9;
+    color: var(--text-main);
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-dot.done { background: var(--status-done); box-shadow: 0 0 0 3px var(--status-done-bg); }
+  .status-dot.doing { background: var(--status-doing); box-shadow: 0 0 0 3px var(--status-doing-bg); }
+  .status-dot.queue { background: var(--status-queue); box-shadow: 0 0 0 3px var(--status-queue-bg); }
+
+  /* CENTER WORKSPACE */
+  .center-workspace {
+    flex: 1;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Active Header */
+  .profile-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .banner-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .banner-folder {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    background: var(--primary-gradient);
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.28);
+  }
+
+  .banner-titles h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+  }
+
+  .banner-sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+
+  .status-pill-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .status-pill-switch.done { background: var(--status-done-bg); color: var(--status-done); }
+  .status-pill-switch.doing { background: var(--status-doing-bg); color: #B45309; }
+  .status-pill-switch.queue { background: var(--status-queue-bg); color: #475569; }
+
+  /* 3 MODULAR INFO CARDS */
+  .grid-info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .info-module-card {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .info-module-card:hover {
+    border-color: var(--border-warm);
+    box-shadow: var(--shadow-card);
+  }
+
+  .module-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .field-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed rgba(220, 210, 200, 0.6);
+  }
+
+  .field-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .field-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .field-value {
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .copy-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .copy-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--bg-warm-light);
+  }
+
+  /* 3-Tier Address Box */
+  .address-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 12px;
+    border: 1px solid var(--border-light);
+  }
+
+  .address-item {
+    font-size: 12px;
+  }
+
+  .address-tag {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  .address-text {
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.35;
+  }
+
+  /* SALARY TABLE SECTION */
+  .salary-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section-header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .salary-table-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .salary-row {
+    display: grid;
+    grid-template-columns: 80px 180px 140px 140px 1fr 100px;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .salary-row:last-child {
+    border-bottom: none;
+  }
+
+  .salary-row.header {
+    background: var(--bg-card-subtle);
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .salary-month {
+    font-weight: 800;
+    color: var(--text-main);
+  }
+
+  .salary-date-badge {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .salary-date-val {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 12px;
+  }
+
+  .salary-weekday-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: #16A34A;
+  }
+
+  .salary-amount-val {
+    font-weight: 800;
+    color: var(--green-money);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .salary-balance-val {
+    font-weight: 700;
+    color: #1E293B;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .salary-memo-text {
+    font-size: 11px;
+    color: var(--text-sub);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: var(--bg-card-subtle);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+  }
+
+  .btn-copy-memo {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--bg-warm-light);
+    border: 1px solid var(--border-warm);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
     text-align: center;
     transition: all 0.15s;
   }
-  .filter-tab.active {
-    background: var(--accent);
-    color: #070b14;
-    font-weight: 800;
+
+  .btn-copy-memo:hover {
+    background: var(--primary);
+    color: #fff;
   }
 
-  /* PROFILE LIST IN SIDEBAR */
-  .profile-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .profile-item {
-    background: #111a2e;
-    border: 1px solid #1e293b;
-    border-radius: 8px;
-    padding: 8px 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.15s;
-    user-select: none;
-  }
-  .profile-item:hover {
-    background: #182440;
-    border-color: #334155;
-  }
-  .profile-item.active {
-    background: #1a2a4f;
-    border-color: var(--accent);
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
-  }
-  .item-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .item-badge {
-    background: #1e293b;
-    color: var(--accent);
-    font-weight: 900;
-    font-size: 11px;
-    padding: 3px 6px;
-    border-radius: 5px;
-    font-family: monospace;
-  }
-  .profile-item.active .item-badge {
-    background: var(--accent);
-    color: #070b14;
-  }
-  .item-name-block {
-    display: flex;
-    flex-direction: column;
-  }
-  .item-name {
-    font-size: 12.5px;
-    font-weight: 800;
-    color: #f8fafc;
-  }
-  .item-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .sidebar-tag-badge {
-    font-size: 10px;
-    font-weight: 800;
-    padding: 3px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-  .sidebar-tag-done { background: #7f1d1d; color: #fecaca; border: 1px solid #ef4444; }
-  .sidebar-tag-doing { background: #0c4a6e; color: #38bdf8; border: 1px solid #0284c7; }
-  .sidebar-tag-queue { background: #713f12; color: #fef08a; border: 1px solid #ca8a04; }
-
-  /* SIDEBAR MINI BUTTONS */
-  .sidebar-status-actions {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    margin-top: 5px;
-  }
-  .mini-status-btn {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #94a3b8;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .mini-status-btn:hover { filter: brightness(1.2); }
-  .mini-status-btn.btn-done.active { background: #7f1d1d; color: #fecaca; border-color: #ef4444; }
-  .mini-status-btn.btn-doing.active { background: #0c4a6e; color: #38bdf8; border-color: #0284c7; }
-  .mini-status-btn.btn-queue.active { background: #713f12; color: #fef08a; border-color: #ca8a04; }
-
-  /* WORKSPACE AREA */
-  .workspace {
-    flex: 1;
-    background: var(--bg-workspace);
+  /* RIGHT INSPECTOR PANEL (LIKE PHONE MOCKUP IN REFERENCE) */
+  .inspector-panel {
+    width: 320px;
+    min-width: 300px;
+    max-width: 340px;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  .ws-header {
-    background: #090e17;
-    border-bottom: 1px solid var(--border-color);
-    padding: 8px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .ws-title-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .ws-folder-badge {
-    background: linear-gradient(135deg, #2563eb, #38bdf8);
+
+  .phone-mockup-header {
+    background: #1C2024;
     color: #fff;
-    font-size: 13px;
-    font-weight: 900;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-family: monospace;
-  }
-  .ws-profile-name {
-    font-size: 17px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 0.5px;
-  }
-  .ws-cycle-tag {
-    background: #1e293b;
-    color: #facc15;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 6px;
-  }
-  .ws-status-pills {
+    padding: 16px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 6px;
   }
-  .ws-tag-pill {
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 5px 12px;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .ws-pill-done { background: #1e293b; color: #94a3b8; }
-  .ws-pill-done.active { background: #7f1d1d; color: #fecaca; border-color: #ef4444; }
-  .ws-pill-doing { background: #1e293b; color: #94a3b8; }
-  .ws-pill-doing.active { background: #0c4a6e; color: #38bdf8; border-color: #0284c7; }
-  .ws-pill-queue { background: #1e293b; color: #94a3b8; }
-  .ws-pill-queue.active { background: #713f12; color: #fef08a; border-color: #ca8a04; }
 
-  /* WORKSPACE CONTENT GRID (2 COLUMNS) */
-  .workspace-content {
+  .phone-title {
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .phone-sub {
+    font-size: 11px;
+    color: #94A3B8;
+  }
+
+  .inspector-body {
     flex: 1;
     overflow-y: auto;
-    padding: 12px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-  .ws-grid-2cols {
-    display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 14px;
-    align-items: start;
-  }
-  @media (max-width: 900px) {
-    .app-main { flex-direction: column; height: auto; overflow: auto; }
-    .sidebar { width: 100%; height: 260px; }
-    .ws-grid-2cols { grid-template-columns: 1fr; }
-    body { overflow: auto; height: auto; }
-  }
-  .ws-box {
-    background: #111a2e;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 12px 14px;
+
+  /* Checklist Block */
+  .checklist-card {
+    background: var(--bg-card-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  .box-title {
+
+  .check-title {
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    border-bottom: 1px solid #1e293b;
-    padding-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: var(--text-main);
   }
 
-  /* FIELD ROWS */
-  .field-row {
-    background: #090e17;
-    border: 1px solid #1e293b;
-    border-radius: 8px;
-    padding: 8px 12px;
+  .check-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-sub);
+    cursor: pointer;
   }
-  .field-info {
+
+  .check-item input[type="checkbox"] {
+    margin-top: 2px;
+    accent-color: var(--primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  /* Generator Box */
+  .generator-card {
+    background: var(--bg-warm-light);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--radius-md);
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-  }
-  .field-label {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: var(--text-muted);
-  }
-  .field-val-big {
-    font-size: 15px;
-    font-weight: 800;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    color: #f8fafc;
-  }
-  .val-phone { color: #38bdf8; font-size: 17px; }
-  .val-cccd { color: #fb7185; font-size: 17px; }
-  .val-dob { color: #facc15; }
-  .val-date { color: #a78bfa; }
-  .sim-badge {
-    background: #0284c7;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-  }
-  .btn-copy {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #38bdf8;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-  .btn-copy:hover {
-    background: var(--accent);
-    color: #070b14;
+    gap: 10px;
   }
 
-  /* SIM SMS 1414 CARD */
-  .sim-sms-box {
-    background: rgba(14, 165, 233, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    border-radius: 8px;
-    padding: 10px 12px;
-    margin-top: 4px;
-  }
-  .sim-sms-header {
+  .gen-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
     gap: 6px;
   }
-  .sim-sms-title {
-    color: #38bdf8;
-    font-weight: 800;
-    font-size: 11.5px;
-    letter-spacing: 0.5px;
-  }
-  .sim-sms-content {
-    background: #090e17;
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 11.5px;
-    color: #cbd5e1;
-    line-height: 1.5;
-    border: 1px dashed #334155;
-    word-break: break-word;
-    user-select: all;
+
+  .gen-desc {
+    font-size: 11px;
+    color: var(--text-sub);
+    line-height: 1.35;
   }
 
-  /* SALARY TABLE */
-  .salary-table-box {
-    overflow-x: auto;
-  }
-  .salary-table {
+  .btn-gen {
     width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
     font-size: 12px;
-  }
-  .salary-table th {
-    background: #090e17;
-    color: var(--text-muted);
-    font-weight: 700;
-    text-align: left;
-    padding: 7px 10px;
-    border-bottom: 1px solid #1e293b;
-    font-size: 11px;
-    text-transform: uppercase;
-  }
-  .salary-table td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #162035;
-    vertical-align: middle;
-  }
-  .salary-amount {
-    font-size: 19px;
-    font-weight: 900;
-    color: #4ade80;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  .salary-balance {
-    font-size: 16px;
     font-weight: 800;
-    color: #38bdf8;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  }
-  .salary-memo-box {
-    background: #090e17;
-    border: 1px dashed #ca8a04;
-    border-radius: 6px;
-    padding: 6px 8px;
-    color: #facc15;
-    font-weight: 700;
-    font-size: 13px;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    margin-top: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6px;
-  }
-  .btn-memo-copy {
-    background: #1e293b;
-    border: 1px solid #ca8a04;
-    color: #facc15;
-    font-size: 10.5px;
-    padding: 3px 6px;
-    border-radius: 4px;
     cursor: pointer;
-    white-space: nowrap;
-  }
-
-  /* PIN LOCK OVERLAY */
-  #pinLockOverlay {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: radial-gradient(circle at center, #0d1a33 0%, #060a12 100%);
-    z-index: 999999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    user-select: none;
-    transition: opacity 0.25s ease;
-  }
-  .pin-card {
-    background: #111a2e;
-    border: 1px solid #2563eb;
-    border-radius: 16px;
-    padding: 24px;
-    width: 320px;
-    max-width: 95vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-  }
-  .pin-shield-icon { font-size: 44px; margin-bottom: 8px; }
-  .pin-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 4px; }
-  .pin-subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; text-align: center; }
-  .pin-error-msg { color: #ef4444; font-size: 12px; font-weight: 700; min-height: 18px; margin-bottom: 10px; }
-  .pin-dots-row { display: flex; gap: 12px; margin-bottom: 20px; }
-  .pin-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: #1e293b; border: 2px solid #334155;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
     transition: all 0.2s;
   }
-  .pin-dot.filled { background: #38bdf8; border-color: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
-  .pin-dot.error { background: #ef4444; border-color: #ef4444; }
-  .pin-keypad {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%;
+
+  .btn-gen:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
   }
-  .pin-key {
-    background: #182440; border: 1px solid #25365e; color: #fff;
-    font-size: 20px; font-weight: 800; height: 50px; border-radius: 10px;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
+
+  /* Full Copy Box */
+  .btn-copy-all {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: #1C2024;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
   }
-  .pin-key:hover { background: #2563eb; }
-  .pin-key:active { transform: scale(0.95); }
-  .pin-key-back { font-size: 15px; color: #cbd5e1; }
+
+  .btn-copy-all:hover {
+    background: #000;
+    transform: translateY(-1px);
+  }
 
   /* TOAST NOTIFICATION */
   #toast {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0284c7;
+    bottom: 24px;
+    right: 24px;
+    background: #1C2024;
     color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 700;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    z-index: 1000000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    z-index: 9999;
     display: none;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* PIN MODAL */
+  .pin-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(28, 32, 36, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  .pin-card {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    width: 340px;
+    box-shadow: var(--shadow-floating);
+    text-align: center;
+    border: 1px solid var(--border-warm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pin-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--primary-gradient);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto;
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
+  }
+
+  .pin-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 8px 0;
+  }
+
+  .pin-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #CBD5E1;
+    background: transparent;
     transition: all 0.2s;
   }
+
+  .pin-dot.filled {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.1);
+  }
+
+  .pin-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .pin-key {
+    height: 52px;
+    border-radius: 14px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card-subtle);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .pin-key:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #DDD5CB;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C4B9AD;
+  }
 </style>
+</head>
+<body>
+
+<!-- PIN OVERLAY -->
+<div id="pinOverlay" class="pin-overlay">
+  <div class="pin-card">
+    <div class="pin-icon">🔒</div>
+    <div>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main);">XÁC THỰC MÃ PIN</h3>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Nhập mã PIN bảo mật để mở khóa Workspace</p>
+    </div>
+    
+    <div class="pin-dots">
+      <div class="pin-dot" id="pdot0"></div>
+      <div class="pin-dot" id="pdot1"></div>
+      <div class="pin-dot" id="pdot2"></div>
+      <div class="pin-dot" id="pdot3"></div>
+      <div class="pin-dot" id="pdot4"></div>
+      <div class="pin-dot" id="pdot5"></div>
+    </div>
+    
+    <div class="pin-keypad">
+      <button class="pin-key" onclick="pressPin('1')">1</button>
+      <button class="pin-key" onclick="pressPin('2')">2</button>
+      <button class="pin-key" onclick="pressPin('3')">3</button>
+      <button class="pin-key" onclick="pressPin('4')">4</button>
+      <button class="pin-key" onclick="pressPin('5')">5</button>
+      <button class="pin-key" onclick="pressPin('6')">6</button>
+      <button class="pin-key" onclick="pressPin('7')">7</button>
+      <button class="pin-key" onclick="pressPin('8')">8</button>
+      <button class="pin-key" onclick="pressPin('9')">9</button>
+      <button class="pin-key" style="font-size: 12px; font-weight: 700;" onclick="clearPin()">XÓA</button>
+      <button class="pin-key" onclick="pressPin('0')">0</button>
+      <button class="pin-key" style="font-size: 16px;" onclick="backspacePin()">⌫</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOP NAVBAR -->
+<header class="top-navbar">
+  <div class="brand-group">
+    <div class="brand-icon">📁</div>
+    <div class="brand-text">
+      <h1>WORKSPACE HỒ SƠ TÀI CHÍNH <span style="font-size: 11px; padding: 2px 8px; border-radius: 99px; background: var(--bg-warm-light); color: var(--primary); font-weight: 800;">PRO LUXURY</span></h1>
+      <p>Quản lý định danh VNeID • SMS 1414 • Sao kê lương ngân hàng né T7/CN</p>
+    </div>
+  </div>
+
+  <div class="kpi-bar">
+    <div class="kpi-item">
+      <span class="kpi-label">Số dư ví tiền</span>
+      <span class="kpi-value kpi-wallet" id="topWalletBalance">3.300.000 VNĐ</span>
+    </div>
+    
+    <div class="progress-capsule">
+      <div class="kpi-item">
+        <span class="kpi-label">Tiến độ</span>
+        <span class="kpi-value" id="topProgressCount">11 / 12 bộ</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="topProgressBar" style="width: 92%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-actions">
+    <button class="btn-action btn-primary" onclick="copyZaloSummary()">
+      📋 Copy danh sách gửi Zalo
+    </button>
+    <button class="btn-action" onclick="lockAppNow()" title="Khóa màn hình PIN">
+      🔒 Khóa PIN
+    </button>
+  </div>
+</header>
+
+<!-- MAIN APP BODY -->
+<div class="app-container">
+  
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Tìm tên, CCCD, SĐT, STK..." oninput="handleSearch(this.value)">
+      </div>
+      
+      <!-- Status Filter Pills -->
+      <div class="status-pills">
+        <button class="pill active" onclick="setStatusFilter('all', this)">Tất cả (12)</button>
+        <button class="pill" onclick="setStatusFilter('done', this)">Đã duyệt (<span id="countDone">11</span>)</button>
+        <button class="pill" onclick="setStatusFilter('queue', this)">Chờ duyệt (<span id="countQueue">1</span>)</button>
+      </div>
+
+      <!-- Bank Chips -->
+      <div class="bank-chips">
+        <button class="bank-chip active" onclick="setBankFilter('all', this)">All</button>
+        <button class="bank-chip" onclick="setBankFilter('VCB', this)">VCB</button>
+        <button class="bank-chip" onclick="setBankFilter('MB', this)">MB</button>
+        <button class="bank-chip" onclick="setBankFilter('VPBank', this)">VPB</button>
+        <button class="bank-chip" onclick="setBankFilter('Techcombank', this)">TCB</button>
+        <button class="bank-chip" onclick="setBankFilter('TPBank', this)">TPB</button>
+        <button class="bank-chip" onclick="setBankFilter('VietinBank', this)">CTG</button>
+      </div>
+    </div>
+
+    <!-- Scrollable Profile Cards -->
+    <div class="profile-list" id="profileListContainer">
+      <!-- Injected by JS -->
+    </div>
+  </aside>
+
+  <!-- CENTER WORKSPACE -->
+  <main class="center-workspace" id="centerWorkspace">
+    <!-- Injected by JS -->
+  </main>
+
+  <!-- RIGHT INSPECTOR (MOBILE SIMULATOR) -->
+  <aside class="inspector-panel">
+    <div class="phone-mockup-header">
+      <div class="phone-title">
+        <span>🔎 THẨM ĐỊNH SIMULATOR</span>
+        <span id="inspectorFolderTag" style="font-size: 11px; padding: 2px 6px; background: rgba(255,255,255,0.15); border-radius: 4px;">#01</span>
+      </div>
+      <p class="phone-sub">Checklist & Tự động sinh số lẻ chuẩn</p>
+    </div>
+
+    <div class="inspector-body">
+      
+      <!-- Checklist -->
+      <div class="checklist-card">
+        <div class="check-title">📋 CHECKLIST 3 TIÊU CHÍ</div>
+        <label class="check-item">
+          <input type="checkbox" id="chk_vneid" onchange="toggleCheck('vneid')">
+          <span>VNeID đủ 3 tầng địa chỉ, không phẩy sau số nhà, có status bar</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="chk_sim" onchange="toggleCheck('sim')">
+          <span>SMS 1414 Viettel/Mobi/Vina đúng cú pháp, gạch chân liên kết</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="chk_bank" onchange="toggleCheck('bank')">
+          <span>Sao kê né T7/CN, số lẻ 001-999, số dư > tiền nhận, icon xanh</span>
+        </label>
+      </div>
+
+      <!-- Generator Card -->
+      <div class="generator-card">
+        <div class="gen-title">🎲 BỘ TẠO SỐ LẺ THỰC CHIẾN</div>
+        <p class="gen-desc">Tự động sinh 4 tháng lương theo độ tuổi hồ sơ đang chọn, đuôi lẻ từ 001 - 999 và khớp số dư từng đồng!</p>
+        <button class="btn-gen" onclick="generateRealisticForActive()">
+          ✨ Sinh số lẻ mới theo tuổi
+        </button>
+      </div>
+
+      <!-- Copy Full Profile Button -->
+      <button class="btn-copy-all" onclick="copyFullActiveProfile()">
+        📋 Copy trọn bộ hồ sơ này
+      </button>
+
+    </div>
+  </aside>
+
+</div>
+
+<div id="toast"></div>
+
 <script>
 const MASTER_PIN = "010423";
 const profilesData = [
@@ -906,7 +1460,7 @@ const profilesData = [
         "month": "T09/2026",
         "date": "09/10/2026 08:40:15",
         "day_name": "Thứ 6 (Né T7 10/10)",
-        "amount": "13,240,600",
+        "amount": "15,240,600",
         "prev_bal": "3,100,500",
         "new_bal": "16,341,100"
       },
@@ -914,7 +1468,7 @@ const profilesData = [
         "month": "T08/2026",
         "date": "10/09/2026 10:10:45",
         "day_name": "Thứ 5",
-        "amount": "13,850,200",
+        "amount": "16,850,200",
         "prev_bal": "3,950,000",
         "new_bal": "17,800,200"
       },
@@ -922,7 +1476,7 @@ const profilesData = [
         "month": "T07/2026",
         "date": "10/08/2026 09:35:10",
         "day_name": "Thứ 2",
-        "amount": "12,980,000",
+        "amount": "15,980,000",
         "prev_bal": "3,361,100",
         "new_bal": "16,341,100"
       },
@@ -1257,397 +1811,26 @@ const profilesData = [
   }
 ];
 
-let currentMonth = localStorage.getItem('app_selected_month') || '2026-11';
-let unitPrice = parseInt(localStorage.getItem('app_unit_price') || '300000');
-let activeFolder = parseInt(localStorage.getItem('app_active_folder') || '1');
-let currentFilter = 'all';
 let currentPinInput = "";
+let activeFolderId = parseInt(localStorage.getItem('app_active_folder') || '1');
+let currentStatusFilter = 'all';
+let currentBankFilter = 'all';
+let currentSearchTerm = '';
+const UNIT_PRICE = 300000;
 
-// Helper Functions
-function formatVND(val) {
-  return (val || 0).toLocaleString('vi-VN') + ' VNĐ';
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-  toast.innerText = msg;
-  toast.style.display = 'block';
-  toast.style.opacity = '1';
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(() => {
-    toast.style.opacity = '0';
-    setTimeout(() => { toast.style.display = 'none'; }, 200);
-  }, 2000);
-}
-
-function copy(text, btn) {
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    if (btn) {
-      const orig = btn.innerText;
-      btn.innerText = 'ĐÃ COPY ✔';
-      setTimeout(() => { btn.innerText = orig; }, 1200);
-    }
-    showToast('Đã copy: ' + text.slice(0, 35) + (text.length > 35 ? '...' : ''));
-  }).catch(() => {
-    const t = document.createElement('textarea');
-    t.value = text;
-    document.body.appendChild(t);
-    t.select();
-    document.execCommand('copy');
-    document.body.removeChild(t);
-    if (btn) {
-      const orig = btn.innerText;
-      btn.innerText = 'ĐÃ COPY ✔';
-      setTimeout(() => { btn.innerText = orig; }, 1200);
-    }
-    showToast('Đã copy!');
-  });
-}
-
-// Status Persistence
-function getAllStatuses() {
-  try {
-    return JSON.parse(localStorage.getItem('app_all_statuses') || '{}');
-  } catch (e) {
-    return {};
-  }
-}
-
-function getProfileStatus(folder) {
-  const all = getAllStatuses();
-  if (all[folder]) return all[folder];
-  if (all[String(folder)]) return all[String(folder)];
-  const p = profilesData.find(item => item.folder === folder);
-  return p ? p.default_status : 'queue';
-}
-
-function setStatus(folder, status) {
-  const all = getAllStatuses();
-  all[folder] = status;
-  all[String(folder)] = status;
-  try {
-    localStorage.setItem('app_all_statuses', JSON.stringify(all));
-    localStorage.setItem('status_' + folder, status);
-    localStorage.setItem('profile_status_' + folder, status);
-  } catch(e) {
-    console.error(e);
-  }
-
-  const target = profilesData.find(item => item.folder === folder);
-  if (target) target.default_status = status;
-
-  renderProfileList();
-  renderActiveProfile();
-  updateWallet();
-
-  if (status === 'done') {
-    showToast('🎉 +300.000 đ vào ví (Đã xong F' + folder + ')');
-  } else if (status === 'doing') {
-    showToast('🔵 Đã chuyển F' + folder + ' sang Đang làm');
-  } else {
-    showToast('🟡 Đã chuyển F' + folder + ' sang Chờ');
-  }
-}
-
-function cycleStatus(folder) {
-  const current = getProfileStatus(folder);
-  if (current === 'queue') setStatus(folder, 'doing');
-  else if (current === 'doing') setStatus(folder, 'done');
-  else setStatus(folder, 'queue');
-}
-
-// Unaccent helper
-function removeVietnameseTones(str) {
-  if (!str) return '';
-  str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  str = str.replace(/[đĐ]/g, m => m === 'đ' ? 'd' : 'D');
-  return str;
-}
-
-// SIM 1414 Text Generator
-function getSimSmsText(p) {
-  if (!p) return '';
-  const cleanCccd = p.cccd.replace(/\s+/g, '');
-  const unaccentName = removeVietnameseTones(p.name).toUpperCase();
-  
-  let noiCap = removeVietnameseTones(p.noi_cap || 'BO CONG AN').toUpperCase();
-  if (noiCap.includes('CANH SAT') || noiCap.includes('CS')) {
-    noiCap = 'CUC CS QLHC VE TTXH';
-  } else {
-    noiCap = 'BO CONG AN';
-  }
-
-  const sim = (p.sim || 'Viettel').toLowerCase();
-  let hotline = '198 (0d)';
-  if (sim.includes('vina')) hotline = '18001091 (0d)';
-  else if (sim.includes('mobi')) hotline = '18001090 (0d)';
-
-  const birthYear = parseInt(p.dob.split('/')[2]) || 1995;
-  const actYear = Math.min(2023, Math.max(birthYear + 18, 2020));
-  const monthNum = String((p.folder % 8) + 1).padStart(2, '0');
-  const actDate = `18/${monthNum}/${actYear}`;
-
-  return `Ho ten: ${unaccentName}, ngay sinh: ${p.dob}, The can cuoc: ${cleanCccd}, noi cap: ${noiCap}, ngay cap: ${p.ngay_cap}. Loai thue bao: tra truoc, ngay kich hoat: ${actDate}. The can cuoc cua Quy khach dang ky su dung thue bao: ${p.phone}. Lien he ${hotline} de biet them thong tin chi tiet. Tran trong!`;
-}
-
-// Company Memo Patterns
-const COMPANY_PATTERNS = [
-  (m, name) => `CONG TY THANH TOAN LUONG ${m.month} ${name}`,
-  (m, name) => `CONG TY TNHH DV TM CHI TRA LUONG ${m.month} ${name}`,
-  (m, name) => `CTY CP DAU TU & TM LUONG THANG ${m.month} ${name}`,
-  (m, name) => `THANH TOAN TIEN LUONG THANG ${m.month} - ${name}`,
-  (m, name) => `THANH TOAN LUONG ${m.month}`
-];
-
-function getMemo(p, s) {
-  if (p.folder === 4) return `CONG TY THANH TOAN LUONG ${s.month.split('/')[0]}`;
-  if (p.folder === 5) return `CONG TY THANH TOAN LUONG ${s.month.split('/')[0]} ${removeVietnameseTones(p.name).toUpperCase()}`;
-  if (p.folder === 6) return `THANH TOAN TIEN LUONG THANG ${s.month.split('/')[0].replace('T', '')}/2026 - BVH`;
-  const pat = COMPANY_PATTERNS[(p.folder - 1) % COMPANY_PATTERNS.length];
-  return pat(s, removeVietnameseTones(p.name).toUpperCase());
-}
-
-// Wallet Update
-function updateWallet() {
-  let doneCount = 0;
-  profilesData.forEach(p => {
-    if (getProfileStatus(p.folder) === 'done') doneCount++;
-  });
-  const balance = doneCount * unitPrice;
-  const el = document.getElementById('walletBalance');
-  if (el) el.innerText = formatVND(balance);
-  const doneEl = document.getElementById('walletDoneCount');
-  if (doneEl) doneEl.innerText = doneCount;
-}
-
-// Profile Navigation & Render
-function setActiveProfile(folder) {
-  activeFolder = folder;
-  localStorage.setItem('app_active_folder', folder);
-  renderProfileList();
-  renderActiveProfile();
-}
-
-function nextProfile(dir) {
-  let currIdx = profilesData.findIndex(p => p.folder === activeFolder);
-  let nextIdx = currIdx + dir;
-  if (nextIdx < 0) nextIdx = profilesData.length - 1;
-  if (nextIdx >= profilesData.length) nextIdx = 0;
-  setActiveProfile(profilesData[nextIdx].folder);
-}
-
-function filterByStatus(filter) {
-  currentFilter = filter;
-  document.querySelectorAll('.filter-tab').forEach(b => {
-    b.classList.toggle('active', b.dataset.filter === filter);
-  });
-  renderProfileList();
-}
-
-function filterSidebarSearch() {
-  renderProfileList();
-}
-
-function renderProfileList() {
-  const container = document.getElementById('profileList');
-  if (!container) return;
-  const q = (document.getElementById('sidebarSearch')?.value || '').toLowerCase().trim();
-  
-  let html = '';
-  profilesData.forEach(p => {
-    const st = getProfileStatus(p.folder);
-    const matchesFilter = (currentFilter === 'all') || (st === currentFilter);
-    const matchesSearch = p.name.toLowerCase().includes(q) || 
-                          p.bank_name.toLowerCase().includes(q) || 
-                          p.phone.includes(q) || 
-                          p.bank_stk.includes(q);
-
-    if (matchesFilter && matchesSearch) {
-      const isActive = (p.folder === activeFolder) ? 'active' : '';
-      const tagTxt = st === 'done' ? '🔴 Làm rồi' : (st === 'doing' ? '🔵 Đang làm' : '🟡 Chưa làm');
-
-      html += `
-        <div class="profile-item ${isActive}" onclick="setActiveProfile(${p.folder})">
-          <div style="flex:1;">
-            <div class="item-left">
-              <span class="item-badge">F${p.folder}</span>
-              <div class="item-name-block">
-                <div class="item-name">${p.name}</div>
-                <div class="item-sub">${p.bank_name} • ${p.cycle}</div>
-              </div>
-            </div>
-            <div class="sidebar-status-actions" onclick="event.stopPropagation()">
-              <button class="mini-status-btn btn-done ${st === 'done' ? 'active' : ''}" onclick="setStatus(${p.folder}, 'done')">🔴 Xong</button>
-              <button class="mini-status-btn btn-doing ${st === 'doing' ? 'active' : ''}" onclick="setStatus(${p.folder}, 'doing')">🔵 Đang</button>
-              <button class="mini-status-btn btn-queue ${st === 'queue' ? 'active' : ''}" onclick="setStatus(${p.folder}, 'queue')">🟡 Chờ</button>
-            </div>
-          </div>
-          <div style="display:flex; align-items:flex-start; margin-left:6px;">
-            <span class="sidebar-tag-badge sidebar-tag-${st}" style="cursor:pointer;" onclick="event.stopPropagation(); cycleStatus(${p.folder})" title="Chạm để đổi">${tagTxt}</span>
-          </div>
-        </div>
-      `;
-    }
-  });
-  container.innerHTML = html;
-}
-
-function renderActiveProfile() {
-  const p = profilesData.find(item => item.folder === activeFolder) || profilesData[0];
-  if (!p) return;
-  const st = getProfileStatus(p.folder);
-
-  document.getElementById('wsProfileBadge').innerText = 'F' + p.folder;
-  document.getElementById('wsProfileName').innerText = p.name;
-  document.getElementById('wsCycleTag').innerText = p.cycle;
-
-  document.getElementById('pillDone').className = 'ws-tag-pill ws-pill-done' + (st === 'done' ? ' active' : '');
-  document.getElementById('pillDoing').className = 'ws-tag-pill ws-pill-doing' + (st === 'doing' ? ' active' : '');
-  document.getElementById('pillQueue').className = 'ws-tag-pill ws-pill-queue' + (st === 'queue' ? ' active' : '');
-
-  const cleanCccd = p.cccd.replace(/\s+/g, '');
-  const simSmsText = getSimSmsText(p);
-
-  // Column 1: Identity, SIM, CCCD
-  let idHtml = `
-    <!-- SỐ ĐIỆN THOẠI & SIM -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">📞 SỐ ĐIỆN THOẠI & HÃNG SIM</div>
-        <div style="display:flex; align-items:center;">
-          <span class="field-val-big val-phone">${p.phone}</span>
-          <span class="sim-badge">Sim ${p.sim}</span>
-        </div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.phone}', this)">Copy SĐT</button>
-    </div>
-
-    <!-- KHUNG TEXT SIM 1414 ĐẦY ĐỦ ĐỂ COPY VÀO CANVA -->
-    <div class="sim-sms-box">
-      <div class="sim-sms-header">
-        <div class="sim-sms-title">📱 TEXT TIN NHẮN 1414 (SIM ${p.sim.toUpperCase()})</div>
-        <div style="display:flex; gap:6px;">
-          <button class="btn-copy" onclick="copy('TTTB ${cleanCccd}', this)" style="background:#0284c7; padding:4px 8px; font-size:11px;">Copy Cú pháp TTTB</button>
-          <button class="btn-copy" onclick="copy(getSimSmsText(profilesData.find(item => item.folder === ${p.folder})), this)" style="background:#16a34a; padding:4px 10px; font-size:11px; font-weight:800;">📋 Copy Toàn Bộ Text 1414</button>
-        </div>
-      </div>
-      <div class="sim-sms-content">
-        ${simSmsText}
-      </div>
-    </div>
-
-    <!-- NGÀY SINH -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">🎂 NGÀY SINH</div>
-        <div class="field-val-big val-dob">${p.dob}</div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.dob}', this)">Copy Ngày Sinh</button>
-    </div>
-
-    <!-- SỐ CCCD -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">🪪 SỐ CĂN CƯỚC CÔNG DÂN (CCCD)</div>
-        <div class="field-val-big val-cccd">${p.cccd}</div>
-      </div>
-      <button class="btn-copy" onclick="copy('${cleanCccd}', this)">Copy CCCD</button>
-    </div>
-
-    <!-- NGÀY CẤP -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">📅 NGÀY CẤP CCCD</div>
-        <div class="field-val-big val-date">${p.ngay_cap}</div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.ngay_cap}', this)">Copy Ngày Cấp</button>
-    </div>
-
-    <!-- NƠI CẤP -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">🏛️ NƠI CẤP CCCD</div>
-        <div style="font-weight:700; color:#e2e8f0; font-size:13px;">${p.noi_cap}</div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.noi_cap}', this)">Copy Nơi Cấp</button>
-    </div>
-
-    <!-- NƠI Ở HIỆN TẠI -->
-    <div class="field-row">
-      <div class="field-info">
-        <div class="field-label">🏠 NƠI Ở HIỆN TẠI</div>
-        <div style="font-weight:600; color:#cbd5e1; font-size:12.5px; line-height:1.4;">${p.hien_tai}</div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.hien_tai}', this)">Copy Nơi Ở</button>
-    </div>
-  `;
-  document.getElementById('colIdentity').innerHTML = idHtml;
-
-  // Column 2: Bank & 4-Month Salary Table
-  let salRows = '';
-  p.salaries.forEach((s) => {
-    const memo = getMemo(p, s);
-    salRows += `
-      <tr>
-        <td style="font-weight:800; color:#f8fafc;">
-          ${s.month}<br>
-          <span style="font-size:11px; color:#94a3b8; font-family:monospace;">${s.date}</span><br>
-          <span style="font-size:10.5px; color:#ca8a04; font-weight:700;">${s.day_name}</span>
-        </td>
-        <td>
-          <div class="salary-amount">+${s.amount} đ</div>
-          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Số dư: <span class="salary-balance">${s.new_bal} đ</span></div>
-          <div class="salary-memo-box">
-            <span>${memo}</span>
-            <button class="btn-memo-copy" onclick="copy('${memo}', this)">Copy Memo</button>
-          </div>
-        </td>
-      </tr>
-    `;
-  });
-
-  let salHtml = `
-    <div class="field-row" style="background:#090e17; border-color:#2563eb;">
-      <div class="field-info">
-        <div class="field-label">🏦 NGÂN HÀNG & SỐ TÀI KHOẢN (STK)</div>
-        <div style="font-size:16px; font-weight:900; color:#38bdf8;">${p.bank_name}</div>
-        <div style="font-family:monospace; font-size:18px; font-weight:900; color:#4ade80;">${p.bank_stk}</div>
-        <div style="font-size:12px; color:#cbd5e1;">Chủ TK: <b>${p.bank_owner}</b></div>
-      </div>
-      <button class="btn-copy" onclick="copy('${p.bank_stk.split(' ')[0]}', this)" style="background:#2563eb; color:#fff; font-size:12px; padding:6px 12px;">Copy STK</button>
-    </div>
-
-    <div class="salary-table-box" style="margin-top:6px;">
-      <table class="salary-table">
-        <thead>
-          <tr>
-            <th style="width:38%;">THỜI GIAN NHẬN</th>
-            <th style="width:62%;">BIẾN ĐỘNG & NỘI DUNG</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${salRows}
-        </tbody>
-      </table>
-    </div>
-  `;
-  document.getElementById('colSalary').innerHTML = salHtml;
-}
-
-// PIN Lock Management
+// PIN Management
 function updatePinDots() {
-  const dots = document.querySelectorAll('.pin-dot');
-  dots.forEach((d, idx) => {
-    d.classList.toggle('filled', idx < currentPinInput.length);
-    d.classList.remove('error');
-  });
+  for (let i = 0; i < 6; i++) {
+    const dot = document.getElementById('pdot' + i);
+    if (dot) {
+      dot.classList.toggle('filled', i < currentPinInput.length);
+    }
+  }
 }
 
-function pressPin(digit) {
+function pressPin(d) {
   if (currentPinInput.length < 6) {
-    currentPinInput += digit;
+    currentPinInput += d;
     updatePinDots();
     if (currentPinInput.length === 6) {
       setTimeout(verifyPin, 100);
@@ -1669,182 +1852,469 @@ function clearPin() {
 
 function verifyPin() {
   if (currentPinInput === MASTER_PIN) {
-    document.getElementById('pinErrorMsg').innerText = "";
-    localStorage.setItem('app_unlocked', 'true');
-    const overlay = document.getElementById('pinLockOverlay');
-    overlay.style.opacity = '0';
-    setTimeout(() => { overlay.style.display = 'none'; }, 250);
-    currentPinInput = "";
-    updatePinDots();
-    renderProfileList();
-    renderActiveProfile();
-    updateWallet();
-    showToast("🔓 Đã mở khóa thành công!");
+    sessionStorage.setItem('app_pin_unlocked', 'true');
+    document.getElementById('pinOverlay').style.display = 'none';
+    showToast("🔓 Mở khóa Workspace thành công!");
   } else {
-    document.getElementById('pinErrorMsg').innerText = "❌ Mã PIN không đúng!";
-    const dots = document.querySelectorAll('.pin-dot');
-    dots.forEach(d => d.classList.add('error'));
-    setTimeout(() => {
-      currentPinInput = "";
-      updatePinDots();
-      document.getElementById('pinErrorMsg').innerText = "";
-    }, 800);
+    showToast("❌ Sai mã PIN! Vui lòng thử lại.");
+    clearPin();
   }
 }
 
 function lockAppNow() {
-  localStorage.removeItem('app_unlocked');
-  currentPinInput = "";
-  updatePinDots();
-  const overlay = document.getElementById('pinLockOverlay');
-  overlay.style.display = 'flex';
-  setTimeout(() => { overlay.style.opacity = '1'; }, 10);
-  showToast("🔒 Đã khóa ứng dụng an toàn!");
+  sessionStorage.removeItem('app_pin_unlocked');
+  clearPin();
+  document.getElementById('pinOverlay').style.display = 'flex';
 }
 
-// Initialize
-window.addEventListener('DOMContentLoaded', () => {
-  // Initial render so content is ready
-  renderProfileList();
-  renderActiveProfile();
-  updateWallet();
-
-  const isUnlocked = localStorage.getItem('app_unlocked') === 'true';
-  const overlay = document.getElementById('pinLockOverlay');
-  if (!isUnlocked) {
-    overlay.style.display = 'flex';
-    overlay.style.opacity = '1';
+function checkPinOnLoad() {
+  if (sessionStorage.getItem('app_pin_unlocked') === 'true') {
+    document.getElementById('pinOverlay').style.display = 'none';
   } else {
-    overlay.style.display = 'none';
+    document.getElementById('pinOverlay').style.display = 'flex';
   }
-});
+}
 
-// Keyboard PIN input
-window.addEventListener('keydown', (e) => {
-  const overlay = document.getElementById('pinLockOverlay');
-  if (overlay && overlay.style.display !== 'none') {
-    if (e.key >= '0' && e.key <= '9') pressPin(e.key);
-    else if (e.key === 'Backspace') backspacePin();
-    else if (e.key === 'Escape') clearPin();
+// Toast Helper
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.innerText = msg;
+  toast.style.display = 'block';
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 2500);
+}
+
+function copyText(txt, label) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(() => {
+      showToast("✅ Đã copy: " + (label || txt));
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = txt;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast("✅ Đã copy: " + (label || txt));
   }
+}
+
+// Status Management
+function getProfileStatus(folderId) {
+  const saved = localStorage.getItem('profile_status_' + folderId);
+  if (saved) return saved;
+  const p = profilesData.find(x => x.folder === folderId);
+  return (p && p.default_status) ? p.default_status : 'queue';
+}
+
+function setProfileStatus(folderId, st) {
+  localStorage.setItem('profile_status_' + folderId, st);
+  updateKPI();
+  renderProfileList();
+  renderCenterWorkspace();
+}
+
+function cycleActiveStatus() {
+  const cur = getProfileStatus(activeFolderId);
+  let next = 'doing';
+  if (cur === 'queue') next = 'doing';
+  else if (cur === 'doing') next = 'done';
+  else if (cur === 'done') next = 'queue';
+  setProfileStatus(activeFolderId, next);
+}
+
+// KPI & Wallet
+function updateKPI() {
+  let doneCount = 0;
+  let queueCount = 0;
+  profilesData.forEach(p => {
+    const st = getProfileStatus(p.folder);
+    if (st === 'done') doneCount++;
+    else queueCount++;
+  });
+
+  const wallet = doneCount * UNIT_PRICE;
+  document.getElementById('topWalletBalance').innerText = wallet.toLocaleString('vi-VN') + ' VNĐ';
+  document.getElementById('topProgressCount').innerText = doneCount + " / " + profilesData.length + " bộ";
+  document.getElementById('topProgressBar').style.width = Math.round((doneCount / profilesData.length) * 100) + "%";
+  
+  const elDone = document.getElementById('countDone');
+  const elQueue = document.getElementById('countQueue');
+  if (elDone) elDone.innerText = doneCount;
+  if (elQueue) elQueue.innerText = queueCount;
+}
+
+// Filters
+function handleSearch(val) {
+  currentSearchTerm = val.toLowerCase().trim();
+  renderProfileList();
+}
+
+function setStatusFilter(st, btn) {
+  currentStatusFilter = st;
+  document.querySelectorAll('.status-pills .pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProfileList();
+}
+
+function setBankFilter(bname, btn) {
+  currentBankFilter = bname;
+  document.querySelectorAll('.bank-chips .bank-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProfileList();
+}
+
+// Render Sidebar List
+function renderProfileList() {
+  const container = document.getElementById('profileListContainer');
+  container.innerHTML = '';
+
+  const filtered = profilesData.filter(p => {
+    const st = getProfileStatus(p.folder);
+    if (currentStatusFilter !== 'all' && st !== currentStatusFilter) return false;
+    
+    if (currentBankFilter !== 'all') {
+      const bname = (p.bank_name || '').toUpperCase();
+      if (!bname.includes(currentBankFilter.toUpperCase())) return false;
+    }
+
+    if (currentSearchTerm) {
+      const searchTarget = [
+        p.name, p.cccd, p.phone, p.bank_stk, p.bank_name, p.thuong_tru, p.hien_tai
+      ].join(' ').toLowerCase();
+      if (!searchTarget.includes(currentSearchTerm)) return false;
+    }
+
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 13px;">Không tìm thấy hồ sơ phù hợp</div>';
+    return;
+  }
+
+  filtered.forEach(p => {
+    const st = getProfileStatus(p.folder);
+    const isActive = p.folder === activeFolderId;
+    
+    const card = document.createElement('div');
+    card.className = 'profile-card-item' + (isActive ? ' active' : '');
+    card.onclick = () => selectProfile(p.folder);
+    
+    let stClass = 'queue';
+    if (st === 'done') stClass = 'done';
+    else if (st === 'doing') stClass = 'doing';
+
+    const shortBank = (p.bank_name || '').replace('Ngân hàng ', '').trim();
+
+    card.innerHTML = `
+      <div class="item-folder-badge">#${String(p.folder).padStart(2, '0')}</div>
+      <div class="item-info">
+        <div class="item-name">${p.name}</div>
+        <div class="item-meta">
+          <span class="tag-bank">${shortBank}</span>
+          <span>${p.phone}</span>
+        </div>
+      </div>
+      <div class="status-dot ${stClass}" title="Trạng thái: ${st}"></div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function selectProfile(fid) {
+  activeFolderId = fid;
+  localStorage.setItem('app_active_folder', fid);
+  renderProfileList();
+  renderCenterWorkspace();
+  loadChecklistState();
+}
+
+// Render Workspace
+function renderCenterWorkspace() {
+  const p = profilesData.find(x => x.folder === activeFolderId);
+  const container = document.getElementById('centerWorkspace');
+  if (!p) return;
+
+  const st = getProfileStatus(p.folder);
+  let stLabel = '⚪ Chờ xử lý';
+  let stClass = 'queue';
+  if (st === 'done') { stLabel = '🔴 Đã hoàn thành (10/10)'; stClass = 'done'; }
+  else if (st === 'doing') { stLabel = '🟡 Đang chỉnh sửa'; stClass = 'doing'; }
+
+  document.getElementById('inspectorFolderTag').innerText = `#${String(p.folder).padStart(2, '0')} - ${p.name}`;
+
+  let salariesHtml = '';
+  (p.salaries || []).forEach((s) => {
+    const memo = `CONG TY TT LUONG ${s.month} ${p.bank_owner}`;
+    salariesHtml += `
+      <div class="salary-row">
+        <div class="salary-month">${s.month}</div>
+        <div class="salary-date-badge">
+          <span class="salary-date-val">${s.date}</span>
+          <span class="salary-weekday-tag">${s.day_name}</span>
+        </div>
+        <div class="salary-amount-val">+${s.amount} đ</div>
+        <div class="salary-balance-val">${s.new_bal} đ</div>
+        <div class="salary-memo-text" title="${memo}">${memo}</div>
+        <button class="btn-copy-memo" onclick="copyText('${memo}', 'Nội dung chuyển khoản')">Copy Memo</button>
+      </div>
+    `;
+  });
+
+  container.innerHTML = `
+    <!-- Top Profile Banner -->
+    <div class="profile-banner">
+      <div class="banner-left">
+        <div class="banner-folder">#${String(p.folder).padStart(2, '0')}</div>
+        <div class="banner-titles">
+          <h2>${p.name}</h2>
+          <div class="banner-sub">
+            <span>🎂 Sinh: <strong>${p.dob}</strong></span>
+            <span>•</span>
+            <span>📱 SĐT: <strong>${p.phone}</strong> (${p.sim})</span>
+            <span>•</span>
+            <span>🏦 ${p.bank_name}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button class="status-pill-switch ${stClass}" onclick="cycleActiveStatus()" title="Bấm để đổi trạng thái">
+          ${stLabel} 🔄
+        </button>
+      </div>
+    </div>
+
+    <!-- 3 Info Module Cards -->
+    <div class="grid-info-cards">
+      
+      <!-- Card 1: VNeID & CCCD -->
+      <div class="info-module-card">
+        <div class="module-title">
+          <span>🪪 ĐỊNH DANH CCCD & VNeID</span>
+          <span class="copy-chip" onclick="copyText('${p.cccd}', 'Số CCCD')">Copy CCCD</span>
+        </div>
+        
+        <div class="field-row">
+          <span class="field-label">Số CCCD:</span>
+          <span class="field-value">${p.cccd}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Ngày cấp:</span>
+          <span class="field-value">${p.ngay_cap}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Ngày hết hạn:</span>
+          <span class="field-value">${p.ngay_het_han}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Nơi cấp:</span>
+          <span class="field-value" style="font-size: 11px;">${p.noi_cap}</span>
+        </div>
+
+        <div class="address-stack">
+          <div class="address-item">
+            <span class="address-tag">🏡 Nơi thường trú (quê gốc):</span>
+            <div class="address-text">${p.thuong_tru}</div>
+          </div>
+          <div class="address-item">
+            <span class="address-tag">🏢 Nơi tạm trú (Sài Gòn - Không dấu phẩy):</span>
+            <div class="address-text">${p.hien_tai}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: SIM 1414 -->
+      <div class="info-module-card">
+        <div class="module-title">
+          <span>📱 THÔNG TIN SIM 1414</span>
+          <span class="copy-chip" onclick="copyText('${p.phone}', 'Số điện thoại')">Copy SĐT</span>
+        </div>
+        
+        <div class="field-row">
+          <span class="field-label">Số điện thoại:</span>
+          <span class="field-value">${p.phone}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Nhà mạng:</span>
+          <span class="field-value">${p.sim}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Email:</span>
+          <span class="field-value" style="font-size: 11px;">${p.gmail}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Cú pháp gửi 1414:</span>
+          <span class="field-value">
+            <span class="copy-chip" onclick="copyText('TTTB ${p.cccd}', 'Cú pháp 1414')">TTTB ${p.cccd}</span>
+          </span>
+        </div>
+
+        <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 10px; font-size: 11px; color: var(--text-sub); line-height: 1.4;">
+          <strong>Tin nhắn SMS mẫu:</strong><br>
+          Ho ten: ${p.name}, ngay sinh: ${p.dob}, The can cuoc: ${p.cccd}, noi cap: CUC CS QLHC VE TTXH, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.
+        </div>
+      </div>
+
+      <!-- Card 3: NGÂN HÀNG -->
+      <div class="info-module-card">
+        <div class="module-title">
+          <span>🏦 TÀI KHOẢN SAO KÊ</span>
+          <span class="copy-chip" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">Copy STK</span>
+        </div>
+        
+        <div class="field-row">
+          <span class="field-label">Ngân hàng:</span>
+          <span class="field-value" style="color: var(--primary); font-weight: 800;">${p.bank_name}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Số tài khoản:</span>
+          <span class="field-value" style="font-family: 'JetBrains Mono', monospace;">${p.bank_stk}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Chủ tài khoản:</span>
+          <span class="field-value">${p.bank_owner}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Chu kỳ trả lương:</span>
+          <span class="field-value">${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Quy tắc số lẻ:</span>
+          <span class="field-value" style="color: #16A34A; font-weight: 800;">001 - 999 (Số dư > Tiền nhận)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 4-Month Salaries Table -->
+    <div class="salary-section">
+      <div class="section-header-box">
+        <div class="section-title">
+          <span>📊 LỊCH SỬ NHẬN LƯƠNG 4 THÁNG LIÊN TIẾP (CHUẨN NGÀY HÀNH CHÍNH & SỐ LẺ)</span>
+        </div>
+      </div>
+
+      <div class="salary-table-card">
+        <div class="salary-row header">
+          <div>Tháng</div>
+          <div>Ngày giờ (Hành chính)</div>
+          <div>Số tiền nhận (Lẻ)</div>
+          <div>Số dư (Lớn hơn)</div>
+          <div>Nội dung chuyển khoản</div>
+          <div style="text-align: center;">Thao tác</div>
+        </div>
+        ${salariesHtml}
+      </div>
+    </div>
+  `;
+}
+
+// Checklist in Inspector
+function toggleCheck(type) {
+  const isChecked = document.getElementById('chk_' + type).checked;
+  localStorage.setItem(`check_${type}_${activeFolderId}`, isChecked ? '1' : '0');
+}
+
+function loadChecklistState() {
+  ['vneid', 'sim', 'bank'].forEach(type => {
+    const saved = localStorage.getItem(`check_${type}_${activeFolderId}`);
+    const el = document.getElementById('chk_' + type);
+    if (el) el.checked = (saved === '1');
+  });
+}
+
+// Auto Generate Realistic Salaries with 001-999 Tails
+function generateRealisticForActive() {
+  const p = profilesData.find(x => x.folder === activeFolderId);
+  if (!p) return;
+
+  let byear = 1995;
+  if (p.dob && p.dob.length >= 4) {
+    const parts = p.dob.split('/');
+    if (parts.length === 3) byear = parseInt(parts[2]);
+  }
+
+  const age = 2026 - byear;
+  let baseSalary = 14000000;
+  if (age <= 24) baseSalary = 11500000;
+  else if (age <= 29) baseSalary = 15500000;
+  else if (age <= 38) baseSalary = 20500000; // E.g., 1996
+  else baseSalary = 18500000;
+
+  let startPrev = Math.floor(1200000 + Math.random() * 2000000);
+  startPrev = Math.floor(startPrev / 1000) * 1000 + (Math.floor(Math.random() * 999) + 1);
+
+  (p.salaries || []).forEach(s => {
+    const varP = (Math.random() * 0.12) - 0.06;
+    let amt = Math.floor(baseSalary * (1.0 + varP));
+    const tail = Math.floor(Math.random() * 999) + 1;
+    amt = Math.floor(amt / 1000) * 1000 + tail;
+    
+    const newBal = startPrev + amt;
+    s.amount = amt.toLocaleString('vi-VN');
+    s.new_bal = newBal.toLocaleString('vi-VN');
+
+    startPrev = Math.floor(1100000 + Math.random() * 2000000);
+    startPrev = Math.floor(startPrev / 1000) * 1000 + (Math.floor(Math.random() * 999) + 1);
+  });
+
+  renderCenterWorkspace();
+  showToast(`✨ Đã sinh số lẻ mới cho tuổi ${age} (sinh năm ${byear})!`);
+}
+
+// Copy Zalo Summary
+function copyZaloSummary() {
+  let text = "DANH SÁCH 12 BỘ HỒ SƠ TÀI CHÍNH (ĐỦ VNeID + SIM 1414 + SAO KÊ LƯƠNG):\n\n";
+  profilesData.forEach(p => {
+    const num = String(p.folder).padStart(2, '0');
+    text += `${num}. ${p.name} - ${p.bank_name} (STK: ${p.bank_stk})\n`;
+  });
+  copyText(text, "Danh sách 12 bộ gửi Zalo");
+}
+
+function copyFullActiveProfile() {
+  const p = profilesData.find(x => x.folder === activeFolderId);
+  if (!p) return;
+  
+  const text = `HỒ SƠ #${p.folder}: ${p.name}
+- Ngày sinh: ${p.dob}
+- CCCD: ${p.cccd} (Cấp: ${p.ngay_cap} tại ${p.noi_cap})
+- SĐT: ${p.phone} (${p.sim})
+- Thường trú: ${p.thuong_tru}
+- Tạm trú: ${p.hien_tai}
+- Ngân hàng: ${p.bank_name} - STK: ${p.bank_stk} (Chủ TK: ${p.bank_owner})`;
+
+  copyText(text, `Trọn bộ thông tin ${p.name}`);
+}
+
+// Initialization
+window.addEventListener('DOMContentLoaded', () => {
+  checkPinOnLoad();
+  updateKPI();
+  renderProfileList();
+  renderCenterWorkspace();
+  loadChecklistState();
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (sessionStorage.getItem('app_pin_unlocked') !== 'true') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === 'ArrowDown' || e.key === 'j') {
+      let idx = profilesData.findIndex(x => x.folder === activeFolderId);
+      if (idx < profilesData.length - 1) selectProfile(profilesData[idx + 1].folder);
+    } else if (e.key === 'ArrowUp' || e.key === 'k') {
+      let idx = profilesData.findIndex(x => x.folder === activeFolderId);
+      if (idx > 0) selectProfile(profilesData[idx - 1].folder);
+    }
+  });
 });
 </script>
-</head>
-<body>
-
-<!-- PIN LOCK OVERLAY -->
-<div id="pinLockOverlay">
-  <div class="pin-card">
-    <div class="pin-shield-icon">🛡️</div>
-    <div class="pin-title">BẢO MẬT HỒ SƠ 12 BỘ</div>
-    <div class="pin-subtitle">Nhập mã PIN 6 số để mở khóa</div>
-    <div class="pin-error-msg" id="pinErrorMsg"></div>
-    
-    <div class="pin-dots-row" id="pinDots">
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-      <div class="pin-dot"></div>
-    </div>
-
-    <div class="pin-keypad">
-      <button class="pin-key" onclick="pressPin('1')">1</button>
-      <button class="pin-key" onclick="pressPin('2')">2</button>
-      <button class="pin-key" onclick="pressPin('3')">3</button>
-      <button class="pin-key" onclick="pressPin('4')">4</button>
-      <button class="pin-key" onclick="pressPin('5')">5</button>
-      <button class="pin-key" onclick="pressPin('6')">6</button>
-      <button class="pin-key" onclick="pressPin('7')">7</button>
-      <button class="pin-key" onclick="pressPin('8')">8</button>
-      <button class="pin-key" onclick="pressPin('9')">9</button>
-      <button class="pin-key pin-key-back" onclick="clearPin()">Xóa</button>
-      <button class="pin-key" onclick="pressPin('0')">0</button>
-      <button class="pin-key pin-key-back" onclick="backspacePin()">⌫</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOP HEADER -->
-<div class="top-header">
-  <div class="brand-area">
-    <div class="app-icon">12</div>
-    <div class="app-title-box">
-      <div class="app-title">WORKSPACE QUẢN LÝ 12 BỘ HỒ SƠ</div>
-      <div class="app-sub">Bảo mật mã PIN: 010423 • Tự động tính ví tiền & sao kê</div>
-    </div>
-  </div>
-
-  <div class="header-metrics">
-    <div class="metric-card">
-      <div class="metric-label">ĐÃ LÀM</div>
-      <div class="metric-val" id="walletDoneCount" style="color:#ef4444;">10</div>
-      <div style="font-size:11px; color:#94a3b8;">/ 12 hồ sơ</div>
-    </div>
-
-    <div class="metric-card" style="border-color:#16a34a; background:rgba(34, 197, 94, 0.08);">
-      <div class="metric-label">VÍ TIỀN</div>
-      <div class="metric-val wallet-money" id="walletBalance">3.000.000 VNĐ</div>
-    </div>
-
-    <button class="btn-lock" onclick="lockAppNow()">🔒 Khóa App</button>
-  </div>
-</div>
-
-<!-- MAIN LAYOUT -->
-<div class="app-main">
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-filter-box">
-      <input type="text" class="search-input" id="sidebarSearch" placeholder="🔍 Tìm tên, SĐT, STK, Bank..." oninput="filterSidebarSearch()">
-      <div class="filter-tabs">
-        <button class="filter-tab active" data-filter="all" onclick="filterByStatus('all')">Tất cả (12)</button>
-        <button class="filter-tab" data-filter="done" onclick="filterByStatus('done')">🔴 Đã xong</button>
-        <button class="filter-tab" data-filter="doing" onclick="filterByStatus('doing')">🔵 Đang làm</button>
-        <button class="filter-tab" data-filter="queue" onclick="filterByStatus('queue')">🟡 Chờ</button>
-      </div>
-    </div>
-
-    <div class="profile-list" id="profileList"></div>
-  </div>
-
-  <!-- WORKSPACE -->
-  <div class="workspace">
-    <div class="ws-header">
-      <div class="ws-title-group">
-        <span class="ws-folder-badge" id="wsProfileBadge">F1</span>
-        <span class="ws-profile-name" id="wsProfileName">LÊ TRUNG KIÊN</span>
-        <span class="ws-cycle-tag" id="wsCycleTag">Chu kỳ Mùng 5</span>
-      </div>
-
-      <div style="display:flex; align-items:center; gap:8px;">
-        <div class="ws-status-pills">
-          <button class="ws-tag-pill ws-pill-done active" id="pillDone" onclick="setStatus(activeFolder, 'done')">🔴 Làm rồi</button>
-          <button class="ws-tag-pill ws-pill-doing" id="pillDoing" onclick="setStatus(activeFolder, 'doing')">🔵 Đang làm</button>
-          <button class="ws-tag-pill ws-pill-queue" id="pillQueue" onclick="setStatus(activeFolder, 'queue')">🟡 Chờ</button>
-        </div>
-
-        <div style="display:flex; gap:4px; margin-left:6px;">
-          <button class="btn-copy" onclick="nextProfile(-1)">◀ Trước</button>
-          <button class="btn-copy" onclick="nextProfile(1)">Sau ▶</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="workspace-content">
-      <div class="ws-grid-2cols">
-        <!-- COLUMN 1: IDENTITY, CCCD, SIM & 1414 TEXT -->
-        <div class="ws-box" id="colIdentity"></div>
-
-        <!-- COLUMN 2: BANK & 4-MONTH SALARY TABLE -->
-        <div class="ws-box" id="colSalary"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="toast"></div>
-
 </body>
 </html>
