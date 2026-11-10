@@ -432,6 +432,143 @@
     color: var(--text-main);
   }
 
+  /* READABLE STATUS BADGE ON SIDEBAR ITEMS */
+  .status-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .status-badge-pill:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .status-badge-pill.done {
+    background: #FEE2E2;
+    color: #DC2626;
+    border: 1px solid #FCA5A5;
+  }
+
+  .status-badge-pill.doing {
+    background: #FEF3C7;
+    color: #B45309;
+    border: 1px solid #FCD34D;
+  }
+
+  .status-badge-pill.queue {
+    background: #F1F5F9;
+    color: #64748B;
+    border: 1px solid #CBD5E1;
+  }
+
+  /* 1-CLICK STATUS TAG PICKER ON TOP BANNER */
+  .status-tag-picker {
+    display: inline-flex;
+    align-items: center;
+    background: #F0E9DF;
+    padding: 3px;
+    border-radius: 99px;
+    gap: 2px;
+    border: 1px solid var(--border-light);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .picker-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 800;
+    border: none;
+    background: transparent;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .picker-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .picker-btn.opt-queue.active {
+    background: #FFFFFF;
+    color: #475569;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: 1px solid #CBD5E1;
+  }
+
+  .picker-btn.opt-doing.active {
+    background: #FEF3C7;
+    color: #B45309;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+    border: 1px solid #FCD34D;
+  }
+
+  .picker-btn.opt-done.active {
+    background: #FEE2E2;
+    color: #DC2626;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+    border: 1px solid #FCA5A5;
+  }
+
+  /* QUICK TAGS BAR */
+  .quick-tags-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .quick-tag-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .tag-chip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px dashed var(--border-warm);
+    background: #fff;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .tag-chip-toggle:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tag-chip-toggle.active {
+    background: var(--bg-warm-light);
+    border-color: var(--primary);
+    border-style: solid;
+    color: var(--primary);
+    font-weight: 800;
+    box-shadow: 0 1px 4px rgba(255, 115, 36, 0.15);
+  }
+
   .status-dot {
     width: 10px;
     height: 10px;
@@ -1891,6 +2028,29 @@ function setProfileStatus(folderId, st) {
   renderCenterWorkspace();
 }
 
+function hasTag(folderId, tagKey) {
+  return localStorage.getItem(`tag_${tagKey}_${folderId}`) === '1';
+}
+
+function toggleTag(folderId, tagKey) {
+  const cur = hasTag(folderId, tagKey);
+  localStorage.setItem(`tag_${tagKey}_${folderId}`, cur ? '0' : '1');
+  renderProfileList();
+  renderCenterWorkspace();
+  showToast(cur ? `Đã gỡ nhãn: ${tagKey}` : `🏷️ Đã gắn nhãn: ${tagKey}`);
+}
+
+function cycleStatusForProfile(folderId) {
+  const cur = getProfileStatus(folderId);
+  let next = 'doing';
+  if (cur === 'queue') next = 'doing';
+  else if (cur === 'doing') next = 'done';
+  else if (cur === 'done') next = 'queue';
+  setProfileStatus(folderId, next);
+  let label = next === 'done' ? '✓ Đã duyệt 10/10' : (next === 'doing' ? '⚡ Đang làm' : '⏳ Chờ duyệt');
+  showToast(`🏷️ Hồ sơ #${folderId}: ${label}`);
+}
+
 function cycleActiveStatus() {
   const cur = getProfileStatus(activeFolderId);
   let next = 'doing';
@@ -1985,6 +2145,13 @@ function renderProfileList() {
 
     const shortBank = (p.bank_name || '').replace('Ngân hàng ', '').trim();
 
+    let badgeText = '⏳ Chờ';
+    if (st === 'done') badgeText = '✓ Đã duyệt';
+    else if (st === 'doing') badgeText = '⚡ Đang làm';
+
+    const hasLoc = hasTag(p.folder, 'loc');
+    const locTagHtml = hasLoc ? '<span style="font-size: 9.5px; padding: 1px 4px; background: #DBEAFE; color: #1D4ED8; border-radius: 4px; font-weight: 800;">📁 Lộc</span>' : '';
+
     card.innerHTML = `
       <div class="item-folder-badge">#${String(p.folder).padStart(2, '0')}</div>
       <div class="item-info">
@@ -1992,9 +2159,12 @@ function renderProfileList() {
         <div class="item-meta">
           <span class="tag-bank">${shortBank}</span>
           <span>${p.phone}</span>
+          ${locTagHtml}
         </div>
       </div>
-      <div class="status-dot ${stClass}" title="Trạng thái: ${st}"></div>
+      <div class="status-badge-pill ${stClass}" onclick="event.stopPropagation(); cycleStatusForProfile(${p.folder})" title="Click đổi nhanh trạng thái: Chờ ➔ Làm ➔ Duyệt">
+        ${badgeText}
+      </div>
     `;
 
     container.appendChild(card);
@@ -2080,14 +2250,34 @@ function renderCenterWorkspace() {
             <span>•</span>
             <span class="copyable" onclick="copyText('${p.bank_name}', 'Ngân hàng')" title="Click để copy ngân hàng">🏦 <strong>${p.bank_name}</strong></span>
           </div>
+          <div class="quick-tags-bar">
+            <span class="quick-tag-label">Nhãn ghi chú:</span>
+            <button class="tag-chip-toggle ${hasTag(p.folder, 'loc') ? 'active' : ''}" onclick="toggleTag(${p.folder}, 'loc')" title="Bật/tắt nhãn Đã gửi Lộc">
+              📁 Đã gửi Lộc
+            </button>
+            <button class="tag-chip-toggle ${hasTag(p.folder, 'sole') ? 'active' : ''}" onclick="toggleTag(${p.folder}, 'sole')" title="Bật/tắt nhãn Chuẩn số lẻ 001-999">
+              🎲 Chuẩn số lẻ
+            </button>
+            <button class="tag-chip-toggle ${hasTag(p.folder, 'vneid') ? 'active' : ''}" onclick="toggleTag(${p.folder}, 'vneid')" title="Bật/tắt nhãn Đã soi VNeID">
+              🪪 Đã soi VNeID
+            </button>
+          </div>
         </div>
       </div>
       
-      <div style="display: flex; gap: 8px; align-items: center;">
-        <button class="copy-btn-inline" style="padding: 6px 12px; font-size: 12px;" onclick="copyFullActiveProfile()">📄 Copy Trọn Bộ</button>
-        <button class="status-pill-switch ${stClass}" onclick="cycleActiveStatus()" title="Bấm để đổi trạng thái">
-          ${stLabel} 🔄
-        </button>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <div class="status-tag-picker" title="Gắn thẻ trạng thái nhanh 1 chạm (Phím 1: Chờ, Phím 2: Làm, Phím 3: Duyệt)">
+          <button class="picker-btn opt-queue ${st === 'queue' ? 'active' : ''}" onclick="setProfileStatus(activeFolderId, 'queue')">
+            ⏳ Chờ duyệt (1)
+          </button>
+          <button class="picker-btn opt-doing ${st === 'doing' ? 'active' : ''}" onclick="setProfileStatus(activeFolderId, 'doing')">
+            ⚡ Đang làm (2)
+          </button>
+          <button class="picker-btn opt-done ${st === 'done' ? 'active' : ''}" onclick="setProfileStatus(activeFolderId, 'done')">
+            ✓ Đã duyệt 10/10 (3)
+          </button>
+        </div>
+        <button class="copy-btn-inline copy-btn-highlight" style="padding: 6px 12px; font-size: 12px;" onclick="copyFullActiveProfile()">📄 Copy Trọn Bộ</button>
       </div>
     </div>
 
@@ -2309,6 +2499,20 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (sessionStorage.getItem('app_pin_unlocked') !== 'true') return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === '1') {
+      setProfileStatus(activeFolderId, 'queue');
+      showToast("🏷️ Đã gắn thẻ: ⏳ Chờ duyệt");
+      return;
+    } else if (e.key === '2') {
+      setProfileStatus(activeFolderId, 'doing');
+      showToast("🏷️ Đã gắn thẻ: ⚡ Đang làm");
+      return;
+    } else if (e.key === '3') {
+      setProfileStatus(activeFolderId, 'done');
+      showToast("🏷️ Đã gắn thẻ: ✓ Đã duyệt 10/10");
+      return;
+    }
 
     if (e.key === 'ArrowDown' || e.key === 'j') {
       let idx = profilesData.findIndex(x => x.folder === activeFolderId);
