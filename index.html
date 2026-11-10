@@ -6,7 +6,7 @@
 <title>WORKSPACE QUẢN LÝ HỒ SƠ TÀI CHÍNH - WARM LUXURY UI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-page: #F6F1EB;
@@ -20,15 +20,15 @@
     --primary-gradient: linear-gradient(135deg, #FF833D 0%, #EA580C 100%);
     --warm-gradient: linear-gradient(135deg, #FFF0E5 0%, #FFE2CC 100%);
     
-    --text-main: #1C2024;
-    --text-sub: #525C67;
-    --text-muted: #8A94A0;
+    --text-main: #181C20;
+    --text-sub: #4A5562;
+    --text-muted: #7E8B9A;
     
-    --border-light: #EFE7DE;
-    --border-warm: #F2DEC9;
-    --shadow-soft: 0 10px 30px rgba(180, 140, 110, 0.06);
-    --shadow-card: 0 4px 20px rgba(140, 100, 70, 0.04);
-    --shadow-floating: 0 16px 40px rgba(220, 100, 30, 0.12);
+    --border-light: #ECE4D9;
+    --border-warm: #EED7BF;
+    --shadow-soft: 0 10px 32px rgba(170, 130, 95, 0.07);
+    --shadow-card: 0 4px 20px rgba(140, 100, 70, 0.05);
+    --shadow-floating: 0 16px 40px rgba(220, 100, 30, 0.15);
     
     --status-done: #EF4444;
     --status-done-bg: #FEE2E2;
@@ -37,13 +37,13 @@
     --status-queue: #94A3B8;
     --status-queue-bg: #F1F5F9;
     
-    --green-money: #16A34A;
+    --green-money: #15803D;
     --green-money-bg: #DCFCE7;
     
     --radius-sm: 10px;
-    --radius-md: 16px;
-    --radius-lg: 22px;
-    --radius-xl: 28px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 26px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +52,8 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg-page);
     color: var(--text-main);
-    line-height: 1.45;
+    line-height: 1.5;
+    font-size: 15px;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -60,51 +61,51 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* HEADER */
+  /* TOP NAVBAR */
   .top-navbar {
     background: var(--bg-card);
     border-bottom: 1px solid var(--border-light);
-    padding: 10px 24px;
+    padding: 12px 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     z-index: 50;
-    box-shadow: 0 2px 12px rgba(150, 110, 80, 0.03);
+    box-shadow: 0 2px 14px rgba(150, 110, 80, 0.04);
   }
 
   .brand-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
   .brand-icon {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     border-radius: var(--radius-md);
     background: var(--primary-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
     box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
   }
 
   .brand-text h1 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 800;
     letter-spacing: -0.3px;
     color: var(--text-main);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .brand-text p {
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--text-muted);
     font-weight: 500;
   }
@@ -112,9 +113,9 @@
   .kpi-bar {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     background: var(--bg-card-subtle);
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
   }
@@ -125,7 +126,7 @@
   }
 
   .kpi-label {
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
     font-weight: 700;
     color: var(--text-muted);
@@ -133,7 +134,7 @@
   }
 
   .kpi-value {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
     color: var(--text-main);
   }
@@ -145,14 +146,14 @@
   .progress-capsule {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding-left: 8px;
+    gap: 10px;
+    padding-left: 10px;
     border-left: 1px solid var(--border-light);
   }
 
   .progress-track {
-    width: 90px;
-    height: 8px;
+    width: 100px;
+    height: 9px;
     background: #E2D9CF;
     border-radius: 99px;
     overflow: hidden;
@@ -168,16 +169,16 @@
   .top-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .btn-action {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
+    gap: 8px;
+    padding: 10px 18px;
     border-radius: var(--radius-md);
-    font-size: 12px;
+    font-size: 13.5px;
     font-weight: 700;
     cursor: pointer;
     border: 1px solid var(--border-light);
@@ -210,15 +211,15 @@
     display: flex;
     flex: 1;
     overflow: hidden;
-    padding: 16px;
-    gap: 16px;
+    padding: 18px;
+    gap: 18px;
   }
 
   /* LEFT SIDEBAR */
   .sidebar-panel {
-    width: 320px;
-    min-width: 300px;
-    max-width: 340px;
+    width: 340px;
+    min-width: 320px;
+    max-width: 360px;
     background: var(--bg-card);
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-light);
@@ -229,7 +230,7 @@
   }
 
   .sidebar-header {
-    padding: 16px;
+    padding: 16px 18px;
     border-bottom: 1px solid var(--border-light);
     background: #FFFDFC;
   }
@@ -241,11 +242,11 @@
 
   .search-input {
     width: 100%;
-    padding: 10px 14px 10px 36px;
+    padding: 11px 16px 11px 40px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-light);
     background: var(--bg-card-subtle);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-main);
     outline: none;
     transition: all 0.2s;
@@ -259,11 +260,11 @@
 
   .search-icon {
     position: absolute;
-    left: 12px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 15px;
     pointer-events: none;
   }
 
@@ -271,15 +272,15 @@
   .status-pills {
     display: flex;
     gap: 6px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     overflow-x: auto;
     padding-bottom: 2px;
   }
 
   .pill {
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 99px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     background: var(--bg-card-subtle);
@@ -299,15 +300,15 @@
   /* Bank Chips */
   .bank-chips {
     display: flex;
-    gap: 5px;
+    gap: 6px;
     overflow-x: auto;
     padding-bottom: 2px;
   }
 
   .bank-chip {
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
     font-weight: 700;
     cursor: pointer;
     background: #F1ECE6;
@@ -325,17 +326,17 @@
   .profile-list {
     flex: 1;
     overflow-y: auto;
-    padding: 10px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .profile-card-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 12px;
+    gap: 14px;
+    padding: 12px 14px;
     border-radius: var(--radius-md);
     border: 1px solid transparent;
     background: #FFFDFB;
@@ -347,24 +348,24 @@
   .profile-card-item:hover {
     background: var(--bg-warm-light);
     border-color: var(--border-warm);
-    transform: translateX(2px);
+    transform: translateX(3px);
   }
 
   .profile-card-item.active {
     background: var(--bg-warm-light);
     border-color: var(--primary);
-    box-shadow: 0 4px 14px rgba(255, 115, 36, 0.12);
+    box-shadow: 0 4px 16px rgba(255, 115, 36, 0.14);
   }
 
   .item-folder-badge {
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    background: #F0E8DE;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #EFE7DE;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
     color: var(--text-sub);
   }
@@ -380,8 +381,8 @@
   }
 
   .item-name {
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
     color: var(--text-main);
     white-space: nowrap;
     overflow: hidden;
@@ -391,24 +392,24 @@
   .item-meta {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11px;
+    gap: 8px;
+    font-size: 12.5px;
     color: var(--text-muted);
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   .tag-bank {
-    font-weight: 700;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 9px;
-    background: #EAE3D9;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 10.5px;
+    background: #E8E1D7;
     color: var(--text-main);
   }
 
   .status-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -425,13 +426,13 @@
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-soft);
     overflow-y: auto;
-    padding: 24px;
+    padding: 26px 28px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
   }
 
-  /* Active Header */
+  /* Profile Banner */
   .profile-banner {
     display: flex;
     justify-content: space-between;
@@ -445,48 +446,54 @@
   .banner-left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
   }
 
   .banner-folder {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 900;
     color: #fff;
     background: var(--primary-gradient);
-    width: 56px;
-    height: 56px;
+    width: 62px;
+    height: 62px;
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.28);
+    box-shadow: 0 8px 22px rgba(234, 88, 12, 0.28);
+    flex-shrink: 0;
   }
 
   .banner-titles h2 {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   .banner-sub {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 4px;
-    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+    font-size: 14.5px;
     color: var(--text-sub);
   }
 
   .status-pill-switch {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
+    gap: 8px;
+    padding: 8px 18px;
     border-radius: 99px;
-    font-size: 12px;
+    font-size: 13.5px;
     font-weight: 800;
     cursor: pointer;
+    border: none;
     transition: all 0.2s;
   }
 
@@ -497,18 +504,18 @@
   /* 3 MODULAR INFO CARDS */
   .grid-info-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 18px;
   }
 
   .info-module-card {
     background: var(--bg-card-subtle);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 16px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     position: relative;
     transition: all 0.2s;
   }
@@ -519,7 +526,7 @@
   }
 
   .module-title {
-    font-size: 13px;
+    font-size: 14.5px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -527,16 +534,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--border-warm);
   }
 
+  /* FIELD ROW WITH DEDICATED 1-CLICK COPY BUTTON */
   .field-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 13px;
-    padding-bottom: 6px;
-    border-bottom: 1px dashed rgba(220, 210, 200, 0.6);
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(220, 210, 200, 0.7);
   }
 
   .field-row:last-child {
@@ -548,73 +557,158 @@
     color: var(--text-muted);
     font-weight: 600;
     flex-shrink: 0;
-    font-size: 12px;
+    font-size: 13.5px;
+  }
+
+  .field-value-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+    min-width: 0;
   }
 
   .field-value {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-main);
+    font-size: 15.5px;
     text-align: right;
     word-break: break-word;
   }
 
-  .copy-chip {
+  .field-value.mono {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.3px;
+  }
+
+  /* PROMINENT COPY BUTTONS (NO NEED TO HIGHLIGHT TEXT) */
+  .copy-btn-inline {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    background: #fff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-light);
-    font-family: 'JetBrains Mono', monospace;
+    padding: 4px 10px;
+    background: #FFFDFC;
+    border: 1px solid var(--border-warm);
+    border-radius: 8px;
+    color: var(--primary);
     font-size: 12px;
     font-weight: 700;
-    color: var(--text-main);
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
-  .copy-chip:hover {
+  .copy-btn-inline:hover {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 115, 36, 0.28);
+  }
+
+  .copy-btn-inline:active {
+    transform: scale(0.96);
+  }
+
+  .copy-btn-highlight {
+    background: var(--bg-warm-light);
     border-color: var(--primary);
     color: var(--primary);
-    background: var(--bg-warm-light);
+    font-weight: 800;
   }
 
-  /* 3-Tier Address Box */
-  .address-stack {
+  /* MODERN ADDRESS BOX - NO THUONG TRU, ONLY HIEN TAI / TAM TRU */
+  .address-box-modern {
+    background: #FFFFFF;
+    border: 1.5px solid var(--border-warm);
+    border-radius: var(--radius-md);
+    padding: 16px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 3px 12px rgba(160, 110, 70, 0.05);
+  }
+
+  .address-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 8px;
-    background: #fff;
-    border-radius: var(--radius-md);
-    padding: 12px;
-    border: 1px solid var(--border-light);
   }
 
-  .address-item {
+  .address-badge {
     font-size: 12px;
-  }
-
-  .address-tag {
-    font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--primary);
-    margin-bottom: 2px;
-    display: block;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
-  .address-text {
+  .address-content-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.5;
+    background: var(--bg-warm-light);
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px dashed var(--border-warm);
+  }
+
+  .address-sub-note {
+    font-size: 12px;
+    color: #15803D;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* SMS PREVIEW CARD */
+  .sms-preview-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sms-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .sms-preview-text {
+    font-size: 13.5px;
     font-weight: 600;
     color: var(--text-main);
-    line-height: 1.35;
+    line-height: 1.45;
+    background: var(--bg-card-subtle);
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    font-family: monospace;
+    word-break: break-all;
   }
 
   /* SALARY TABLE SECTION */
   .salary-section {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .section-header-box {
@@ -622,16 +716,16 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
 
   .section-title {
-    font-size: 15px;
+    font-size: 16.5px;
     font-weight: 800;
     color: var(--text-main);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .salary-table-card {
@@ -644,12 +738,12 @@
 
   .salary-row {
     display: grid;
-    grid-template-columns: 80px 180px 140px 140px 1fr 100px;
+    grid-template-columns: 85px 190px 155px 155px 1fr 140px;
     align-items: center;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-bottom: 1px solid var(--border-light);
-    font-size: 13px;
-    gap: 8px;
+    font-size: 14px;
+    gap: 12px;
   }
 
   .salary-row:last-child {
@@ -659,7 +753,7 @@
   .salary-row.header {
     background: var(--bg-card-subtle);
     font-weight: 800;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -668,72 +762,66 @@
   .salary-month {
     font-weight: 800;
     color: var(--text-main);
+    font-size: 15px;
   }
 
   .salary-date-badge {
     display: flex;
     flex-direction: column;
+    gap: 2px;
   }
 
   .salary-date-val {
     font-weight: 700;
     color: var(--text-main);
-    font-size: 12px;
+    font-size: 13.5px;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   .salary-weekday-tag {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
-    color: #16A34A;
+    color: #15803D;
   }
 
   .salary-amount-val {
     font-weight: 800;
     color: var(--green-money);
     font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
   }
 
   .salary-balance-val {
-    font-weight: 700;
+    font-weight: 800;
     color: #1E293B;
     font-family: 'JetBrains Mono', monospace;
+    font-size: 15.5px;
   }
 
   .salary-memo-text {
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--text-sub);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     background: var(--bg-card-subtle);
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
     border: 1px solid var(--border-light);
+    font-weight: 600;
   }
 
-  .btn-copy-memo {
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: var(--bg-warm-light);
-    border: 1px solid var(--border-warm);
-    color: var(--primary);
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
+  .salary-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
   }
 
-  .btn-copy-memo:hover {
-    background: var(--primary);
-    color: #fff;
-  }
-
-  /* RIGHT INSPECTOR PANEL (LIKE PHONE MOCKUP IN REFERENCE) */
+  /* RIGHT INSPECTOR PANEL */
   .inspector-panel {
-    width: 320px;
-    min-width: 300px;
-    max-width: 340px;
+    width: 330px;
+    min-width: 310px;
+    max-width: 350px;
     background: var(--bg-card);
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-light);
@@ -746,14 +834,14 @@
   .phone-mockup-header {
     background: #1C2024;
     color: #fff;
-    padding: 16px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
 
   .phone-title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -761,32 +849,32 @@
   }
 
   .phone-sub {
-    font-size: 11px;
+    font-size: 12px;
     color: #94A3B8;
   }
 
   .inspector-body {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
   }
 
   /* Checklist Block */
   .checklist-card {
     background: var(--bg-card-subtle);
     border-radius: var(--radius-md);
-    padding: 14px;
+    padding: 16px;
     border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .check-title {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--text-main);
@@ -796,17 +884,18 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-sub);
     cursor: pointer;
+    line-height: 1.4;
   }
 
   .check-item input[type="checkbox"] {
-    margin-top: 2px;
+    margin-top: 3px;
     accent-color: var(--primary);
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     cursor: pointer;
   }
 
@@ -815,14 +904,14 @@
     background: var(--bg-warm-light);
     border: 1px solid var(--border-warm);
     border-radius: var(--radius-md);
-    padding: 14px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .gen-title {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     color: var(--primary);
     display: flex;
@@ -831,19 +920,19 @@
   }
 
   .gen-desc {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-sub);
-    line-height: 1.35;
+    line-height: 1.4;
   }
 
   .btn-gen {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border-radius: var(--radius-md);
     background: var(--primary-gradient);
     color: #fff;
     border: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
@@ -855,15 +944,14 @@
     box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
   }
 
-  /* Full Copy Box */
   .btn-copy-all {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border-radius: var(--radius-md);
     background: #1C2024;
     color: #fff;
     border: none;
-    font-size: 12px;
+    font-size: 13.5px;
     font-weight: 800;
     cursor: pointer;
     display: flex;
@@ -881,15 +969,15 @@
   /* TOAST NOTIFICATION */
   #toast {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 28px;
+    right: 28px;
     background: #1C2024;
     color: #fff;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border-radius: var(--radius-md);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.3);
     z-index: 9999;
     display: none;
     animation: fadeIn 0.2s ease;
@@ -904,7 +992,7 @@
   .pin-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(28, 32, 36, 0.7);
+    background: rgba(28, 32, 36, 0.75);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -915,26 +1003,26 @@
   .pin-card {
     background: #fff;
     border-radius: var(--radius-xl);
-    padding: 32px;
-    width: 340px;
+    padding: 34px;
+    width: 350px;
     box-shadow: var(--shadow-floating);
     text-align: center;
     border: 1px solid var(--border-warm);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
   }
 
   .pin-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
     background: var(--primary-gradient);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 28px;
     margin: 0 auto;
     box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
   }
@@ -943,7 +1031,7 @@
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin: 8px 0;
+    margin: 6px 0;
   }
 
   .pin-dot {
@@ -968,11 +1056,11 @@
   }
 
   .pin-key {
-    height: 52px;
+    height: 54px;
     border-radius: 14px;
     border: 1px solid var(--border-light);
     background: var(--bg-card-subtle);
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--text-main);
     cursor: pointer;
@@ -989,20 +1077,10 @@
   }
 
   /* SCROLLBAR */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #DDD5CB;
-    border-radius: 99px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #C4B9AD;
-  }
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #DDD5CB; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C4B9AD; }
 </style>
 </head>
 <body>
@@ -1012,8 +1090,8 @@
   <div class="pin-card">
     <div class="pin-icon">🔒</div>
     <div>
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main);">XÁC THỰC MÃ PIN</h3>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Nhập mã PIN bảo mật để mở khóa Workspace</p>
+      <h3 style="font-size: 19px; font-weight: 800; color: var(--text-main);">XÁC THỰC MÃ PIN</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Nhập mã PIN bảo mật để mở khóa Workspace</p>
     </div>
     
     <div class="pin-dots">
@@ -1035,9 +1113,9 @@
       <button class="pin-key" onclick="pressPin('7')">7</button>
       <button class="pin-key" onclick="pressPin('8')">8</button>
       <button class="pin-key" onclick="pressPin('9')">9</button>
-      <button class="pin-key" style="font-size: 12px; font-weight: 700;" onclick="clearPin()">XÓA</button>
+      <button class="pin-key" style="font-size: 13px; font-weight: 800;" onclick="clearPin()">XÓA</button>
       <button class="pin-key" onclick="pressPin('0')">0</button>
-      <button class="pin-key" style="font-size: 16px;" onclick="backspacePin()">⌫</button>
+      <button class="pin-key" style="font-size: 18px;" onclick="backspacePin()">⌫</button>
     </div>
   </div>
 </div>
@@ -1047,7 +1125,7 @@
   <div class="brand-group">
     <div class="brand-icon">📁</div>
     <div class="brand-text">
-      <h1>WORKSPACE HỒ SƠ TÀI CHÍNH <span style="font-size: 11px; padding: 2px 8px; border-radius: 99px; background: var(--bg-warm-light); color: var(--primary); font-weight: 800;">PRO LUXURY</span></h1>
+      <h1>WORKSPACE HỒ SƠ TÀI CHÍNH <span style="font-size: 11.5px; padding: 3px 9px; border-radius: 99px; background: var(--bg-warm-light); color: var(--primary); font-weight: 800;">PRO LUXURY</span></h1>
       <p>Quản lý định danh VNeID • SMS 1414 • Sao kê lương ngân hàng né T7/CN</p>
     </div>
   </div>
@@ -1125,7 +1203,7 @@
     <div class="phone-mockup-header">
       <div class="phone-title">
         <span>🔎 THẨM ĐỊNH SIMULATOR</span>
-        <span id="inspectorFolderTag" style="font-size: 11px; padding: 2px 6px; background: rgba(255,255,255,0.15); border-radius: 4px;">#01</span>
+        <span id="inspectorFolderTag" style="font-size: 11.5px; padding: 3px 8px; background: rgba(255,255,255,0.15); border-radius: 6px;">#01</span>
       </div>
       <p class="phone-sub">Checklist & Tự động sinh số lẻ chuẩn</p>
     </div>
@@ -1137,11 +1215,11 @@
         <div class="check-title">📋 CHECKLIST 3 TIÊU CHÍ</div>
         <label class="check-item">
           <input type="checkbox" id="chk_vneid" onchange="toggleCheck('vneid')">
-          <span>VNeID đủ 3 tầng địa chỉ, không phẩy sau số nhà, có status bar</span>
+          <span>VNeID nơi ở hiện tại không phẩy sau số nhà, đủ status bar</span>
         </label>
         <label class="check-item">
           <input type="checkbox" id="chk_sim" onchange="toggleCheck('sim')">
-          <span>SMS 1414 Viettel/Mobi/Vina đúng cú pháp, gạch chân liên kết</span>
+          <span>SMS 1414 Viettel/Mobi/Vina đúng cú pháp, tên IN HOA KHÔNG DẤU</span>
         </label>
         <label class="check-item">
           <input type="checkbox" id="chk_bank" onchange="toggleCheck('bank')">
@@ -1875,7 +1953,6 @@ function checkPinOnLoad() {
   }
 }
 
-
 function removeVietnameseTones(str) {
   if (!str) return "";
   str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -1895,6 +1972,7 @@ function showToast(msg) {
 }
 
 function copyText(txt, label) {
+  if (!txt) return;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(txt).then(() => {
       showToast("✅ Đã copy: " + (label || txt));
@@ -1991,7 +2069,7 @@ function renderProfileList() {
 
     if (currentSearchTerm) {
       const searchTarget = [
-        p.name, p.cccd, p.phone, p.bank_stk, p.bank_name, p.thuong_tru, p.hien_tai
+        p.name, p.cccd, p.phone, p.bank_stk, p.bank_name, p.hien_tai
       ].join(' ').toLowerCase();
       if (!searchTarget.includes(currentSearchTerm)) return false;
     }
@@ -2000,7 +2078,7 @@ function renderProfileList() {
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 13px;">Không tìm thấy hồ sơ phù hợp</div>';
+    container.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 13.5px;">Không tìm thấy hồ sơ phù hợp</div>';
     return;
   }
 
@@ -2042,6 +2120,13 @@ function selectProfile(fid) {
   loadChecklistState();
 }
 
+function getSms1414Text(p) {
+  const cleanCccd = (p.cccd || '').replace(/\s+/g, '');
+  const unaccentedName = removeVietnameseTones(p.name);
+  const unaccentedNoiCap = removeVietnameseTones(p.noi_cap || 'CUC CS QLHC VE TTXH');
+  return `Ho ten: ${unaccentedName}, ngay sinh: ${p.dob}, The can cuoc: ${cleanCccd}, noi cap: ${unaccentedNoiCap}, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.`;
+}
+
 // Render Workspace
 function renderCenterWorkspace() {
   const p = profilesData.find(x => x.folder === activeFolderId);
@@ -2056,9 +2141,17 @@ function renderCenterWorkspace() {
 
   document.getElementById('inspectorFolderTag').innerText = `#${String(p.folder).padStart(2, '0')} - ${p.name}`;
 
+  const cleanCccd = (p.cccd || '').replace(/\s+/g, '');
+  const smsSyntax = `TTTB ${cleanCccd}`;
+  const fullSms = getSms1414Text(p);
+
   let salariesHtml = '';
   (p.salaries || []).forEach((s) => {
-    const memo = `CONG TY TT LUONG ${s.month} ${p.bank_owner}`;
+    let memo = `CONG TY TT LUONG ${s.month} ${p.bank_owner}`;
+    if ((p.bank_name || '').includes('Vietcombank') && p.folder === 6) {
+      memo = `THANH TOAN TIEN LUONG THANG ${s.month.replace('T', '')} - BVH`;
+    }
+
     salariesHtml += `
       <div class="salary-row">
         <div class="salary-month">${s.month}</div>
@@ -2069,7 +2162,10 @@ function renderCenterWorkspace() {
         <div class="salary-amount-val">+${s.amount} đ</div>
         <div class="salary-balance-val">${s.new_bal} đ</div>
         <div class="salary-memo-text" title="${memo}">${memo}</div>
-        <button class="btn-copy-memo" onclick="copyText('${memo}', 'Nội dung chuyển khoản')">Copy Memo</button>
+        <div class="salary-actions">
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung chuyển khoản')">📋 Memo</button>
+          <button class="copy-btn-inline" onclick="copyText('${s.amount}', 'Số tiền lương')">💰 Tiền</button>
+        </div>
       </div>
     `;
   });
@@ -2080,18 +2176,21 @@ function renderCenterWorkspace() {
       <div class="banner-left">
         <div class="banner-folder">#${String(p.folder).padStart(2, '0')}</div>
         <div class="banner-titles">
-          <h2>${p.name}</h2>
+          <h2>
+            <span>${p.name}</span>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.name}', 'Họ và tên')">📋 Copy Tên</button>
+          </h2>
           <div class="banner-sub">
             <span>🎂 Sinh: <strong>${p.dob}</strong></span>
             <span>•</span>
             <span>📱 SĐT: <strong>${p.phone}</strong> (${p.sim})</span>
             <span>•</span>
-            <span>🏦 ${p.bank_name}</span>
+            <span>🏦 <strong>${p.bank_name}</strong></span>
           </div>
         </div>
       </div>
       
-      <div style="display: flex; gap: 10px; align-items: center;">
+      <div style="display: flex; gap: 12px; align-items: center;">
         <button class="status-pill-switch ${stClass}" onclick="cycleActiveStatus()" title="Bấm để đổi trạng thái">
           ${stLabel} 🔄
         </button>
@@ -2105,35 +2204,59 @@ function renderCenterWorkspace() {
       <div class="info-module-card">
         <div class="module-title">
           <span>🪪 ĐỊNH DANH CCCD & VNeID</span>
-          <span class="copy-chip" onclick="copyText('${p.cccd}', 'Số CCCD')">Copy CCCD</span>
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.cccd}', 'Số CCCD')">📋 Copy CCCD</button>
         </div>
         
         <div class="field-row">
           <span class="field-label">Số CCCD:</span>
-          <span class="field-value">${p.cccd}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Ngày cấp:</span>
-          <span class="field-value">${p.ngay_cap}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Ngày hết hạn:</span>
-          <span class="field-value">${p.ngay_het_han}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Nơi cấp:</span>
-          <span class="field-value" style="font-size: 11px;">${p.noi_cap}</span>
+          <div class="field-value-group">
+            <span class="field-value mono">${p.cccd}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.cccd}', 'Số CCCD')">📋</button>
+          </div>
         </div>
 
-        <div class="address-stack">
-          <div class="address-item">
-            <span class="address-tag">🏡 Nơi thường trú (quê gốc):</span>
-            <div class="address-text">${p.thuong_tru}</div>
+        <div class="field-row">
+          <span class="field-label">Ngày sinh:</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.dob}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.dob}', 'Ngày sinh')">📋</button>
           </div>
-          <div class="address-item">
-            <span class="address-tag">🏢 Nơi tạm trú (Sài Gòn - Không dấu phẩy):</span>
-            <div class="address-text">${p.hien_tai}</div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">Ngày cấp:</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.ngay_cap}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.ngay_cap}', 'Ngày cấp')">📋</button>
           </div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">Ngày hết hạn:</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.ngay_het_han}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.ngay_het_han}', 'Ngày hết hạn')">📋</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">Nơi cấp:</span>
+          <div class="field-value-group">
+            <span class="field-value" style="font-size: 13.5px;">${p.noi_cap}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.noi_cap}', 'Nơi cấp')">📋</button>
+          </div>
+        </div>
+
+        <!-- Single Streamlined Address Box (No Quê Gốc) -->
+        <div class="address-box-modern">
+          <div class="address-box-header">
+            <span class="address-badge">📍 NƠI Ở HIỆN TẠI / TẠM TRÚ (TP.HCM)</span>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.hien_tai}', 'Địa chỉ hiện tại')">
+              📋 Copy Địa Chỉ
+            </button>
+          </div>
+          <div class="address-content-text">${p.hien_tai}</div>
+          <div class="address-sub-note">✓ Chuẩn không dấu phẩy sau số nhà • Trùng khớp VNeID 100%</div>
         </div>
       </div>
 
@@ -2141,60 +2264,95 @@ function renderCenterWorkspace() {
       <div class="info-module-card">
         <div class="module-title">
           <span>📱 THÔNG TIN SIM 1414</span>
-          <span class="copy-chip" onclick="copyText('${p.phone}', 'Số điện thoại')">Copy SĐT</span>
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.phone}', 'Số điện thoại')">📋 Copy SĐT</button>
         </div>
         
         <div class="field-row">
           <span class="field-label">Số điện thoại:</span>
-          <span class="field-value">${p.phone}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Nhà mạng:</span>
-          <span class="field-value">${p.sim}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Email:</span>
-          <span class="field-value" style="font-size: 11px;">${p.gmail}</span>
-        </div>
-        <div class="field-row">
-          <span class="field-label">Cú pháp gửi 1414:</span>
-          <span class="field-value">
-            <span class="copy-chip" onclick="copyText('TTTB ${p.cccd}', 'Cú pháp 1414')">TTTB ${p.cccd}</span>
-          </span>
+          <div class="field-value-group">
+            <span class="field-value mono">${p.phone}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.phone}', 'Số điện thoại')">📋</button>
+          </div>
         </div>
 
-        <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 10px; font-size: 11px; color: var(--text-sub); line-height: 1.4;">
-          <strong>Tin nhắn SMS mẫu:</strong><br>
-          Ho ten: ${removeVietnameseTones(p.name)}, ngay sinh: ${p.dob}, The can cuoc: ${p.cccd}, noi cap: CUC CS QLHC VE TTXH, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.
+        <div class="field-row">
+          <span class="field-label">Nhà mạng:</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.sim}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.sim}', 'Nhà mạng')">📋</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">Email:</span>
+          <div class="field-value-group">
+            <span class="field-value" style="font-size: 13.5px;">${p.gmail}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.gmail}', 'Email')">📋</button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <span class="field-label">Cú pháp 1414:</span>
+          <div class="field-value-group">
+            <span class="field-value mono" style="color: var(--primary);">${smsSyntax}</span>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${smsSyntax}', 'Cú pháp gửi 1414')">📋 Copy Cú Pháp</button>
+          </div>
+        </div>
+
+        <!-- Full SMS 1414 Preview Box -->
+        <div class="sms-preview-card">
+          <div class="sms-preview-header">
+            <span>✉️ TIN NHẮN SMS 1414 MẪU (IN HOA - KHÔNG DẤU)</span>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText(getSms1414Text(profilesData.find(x => x.folder === ${p.folder})), 'Toàn bộ nội dung tin nhắn 1414')">📋 Copy Toàn Bộ SMS</button>
+          </div>
+          <div class="sms-preview-text">${fullSms}</div>
         </div>
       </div>
 
-      <!-- Card 3: NGÂN HÀNG -->
+      <!-- Card 3: Bank Account -->
       <div class="info-module-card">
         <div class="module-title">
-          <span>🏦 TÀI KHOẢN SAO KÊ</span>
-          <span class="copy-chip" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">Copy STK</span>
+          <span>🏦 TÀI KHOẢN NHẬN LƯƠNG</span>
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">📋 Copy STK</button>
         </div>
         
         <div class="field-row">
           <span class="field-label">Ngân hàng:</span>
-          <span class="field-value" style="color: var(--primary); font-weight: 800;">${p.bank_name}</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.bank_name}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.bank_name}', 'Tên ngân hàng')">📋</button>
+          </div>
         </div>
+
         <div class="field-row">
           <span class="field-label">Số tài khoản:</span>
-          <span class="field-value" style="font-family: 'JetBrains Mono', monospace;">${p.bank_stk}</span>
+          <div class="field-value-group">
+            <span class="field-value mono" style="font-size: 17.5px; color: #1E293B;">${p.bank_stk}</span>
+            <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${p.bank_stk}', 'Số tài khoản')">📋 Copy</button>
+          </div>
         </div>
+
         <div class="field-row">
           <span class="field-label">Chủ tài khoản:</span>
-          <span class="field-value">${p.bank_owner}</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.bank_owner}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.bank_owner}', 'Chủ tài khoản')">📋</button>
+          </div>
         </div>
+
         <div class="field-row">
-          <span class="field-label">Chu kỳ trả lương:</span>
-          <span class="field-value">${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}</span>
+          <span class="field-label">Chu kỳ lương:</span>
+          <div class="field-value-group">
+            <span class="field-value">${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}</span>
+            <button class="copy-btn-inline" onclick="copyText('${p.cycle || 'Chu kỳ Mùng 10 (Né T7/CN)'}', 'Chu kỳ lương')">📋</button>
+          </div>
         </div>
+
         <div class="field-row">
           <span class="field-label">Quy tắc số lẻ:</span>
-          <span class="field-value" style="color: #16A34A; font-weight: 800;">001 - 999 (Số dư > Tiền nhận)</span>
+          <div class="field-value-group">
+            <span class="field-value" style="color: #15803D; font-weight: 800;">001 - 999 (Số dư > Tiền nhận)</span>
+          </div>
         </div>
       </div>
 
@@ -2215,7 +2373,7 @@ function renderCenterWorkspace() {
           <div>Số tiền nhận (Lẻ)</div>
           <div>Số dư (Lớn hơn)</div>
           <div>Nội dung chuyển khoản</div>
-          <div style="text-align: center;">Thao tác</div>
+          <div style="text-align: right;">Sao chép</div>
         </div>
         ${salariesHtml}
       </div>
@@ -2294,8 +2452,7 @@ function copyFullActiveProfile() {
 - Ngày sinh: ${p.dob}
 - CCCD: ${p.cccd} (Cấp: ${p.ngay_cap} tại ${p.noi_cap})
 - SĐT: ${p.phone} (${p.sim})
-- Thường trú: ${p.thuong_tru}
-- Tạm trú: ${p.hien_tai}
+- Địa chỉ hiện tại / Tạm trú: ${p.hien_tai}
 - Ngân hàng: ${p.bank_name} - STK: ${p.bank_stk} (Chủ TK: ${p.bank_owner})`;
 
   copyText(text, `Trọn bộ thông tin ${p.name}`);
