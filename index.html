@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>WORKSPACE QUẢN LÝ HỒ SƠ TÀI CHÍNH - WARM LUXURY UI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,23 +46,34 @@
     --radius-xl: 22px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   
   html, body {
-    height: 100vh;
-    max-height: 100vh;
-    overflow: hidden;
-  }
-
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg-page);
     color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.4;
     font-size: 14.5px;
-    display: flex;
-    flex-direction: column;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* DESKTOP DEFAULT SCROLL LOCK (FITS 1 SCREEN) */
+  @media (min-width: 901px) {
+    html, body {
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+  }
+
+  /* MOBILE NATURAL SCROLL */
+  @media (max-width: 900px) {
+    html, body {
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
   }
 
   /* UNIVERSAL CLICK-TO-COPY STYLES */
@@ -89,26 +100,28 @@
   .top-navbar {
     background: var(--bg-card);
     border-bottom: 1px solid var(--border-light);
-    padding: 8px 24px;
-    height: 52px;
+    padding: 8px 20px;
+    min-height: 52px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     z-index: 50;
     box-shadow: 0 2px 10px rgba(150, 110, 80, 0.03);
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
   }
 
   .brand-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .brand-icon {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: var(--radius-md);
     background: var(--primary-gradient);
     display: flex;
@@ -117,31 +130,33 @@
     color: #fff;
     font-size: 18px;
     font-weight: 800;
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+    box-shadow: 0 3px 10px rgba(234, 88, 12, 0.25);
+    flex-shrink: 0;
   }
 
   .brand-text h1 {
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 800;
     letter-spacing: -0.3px;
     color: var(--text-main);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .brand-text p {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--text-muted);
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .kpi-bar {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     background: var(--bg-card-subtle);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
   }
@@ -152,7 +167,7 @@
   }
 
   .kpi-label {
-    font-size: 10px;
+    font-size: 9.5px;
     text-transform: uppercase;
     font-weight: 700;
     color: var(--text-muted);
@@ -160,7 +175,7 @@
   }
 
   .kpi-value {
-    font-size: 14.5px;
+    font-size: 13.5px;
     font-weight: 800;
     color: var(--text-main);
   }
@@ -178,8 +193,8 @@
   }
 
   .progress-track {
-    width: 90px;
-    height: 8px;
+    width: 80px;
+    height: 7px;
     background: #E2D9CF;
     border-radius: 99px;
     overflow: hidden;
@@ -195,22 +210,23 @@
   .top-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .btn-action {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 14px;
+    padding: 7px 12px;
     border-radius: var(--radius-md);
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     border: 1px solid var(--border-light);
     background: var(--bg-card);
     color: var(--text-main);
     transition: all 0.2s;
+    white-space: nowrap;
   }
 
   .btn-action:hover {
@@ -226,20 +242,63 @@
     box-shadow: 0 3px 10px rgba(234, 88, 12, 0.22);
   }
 
-  .btn-primary:hover {
-    box-shadow: 0 5px 14px rgba(234, 88, 12, 0.3);
-    transform: translateY(-1px);
-    color: #fff;
+  /* MOBILE PROFILE HORIZONTAL SWIPE STRIP */
+  .mobile-profile-bar {
+    display: none;
+    background: #FFFDFC;
+    border-bottom: 1px solid var(--border-light);
+    padding: 8px 12px;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .mobile-profile-bar::-webkit-scrollbar { display: none; }
+
+  .mobile-p-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 99px;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-light);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-sub);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .mobile-p-pill.active {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 3px 10px rgba(234, 88, 12, 0.3);
+  }
+
+  .mobile-p-pill .p-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .mobile-p-pill.active .p-dot { background: #fff !important; }
 
   /* MAIN LAYOUT */
   .app-container {
     display: flex;
     flex: 1;
-    height: calc(100vh - 52px);
     overflow: hidden;
     padding: 12px 16px;
     gap: 14px;
+  }
+
+  @media (min-width: 901px) {
+    .app-container {
+      height: calc(100vh - 52px);
+    }
   }
 
   /* LEFT SIDEBAR */
@@ -255,6 +314,8 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
   }
 
   .sidebar-header {
@@ -432,7 +493,7 @@
     color: var(--text-main);
   }
 
-  /* READABLE STATUS BADGE ON SIDEBAR ITEMS */
+  /* STATUS BADGE PILL ON SIDEBAR */
   .status-badge-pill {
     display: inline-flex;
     align-items: center;
@@ -471,7 +532,7 @@
     border: 1px solid #CBD5E1;
   }
 
-  /* 1-CLICK STATUS TAG PICKER ON TOP BANNER */
+  /* 1-CLICK STATUS TAG PICKER ON BANNER */
   .status-tag-picker {
     display: inline-flex;
     align-items: center;
@@ -496,6 +557,7 @@
     color: var(--text-sub);
     cursor: pointer;
     transition: all 0.15s ease;
+    white-space: nowrap;
   }
 
   .picker-btn:hover {
@@ -530,6 +592,7 @@
     align-items: center;
     gap: 6px;
     margin-top: 4px;
+    flex-wrap: wrap;
   }
 
   .quick-tag-label {
@@ -553,6 +616,7 @@
     cursor: pointer;
     transition: all 0.15s;
     user-select: none;
+    white-space: nowrap;
   }
 
   .tag-chip-toggle:hover {
@@ -569,18 +633,7 @@
     box-shadow: 0 1px 4px rgba(255, 115, 36, 0.15);
   }
 
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .status-dot.done { background: var(--status-done); box-shadow: 0 0 0 2px var(--status-done-bg); }
-  .status-dot.doing { background: var(--status-doing); box-shadow: 0 0 0 2px var(--status-doing-bg); }
-  .status-dot.queue { background: var(--status-queue); box-shadow: 0 0 0 2px var(--status-queue-bg); }
-
-  /* MAIN WORKSPACE - 100% SINGLE VIEWPORT VIEW */
+  /* MAIN WORKSPACE */
   .center-workspace {
     flex: 1;
     background: var(--bg-card);
@@ -590,13 +643,18 @@
     padding: 14px 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    height: 100%;
-    overflow: hidden;
+    gap: 12px;
   }
 
-  /* Top Profile Banner */
+  @media (min-width: 901px) {
+    .center-workspace {
+      height: 100%;
+      overflow: hidden;
+      justify-content: space-between;
+    }
+  }
+
+  /* Profile Banner */
   .profile-banner {
     display: flex;
     justify-content: space-between;
@@ -604,6 +662,8 @@
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border-light);
     flex-shrink: 0;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .banner-left {
@@ -635,33 +695,18 @@
     align-items: center;
     gap: 10px;
     line-height: 1.2;
+    flex-wrap: wrap;
   }
 
   .banner-sub {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     font-size: 13px;
     color: var(--text-sub);
     margin-top: 3px;
+    flex-wrap: wrap;
   }
-
-  .status-pill-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 99px;
-    font-size: 12.5px;
-    font-weight: 800;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-  }
-
-  .status-pill-switch.done { background: var(--status-done-bg); color: var(--status-done); }
-  .status-pill-switch.doing { background: var(--status-doing-bg); color: #B45309; }
-  .status-pill-switch.queue { background: var(--status-queue-bg); color: #475569; }
 
   /* 3 MODULAR INFO CARDS GRID */
   .grid-info-cards {
@@ -696,13 +741,13 @@
     border-bottom: 1.5px solid var(--border-warm);
   }
 
-  /* FIELD ROW - BOTH LABEL & VALUE ARE CLICKABLE TO COPY */
+  /* FIELD ROWS */
   .field-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    padding: 3px 4px;
+    padding: 4px 4px;
     border-bottom: 1px dashed rgba(220, 210, 200, 0.5);
     border-radius: 6px;
     transition: all 0.15s;
@@ -746,7 +791,6 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* COPY BUTTONS */
   .copy-btn-inline {
     display: inline-flex;
     align-items: center;
@@ -904,6 +948,7 @@
     flex-direction: column;
   }
 
+  /* DESKTOP TABLE ROW */
   .salary-row {
     display: grid;
     grid-template-columns: 75px 170px 160px 160px 1fr 205px;
@@ -1034,6 +1079,115 @@
     justify-content: flex-end;
   }
 
+  /* MOBILE SALARY CARDS */
+  .salary-mobile-list {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .salary-m-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .sm-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 6px;
+  }
+
+  .sm-month-pill {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--primary-gradient);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .sm-date-str {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .sm-numbers-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .sm-number-box {
+    background: var(--bg-card-subtle);
+    padding: 8px 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+    border: 1px solid var(--border-light);
+  }
+
+  .sm-number-box:hover {
+    background: var(--bg-warm-light);
+    border-color: var(--border-warm);
+  }
+
+  .sm-num-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .sm-num-val {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .sm-memo-box {
+    font-size: 12px;
+    color: var(--text-sub);
+    background: var(--bg-warm-light);
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-warm);
+    line-height: 1.35;
+    word-break: break-all;
+    cursor: pointer;
+  }
+
+  .sm-actions-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .sm-actions-row button {
+    flex: 1;
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  /* DRAWER BACKDROP ON MOBILE */
+  .drawer-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+  }
+
   /* TOAST NOTIFICATION */
   #toast {
     position: fixed;
@@ -1066,13 +1220,15 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
+    padding: 16px;
   }
 
   .pin-card {
     background: #fff;
     border-radius: var(--radius-xl);
-    padding: 30px;
-    width: 330px;
+    padding: 26px;
+    width: 100%;
+    max-width: 330px;
     box-shadow: var(--shadow-floating);
     text-align: center;
     border: 1px solid var(--border-warm);
@@ -1082,8 +1238,8 @@
   }
 
   .pin-icon {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
     border-radius: 16px;
     background: var(--primary-gradient);
     color: #fff;
@@ -1144,6 +1300,116 @@
     color: var(--primary);
   }
 
+  /* ========================================================= */
+  /* RESPONSIVE BREAKPOINTS FOR TABLETS & MOBILE PHONES       */
+  /* ========================================================= */
+
+  @media (max-width: 900px) {
+    /* Top Navbar */
+    .top-navbar {
+      padding: 8px 12px;
+      gap: 8px;
+    }
+
+    .brand-text p {
+      display: none; /* Hide subtitle to save mobile space */
+    }
+
+    .kpi-bar {
+      display: none; /* Put KPI in mobile bar */
+    }
+
+    /* Show Mobile Profile Bar */
+    .mobile-profile-bar {
+      display: flex;
+    }
+
+    /* Container: Stack vertically */
+    .app-container {
+      flex-direction: column;
+      padding: 10px;
+      gap: 12px;
+    }
+
+    /* Sidebar becomes off-canvas drawer */
+    .sidebar-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 85%;
+      max-width: 320px;
+      z-index: 100;
+      transform: translateX(-105%);
+      box-shadow: 4px 0 24px rgba(0,0,0,0.25);
+    }
+
+    .sidebar-panel.mobile-open {
+      transform: translateX(0);
+    }
+
+    .drawer-backdrop.mobile-open {
+      display: block;
+    }
+
+    /* Center Workspace */
+    .center-workspace {
+      padding: 14px 12px;
+      gap: 14px;
+    }
+
+    .profile-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .status-tag-picker {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .picker-btn {
+      flex: 1;
+      padding: 7px 4px;
+      font-size: 11.5px;
+      justify-content: center;
+    }
+
+    /* 3 Info Cards stack vertically */
+    .grid-info-cards {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* Switch desktop table to mobile salary cards */
+    .salary-table-card {
+      display: none;
+    }
+
+    .salary-mobile-list {
+      display: flex;
+    }
+
+    #toast {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner-titles h2 {
+      font-size: 19px;
+    }
+    .banner-folder {
+      width: 38px;
+      height: 38px;
+      font-size: 17px;
+    }
+  }
+
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -1152,6 +1418,9 @@
 </style>
 </head>
 <body>
+
+<!-- DRAWER BACKDROP ON MOBILE -->
+<div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleMobileDrawer()"></div>
 
 <!-- PIN OVERLAY -->
 <div id="pinOverlay" class="pin-overlay">
@@ -1191,17 +1460,20 @@
 <!-- TOP NAVBAR -->
 <header class="top-navbar">
   <div class="brand-group">
+    <button class="btn-action" style="padding: 6px 10px; font-size: 14px; display: inline-flex;" onclick="toggleMobileDrawer()" title="Mở danh sách hồ sơ">
+      ☰ <span style="font-size: 12px; font-weight: 800; margin-left: 4px;">Hồ sơ</span>
+    </button>
     <div class="brand-icon">📁</div>
     <div class="brand-text">
-      <h1>WORKSPACE HỒ SƠ TÀI CHÍNH <span style="font-size: 11px; padding: 2px 8px; border-radius: 99px; background: var(--bg-warm-light); color: var(--primary); font-weight: 800;">PRO LUXURY</span></h1>
-      <p>Quản lý định danh VNeID • SMS 1414 • Sao kê lương né T7/CN</p>
+      <h1>WORKSPACE <span style="font-size: 10.5px; padding: 2px 6px; border-radius: 99px; background: var(--bg-warm-light); color: var(--primary); font-weight: 800;">PRO</span></h1>
+      <p>VNeID • SMS 1414 • Sao kê lương</p>
     </div>
   </div>
 
   <div class="kpi-bar">
     <div class="kpi-item">
-      <span class="kpi-label">Số dư ví tiền</span>
-      <span class="kpi-value kpi-wallet copyable" onclick="copyText(this.innerText, 'Số dư ví tiền')" title="Click để copy">${(11 * 300000).toLocaleString('vi-VN')} VNĐ</span>
+      <span class="kpi-label">Số dư ví</span>
+      <span class="kpi-value kpi-wallet copyable" onclick="copyText(this.innerText, 'Số dư ví tiền')">${(11 * 300000).toLocaleString('vi-VN')} đ</span>
     </div>
     
     <div class="progress-capsule">
@@ -1216,24 +1488,31 @@
   </div>
 
   <div class="top-actions">
-    <button class="btn-action btn-primary" onclick="copyZaloSummary()">
-      📋 Copy danh sách gửi Zalo
-    </button>
-    <button class="btn-action" onclick="copyFullActiveProfile()" title="Copy toàn bộ thông tin hồ sơ đang xem">
-      📄 Copy Trọn Bộ Hồ Sơ
+    <button class="btn-action btn-primary" onclick="copyZaloSummary()" title="Copy danh sách 12 bộ gửi Zalo">
+      📋 <span style="display: inline-block;">Zalo</span>
     </button>
     <button class="btn-action" onclick="lockAppNow()" title="Khóa màn hình PIN">
-      🔒 Khóa PIN
+      🔒
     </button>
   </div>
 </header>
 
+<!-- MOBILE HORIZONTAL PROFILE STRIP (QUICK 1-THUMB SWIPE) -->
+<nav class="mobile-profile-bar" id="mobileProfileBar">
+  <!-- Injected by JS -->
+</nav>
+
 <!-- MAIN APP BODY -->
 <div class="app-container">
   
-  <!-- LEFT SIDEBAR -->
-  <aside class="sidebar-panel">
+  <!-- SIDEBAR (DRAWER ON MOBILE) -->
+  <aside class="sidebar-panel" id="sidebarPanel">
     <div class="sidebar-header">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <span style="font-size: 13.5px; font-weight: 800; color: var(--text-main);">📁 DANH SÁCH 12 BỘ</span>
+        <button class="copy-btn-inline" style="padding: 2px 8px;" onclick="toggleMobileDrawer()">✕ Đóng</button>
+      </div>
+
       <div class="search-box">
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" class="search-input" placeholder="Tìm tên, CCCD, SĐT, STK..." oninput="handleSearch(this.value)">
@@ -1243,7 +1522,7 @@
       <div class="status-pills">
         <button class="pill active" onclick="setStatusFilter('all', this)">Tất cả (12)</button>
         <button class="pill" onclick="setStatusFilter('done', this)">Đã duyệt (<span id="countDone">11</span>)</button>
-        <button class="pill" onclick="setStatusFilter('queue', this)">Chờ duyệt (<span id="countQueue">1</span>)</button>
+        <button class="pill" onclick="setStatusFilter('queue', this)">Chờ (<span id="countQueue">1</span>)</button>
       </div>
 
       <!-- Bank Chips -->
@@ -1921,6 +2200,17 @@ let currentBankFilter = 'all';
 let currentSearchTerm = '';
 const UNIT_PRICE = 300000;
 
+// Mobile Drawer Toggle
+function toggleMobileDrawer() {
+  const sb = document.getElementById('sidebarPanel');
+  const bd = document.getElementById('drawerBackdrop');
+  if (sb && bd) {
+    const isOpen = sb.classList.contains('mobile-open');
+    sb.classList.toggle('mobile-open', !isOpen);
+    bd.classList.toggle('mobile-open', !isOpen);
+  }
+}
+
 // PIN Management
 function updatePinDots() {
   for (let i = 0; i < 6; i++) {
@@ -2025,6 +2315,7 @@ function setProfileStatus(folderId, st) {
   localStorage.setItem('profile_status_' + folderId, st);
   updateKPI();
   renderProfileList();
+  renderMobileStrip();
   renderCenterWorkspace();
 }
 
@@ -2051,15 +2342,6 @@ function cycleStatusForProfile(folderId) {
   showToast(`🏷️ Hồ sơ #${folderId}: ${label}`);
 }
 
-function cycleActiveStatus() {
-  const cur = getProfileStatus(activeFolderId);
-  let next = 'doing';
-  if (cur === 'queue') next = 'doing';
-  else if (cur === 'doing') next = 'done';
-  else if (cur === 'done') next = 'queue';
-  setProfileStatus(activeFolderId, next);
-}
-
 // KPI & Wallet
 function updateKPI() {
   let doneCount = 0;
@@ -2072,7 +2354,7 @@ function updateKPI() {
 
   const wallet = doneCount * UNIT_PRICE;
   const elW = document.querySelector('.kpi-wallet');
-  if (elW) elW.innerText = wallet.toLocaleString('vi-VN') + ' VNĐ';
+  if (elW) elW.innerText = wallet.toLocaleString('vi-VN') + ' đ';
   document.getElementById('topProgressCount').innerText = doneCount + " / " + profilesData.length + " bộ";
   document.getElementById('topProgressBar').style.width = Math.round((doneCount / profilesData.length) * 100) + "%";
   
@@ -2137,20 +2419,22 @@ function renderProfileList() {
     
     const card = document.createElement('div');
     card.className = 'profile-card-item' + (isActive ? ' active' : '');
-    card.onclick = () => selectProfile(p.folder);
+    card.onclick = () => {
+      selectProfile(p.folder);
+      const sb = document.getElementById('sidebarPanel');
+      if (sb && sb.classList.contains('mobile-open')) {
+        toggleMobileDrawer();
+      }
+    };
     
     let stClass = 'queue';
-    if (st === 'done') stClass = 'done';
-    else if (st === 'doing') stClass = 'doing';
-
-    const shortBank = (p.bank_name || '').replace('Ngân hàng ', '').trim();
-
     let badgeText = '⏳ Chờ';
-    if (st === 'done') badgeText = '✓ Đã duyệt';
-    else if (st === 'doing') badgeText = '⚡ Đang làm';
+    if (st === 'done') { stClass = 'done'; badgeText = '✓ Đã duyệt'; }
+    else if (st === 'doing') { stClass = 'doing'; badgeText = '⚡ Đang làm'; }
 
     const hasLoc = hasTag(p.folder, 'loc');
     const locTagHtml = hasLoc ? '<span style="font-size: 9.5px; padding: 1px 4px; background: #DBEAFE; color: #1D4ED8; border-radius: 4px; font-weight: 800;">📁 Lộc</span>' : '';
+    const shortBank = (p.bank_name || '').replace('Ngân hàng ', '').trim();
 
     card.innerHTML = `
       <div class="item-folder-badge">#${String(p.folder).padStart(2, '0')}</div>
@@ -2171,10 +2455,41 @@ function renderProfileList() {
   });
 }
 
+// Render Mobile Profile Strip (Quick thumb switcher)
+function renderMobileStrip() {
+  const bar = document.getElementById('mobileProfileBar');
+  if (!bar) return;
+  bar.innerHTML = '';
+
+  profilesData.forEach(p => {
+    const isActive = p.folder === activeFolderId;
+    const st = getProfileStatus(p.folder);
+    let dotColor = '#94A3B8';
+    if (st === 'done') dotColor = '#EF4444';
+    else if (st === 'doing') dotColor = '#F59E0B';
+
+    const pill = document.createElement('button');
+    pill.className = 'mobile-p-pill' + (isActive ? ' active' : '');
+    pill.innerHTML = `
+      <span class="p-dot" style="background: ${dotColor};"></span>
+      <span>#${String(p.folder).padStart(2, '0')} ${p.name.split(' ').slice(-1)[0]}</span>
+    `;
+    pill.onclick = () => selectProfile(p.folder);
+    bar.appendChild(pill);
+
+    if (isActive) {
+      setTimeout(() => {
+        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }, 50);
+    }
+  });
+}
+
 function selectProfile(fid) {
   activeFolderId = fid;
   localStorage.setItem('app_active_folder', fid);
   renderProfileList();
+  renderMobileStrip();
   renderCenterWorkspace();
 }
 
@@ -2185,30 +2500,29 @@ function getSms1414Text(p) {
   return `Ho ten: ${unaccentedName}, ngay sinh: ${p.dob}, The can cuoc: ${cleanCccd}, noi cap: ${unaccentedNoiCap}, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.`;
 }
 
-// Render Center Workspace (EVERYTHING DIRECTLY CLICKABLE TO COPY)
+// Render Center Workspace
 function renderCenterWorkspace() {
   const p = profilesData.find(x => x.folder === activeFolderId);
   const container = document.getElementById('centerWorkspace');
   if (!p) return;
 
   const st = getProfileStatus(p.folder);
-  let stLabel = '⚪ Chờ xử lý';
-  let stClass = 'queue';
-  if (st === 'done') { stLabel = '🔴 Đã hoàn thành (10/10)'; stClass = 'done'; }
-  else if (st === 'doing') { stLabel = '🟡 Đang chỉnh sửa'; stClass = 'doing'; }
-
   const cleanCccd = (p.cccd || '').replace(/\s+/g, '');
   const smsSyntax = `TTTB ${cleanCccd}`;
   const fullSms = getSms1414Text(p);
 
-  let salariesHtml = '';
+  // Salaries: Desktop Table & Mobile Cards
+  let salariesTableHtml = '';
+  let salariesMobileHtml = '';
+
   (p.salaries || []).forEach((s) => {
     let memo = `CONG TY TT LUONG ${s.month} ${p.bank_owner}`;
     if ((p.bank_name || '').includes('Vietcombank') && p.folder === 6) {
       memo = `THANH TOAN TIEN LUONG THANG ${s.month.replace('T', '')} - BVH`;
     }
 
-    salariesHtml += `
+    // Desktop Row
+    salariesTableHtml += `
       <div class="salary-row">
         <div class="salary-month copyable" onclick="copyText('${s.month}', 'Tháng lương')" title="Click để copy ${s.month}">${s.month}</div>
         <div class="salary-date-badge copyable" onclick="copyText('${s.date}', 'Ngày giờ nhận lương')" title="Click để copy ngày giờ">
@@ -2228,6 +2542,34 @@ function renderCenterWorkspace() {
           <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung CK ${s.month}')">📋 Memo</button>
           <button class="copy-btn-inline" style="color: #15803D; font-weight: 800;" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')">💰 Tiền</button>
           <button class="copy-btn-inline" style="color: #1E293B; font-weight: 800;" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')">💳 Dư</button>
+        </div>
+      </div>
+    `;
+
+    // Mobile Card
+    salariesMobileHtml += `
+      <div class="salary-m-card">
+        <div class="sm-card-head">
+          <span class="sm-month-pill copyable" onclick="copyText('${s.month}', 'Tháng lương')">${s.month}</span>
+          <span class="sm-date-str copyable" onclick="copyText('${s.date}', 'Ngày giờ')">📅 ${s.date} (${s.day_name})</span>
+        </div>
+        <div class="sm-numbers-row">
+          <div class="sm-number-box" onclick="copyText('${s.amount}', 'Tiền lương ${s.month}')">
+            <span class="sm-num-label">Tiền nhận:</span>
+            <span class="sm-num-val" style="color: #15803D;">+${s.amount} đ 📋</span>
+          </div>
+          <div class="sm-number-box" onclick="copyText('${s.new_bal}', 'Số dư ${s.month}')">
+            <span class="sm-num-label">Số dư:</span>
+            <span class="sm-num-val" style="color: #1E293B;">${s.new_bal} đ 📋</span>
+          </div>
+        </div>
+        <div class="sm-memo-box" onclick="copyText('${memo}', 'Nội dung CK ${s.month}')">
+          <strong style="color: var(--primary);">Nội dung CK:</strong> ${memo}
+        </div>
+        <div class="sm-actions-row">
+          <button class="copy-btn-inline copy-btn-highlight" onclick="copyText('${memo}', 'Nội dung CK')">📋 Copy Memo</button>
+          <button class="copy-btn-inline" style="color: #15803D; font-weight: 800;" onclick="copyText('${s.amount}', 'Tiền lương')">💰 Tiền</button>
+          <button class="copy-btn-inline" style="color: #1E293B; font-weight: 800;" onclick="copyText('${s.new_bal}', 'Số dư')">💳 Dư</button>
         </div>
       </div>
     `;
@@ -2265,8 +2607,8 @@ function renderCenterWorkspace() {
         </div>
       </div>
       
-      <div style="display: flex; gap: 10px; align-items: center;">
-        <div class="status-tag-picker" title="Gắn thẻ trạng thái nhanh 1 chạm (Phím 1: Chờ, Phím 2: Làm, Phím 3: Duyệt)">
+      <div style="display: flex; gap: 8px; align-items: center; width: 100%; justify-content: space-between; flex-wrap: wrap;">
+        <div class="status-tag-picker" title="Gắn thẻ trạng thái nhanh 1 chạm">
           <button class="picker-btn opt-queue ${st === 'queue' ? 'active' : ''}" onclick="setProfileStatus(activeFolderId, 'queue')">
             ⏳ Chờ duyệt (1)
           </button>
@@ -2277,11 +2619,11 @@ function renderCenterWorkspace() {
             ✓ Đã duyệt 10/10 (3)
           </button>
         </div>
-        <button class="copy-btn-inline copy-btn-highlight" style="padding: 6px 12px; font-size: 12px;" onclick="copyFullActiveProfile()">📄 Copy Trọn Bộ</button>
+        <button class="copy-btn-inline copy-btn-highlight" style="padding: 7px 14px; font-size: 12.5px;" onclick="copyFullActiveProfile()">📄 Copy Trọn Bộ Hồ Sơ</button>
       </div>
     </div>
 
-    <!-- 3 Modular Info Cards Side-By-Side -->
+    <!-- 3 Modular Info Cards Grid -->
     <div class="grid-info-cards">
       
       <!-- Card 1: VNeID & CCCD & Address -->
@@ -2374,7 +2716,7 @@ function renderCenterWorkspace() {
           </div>
         </div>
 
-        <!-- Full SMS 1414 Preview Box (Click anywhere to copy) -->
+        <!-- Full SMS 1414 Preview Box -->
         <div class="sms-preview-card" onclick="copyText(getSms1414Text(profilesData.find(x => x.folder === ${p.folder})), 'Toàn bộ SMS 1414')" title="Bấm vào đây để copy toàn bộ nội dung tin nhắn 1414">
           <div class="sms-preview-header">
             <span>✉️ SMS 1414 MẪU (IN HOA - KHÔNG DẤU)</span>
@@ -2441,7 +2783,7 @@ function renderCenterWorkspace() {
 
     </div>
 
-    <!-- 4-Month Salaries Table -->
+    <!-- 4-Month Salaries Table (Desktop) & Cards (Mobile) -->
     <div class="salary-section">
       <div class="section-header-box">
         <div class="section-title">
@@ -2449,6 +2791,7 @@ function renderCenterWorkspace() {
         </div>
       </div>
 
+      <!-- Desktop Table -->
       <div class="salary-table-card">
         <div class="salary-row header">
           <div>Tháng</div>
@@ -2458,7 +2801,12 @@ function renderCenterWorkspace() {
           <div>Nội dung chuyển khoản</div>
           <div style="text-align: right;">Sao chép</div>
         </div>
-        ${salariesHtml}
+        ${salariesTableHtml}
+      </div>
+
+      <!-- Mobile Cards List -->
+      <div class="salary-mobile-list">
+        ${salariesMobileHtml}
       </div>
     </div>
   `;
@@ -2493,6 +2841,7 @@ window.addEventListener('DOMContentLoaded', () => {
   checkPinOnLoad();
   updateKPI();
   renderProfileList();
+  renderMobileStrip();
   renderCenterWorkspace();
 
   // Keyboard navigation
