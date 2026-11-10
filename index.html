@@ -1875,6 +1875,14 @@ function checkPinOnLoad() {
   }
 }
 
+
+function removeVietnameseTones(str) {
+  if (!str) return "";
+  str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  str = str.replace(/[đĐ]/g, (m) => m === "đ" ? "d" : "D");
+  return str.toUpperCase();
+}
+
 // Toast Helper
 function showToast(msg) {
   const toast = document.getElementById('toast');
@@ -2157,7 +2165,7 @@ function renderCenterWorkspace() {
 
         <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 10px; font-size: 11px; color: var(--text-sub); line-height: 1.4;">
           <strong>Tin nhắn SMS mẫu:</strong><br>
-          Ho ten: ${p.name}, ngay sinh: ${p.dob}, The can cuoc: ${p.cccd}, noi cap: CUC CS QLHC VE TTXH, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.
+          Ho ten: ${removeVietnameseTones(p.name)}, ngay sinh: ${p.dob}, The can cuoc: ${p.cccd}, noi cap: CUC CS QLHC VE TTXH, ngay cap: ${p.ngay_cap}. The can cuoc dang ky su dung thue bao: ${p.phone}.
         </div>
       </div>
 
